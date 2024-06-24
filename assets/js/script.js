@@ -1,10 +1,10 @@
 function verificarUsuario(){
-    const usuario = document.getElementById('email').value;
-    const contrasena = document.getElementById('password').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
 
     let datos = new FormData();
-    datos.append('email', usuario);
-    datos.append('password', contrasena);
+    datos.append('email', email);
+    datos.append('password', password);
 
     fetch(`login_usuario.php`, {method: 'POST', body: datos})
     .then(response => response.json())
