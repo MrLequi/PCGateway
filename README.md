@@ -81,8 +81,8 @@ Este proyecto está licenciado bajo la [MIT License](LICENSE).
 
 Para cualquier duda o sugerencia, puedes contactarme a través de:
 
-- **Correo electrónico**: [email@example.com](lequinidylan@gmail.com)
-- **GitHub**: [usuario](https://github.com/MrLequi)
+- **Correo electrónico**: [lequinidylan@gmail.com](lequinidylan@gmail.com)
+- **GitHub**: [MrLequi](https://github.com/MrLequi)
 
 ---
 
