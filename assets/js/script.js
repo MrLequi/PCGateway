@@ -21,6 +21,23 @@ function verificarUsuario(){
 }
 
 
+document.addEventListener('DOMContentLoaded', function() {
+    const allCategories = document.querySelector('.header_sec2 > div > p');
+    const menuContent = document.querySelector('.menu-content');
+
+    allCategories.addEventListener('click', function() {
+        menuContent.style.display = menuContent.style.display === 'block' ? 'none' : 'block';
+    });
+
+    window.addEventListener('click', function(event) {
+        if (!event.target.matches('.header_sec2 > div > p')) {
+            if (menuContent.style.display === 'block') {
+                menuContent.style.display = 'none';
+            }
+        }
+    });
+});
+
 document.addEventListener("DOMContentLoaded", function() {
     const linkCrearCuenta = document.getElementById("link-crear-cuenta");
     const linkIngresar = document.getElementById("link-ingresar");
