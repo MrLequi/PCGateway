@@ -1,84 +1,123 @@
-header *{
+header * {
     text-decoration: none;
     color: black;
 }
 
-.cont_sup{
+.cont_sup {
     display: flex;
     height: 7vh;
     width: 100%;
     align-items: center;
     font-size: 0.875rem;
 }
-.cont_sup p{
+
+.user_menu {
+    position: relative;
+    display: inline-block;
+}
+
+.user_menu_content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.user_menu_content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.user_menu_content a:hover {
+    background-color: #f1f1f1;
+}
+
+.user_menu:hover .user_menu_content {
+    display: block;
+}
+
+.cont_sup p {
     margin: 0 0.313em 0 0.313em;
 }
 
-.header_direccion{
+.header_direccion {
     position: absolute;
     display: flex;
     left: 18vh;
 }
 
-.cont_sec{
+.cont_sec {
     position: absolute;
     display: flex;
     right: 18vh;
 }
-.cont_sec p:hover{
+
+.cont_sec p:hover {
     border-bottom: 1px solid #fc6625;
 }
 
-.icon{
+.cont_sec span{
+    display: flex;
+}
+
+.icon {
     font-size: 18px;
 }
-.bx-user-circle{
+
+.bx-user-circle {
     margin-left: 1.875em;
 }
 
-.header_sec{
+.header_sec {
     height: 10vh;
     display: flex;
     align-items: center;
     font-size: 0.875rem;
 }
 
-.cont_logotipo{
+.cont_logotipo {
     position: absolute;
     left: 80px;
     top: 53px;
 }
 
-.cont_img{
+.cont_img {
     height: 37px;
     width: auto;
 }
 
-.cont_nameshop{
+.cont_nameshop {
     position: absolute;
     left: 7px;
 }
-.cont_nameshop h2{
+
+.cont_nameshop h2 {
     font-size: 27px;
 }
 
-.logotipo_img{
+.logotipo_img {
     height: 100%;
     width: auto;
 }
 
-.search_bar{
+.search_bar {
     position: absolute;
     left: 330px;
     width: 550px;
     height: 31px;
 }
-.search_bar form{
+
+.search_bar form {
     display: flex;
     width: 100%;
     height: 100%;
 }
-.search_bar input{
+
+.search_bar input {
     width: 100%;
     height: 100%;
     border: 2px solid #fc6625;
@@ -88,13 +127,13 @@ header *{
     box-shadow: rgba(0, 0, 0, 0.40) 1.95px 1.95px 2.6px;
 }
 
-.search_input{
+.search_input {
     height: 100%;
     width: 90%;
     margin-right: 23px;
 }
 
-.search_icon{
+.search_icon {
     background-color: #fc6625;
     border: 2px solid #fc6625;
     border-radius: 3px;
@@ -102,10 +141,12 @@ header *{
     height: 100%;
     width: 7%;
 }
-.search_icon i{
+
+.search_icon i {
     font-size: 18px;
 }
-.search_icon button{
+
+.search_icon button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -114,45 +155,49 @@ header *{
     background-color: #fc6625;
     border: none;
 }
-.search_icon button:hover{
+
+.search_icon button:hover {
     cursor: pointer;
 }
 
-.header_contact{
+.header_contact {
     position: absolute;
     right: 265px;
 }
 
-.contact{
+.contact {
     color: #fc6625;
     font-size: 1.125rem;
 }
 
-.user_area{
+.user_area {
     position: absolute;
     display: flex;
     right: 70px;
 }
 
-.price{
+.price {
     color: #fc6625;
 }
 
-.user_area{
+.user_area {
     margin-top: 15px;
 }
-.user_area i{
+
+.user_area i {
     font-size: 27px;
     transition: color 0.3s ease-in-out;
 }
-.user_area i:hover{
+
+.user_area i:hover {
     color: #fc6625;
 }
-.user_area a{
+
+.user_area a {
     margin: 4px 4px 0 12px;
 }
 
-.nav_bar{
+.nav_bar {
     height: 55px;
     display: flex;
     align-items: center;
@@ -160,11 +205,12 @@ header *{
     background-color: #fc6625;
     position: relative;
 }
-.nav_bar div{
+
+.nav_bar div {
     display: flex;
 }
 
-.nav_categories{
+.nav_categories {
     position: absolute;
     display: flex;
     align-items: center;
@@ -172,30 +218,37 @@ header *{
     width: 18%;
     left: 48px;
     background-color: #000;
+    transition: all 300ms;
 }
-.nav_categories p{
+.nav_categories:hover{
+    height: 110%;
+    background-color: #fc6625;
+}
+
+.nav_categories > p {
     color: #fff;
     font-size: 0.875rem;
 }
-.nav_categories i{
+
+.nav_categories i {
     color: #fff;
     font-size: 1.2rem;
     margin: 0 5px 1px 30px;
 }
 
-.nav_pages{
+.nav_pages {
     position: absolute;
     display: flex;
     align-items: center;
     left: 330px;
 }
-.nav_pages p{
+.nav_pages p {
     color: #fff;
     transition: text-shadow 0.3s ease-in-out;
     font-size: 0.875rem;
     margin-right: 25px;
 }
-.nav_pages p:hover{
+.nav_pages p:hover {
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
     border-bottom: 2px solid #fff;
 }
@@ -203,25 +256,101 @@ header *{
 .nav_bar .menu-content {
     display: none;
     position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
+    width: 243px;
+    background-color: #fff;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
     top: 100%;
     left: 0;
 }
-
 .nav_bar .menu-content a {
+    margin: 0 auto;
+    display: flex;
     color: black;
-    padding: 12px 16px;
     text-decoration: none;
     display: block;
+    width: 100%;
 }
-
 .nav_bar .menu-content a:hover {
-    background-color: #f1f1f1;
+    background-color: #f2f2f2;
+}
+.menu-content a:hover p{
+    font-weight: 500;
+    color: #fc6625;
+}
+.menu-content p{
+    width: 93%;
+    font-size: 0.875rem;
+    transition: color 0.2s ease-in-out;
+    padding: 12px 0 12px 17px;
+    border-top: 2px solid #8f9491;
 }
 
 .nav_bar > div:hover .menu-content {
     display: block;
+}
+
+.res_menu {
+    display: none;
+}
+
+.user_area .bx-user-circle {
+    display: none;
+}
+
+@media screen and (max-width: 1365px) {
+    .search_bar {
+        width: 300px;
+    }
+
+    .search_input {
+        width: 85%;
+    }
+    .search_icon {
+        width: 15%;
+    }
+}
+
+@media screen and (max-width: 1115px) {
+    .search_bar {
+        display: none;
+    }
+    .cont_sup {
+        display: none;
+    }
+    .nav_bar {
+        display: none;
+    }
+
+    .header_sec {
+        height: 100px;
+        border-bottom: 3px solid #fc6625;
+    }
+
+    .cont_logotipo {
+        display: flex;
+        top: 40px;
+        left: 70px;
+    }
+    
+    .res_menu {
+        display: block;
+        position: absolute;
+        top: 42px;
+        left: 35px;
+        font-size: 30px;
+        cursor: pointer;
+    }
+
+    .user_area .bx-user-circle {
+        display: block;
+    }
+
+    .user_area {
+        top: 31px;
+    }
+    .header_contact {
+        right: 320px;
+        top: 42px;
+    }
 }

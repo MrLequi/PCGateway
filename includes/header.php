@@ -4,12 +4,16 @@
             <i class='bx bx-map icon'></i><p class="ibm-plex-sans-regular">Pinar, Canelones, Uruguay</p>
         </div>
         <div class="cont_sec">
-        <i class='bx bx-map-alt icon'><a href="#"></i><p class="ibm-plex-sans-regular">Adresses shops</p></a>
-        <i class='bx bx-user-circle icon'></i><a href="#"><p class="ibm-plex-sans-regular">Login </p></a>|<a href="#"><p class="ibm-plex-sans-regular">Register</p></a>
+            <i class='bx bx-map-alt icon'></i><a href="#"><p class="ibm-plex-sans-regular">Adresses shops</p></a>
+            <i class='bx bx-user-circle icon'></i>
+            <span id="user-info"></span>
         </div>
     </div>
 
     <section class="header_sec">
+        <div class="res_menu">
+            <i class='bx bx-menu'></i>
+        </div>
         <div class="cont_logotipo">
             <div class="cont_nameshop">
                 <a href="#"><h2 class="ibm-plex-sans-bold">PCGateway</h2></a>
@@ -30,9 +34,10 @@
         </div>
         <div class="header_contact">
             <p class="ibm-plex-sans-regular">24/7</p>
-            <p class="ibm-plex-sans-regular contact">800.123.456.78</p>
+            <p class="ibm-plex-sans-regular contact">098.921.935</p>
         </div>
         <div class="user_area">
+            <a href="#"><i class='bx bx-user-circle icon'></i></a>
             <a href="#"><i class='bx bx-heart'></i></a>
             <a href="#"><i class='bx bx-cart'></i></a>
             <div>
@@ -45,30 +50,13 @@
         <div class="nav_categories">
             <i class='bx bx-menu-alt-left'></i>
             <p class="ibm-plex-sans-semibold">All categories</p>
-            <div class="menu-content">
-                <?php
-                $dsn = "mysql:host=localhost;dbname=tiendadb;";
-                $username = "root";
-                $password = "";
-
-                try {
-                    $pdo = new PDO($dsn, $username, $password);
-                    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-                    $stmt = $pdo->query("SELECT id, nombre FROM categorias");
-
-                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                        echo '<a href="#">' . htmlspecialchars($row['nombre']) . '</a>';
-                    }
-                } catch (PDOException $e) {
-                    echo 'Error: ' . $e->getMessage();
-                }
-                ?>
-            </div>
+            <div class="menu-content" id="categories-container"></div>
         </div>
         <div class="nav_pages">
-            <a href="#"><p class="ibm-plex-sans-regular">Home</p></a>
-            <a href="#"><p class="ibm-plex-sans-regular">Contact</p></a>
+            <a href="index.php"><p class="ibm-plex-sans-regular">Home</p></a>
+            <a href="contact.php"><p class="ibm-plex-sans-regular">Contact</p></a>
         </div>
     </section>
 </header>
+<script src="assets/js/categories.js"></script>
+<script src="assets/js/header.js"></script>

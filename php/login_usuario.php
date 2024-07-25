@@ -1,27 +1,30 @@
 <?php
 header('Content-Type: application/json');
+session_start();
 
-if (isset($_POST['email']) && isset($_POST['password'])) {
+if (isset($_POST['email']) && isset($_POST['pass'])) {
     $email = $_POST['email'];
-    $contrasena = $_POST['password'];
+    $pass = $_POST['pass'];
 
     try {
         include 'connection.php';
 
-        $stmt = $conn->prepare('SELECT * FROM usuario WHERE email = :email');
+        $stmt = $conn->prepare('SELECT nombre, password FROM usuario WHERE email = :email');
         $stmt->bindParam(':email', $email);
         $stmt->execute();
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($user && password_verify($contrasena, $user['contrasena'])) {
-            echo json_encode(['exists' => true]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($result && password_verify($pass, $result['password'])) {
+            $_SESSION['user_name'] = $result['nombre'];
+            echo json_encode(['success' => true]);
         } else {
-            echo json_encode(['exists' => false]);
+            echo json_encode(['success' => false]);
         }
     } catch (PDOException $e) {
         echo json_encode(['error' => $e->getMessage()]);
     }
 } else {
-    echo json_encode(['error' => 'Faltan parametros']);
+    echo json_encode(['error' => 'Faltan parámetros']);
 }
 ?>

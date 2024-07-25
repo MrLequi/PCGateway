@@ -1,17 +1,52 @@
-body *{
-    text-decoration: none;
-}
-
-main{
-    margin: 0 auto;
-    width: 93%;
-}
-
 .add_banner{
+    position: relative;
+    display: flex;
+    align-items: center;
     margin: 30px 0 50px 0;
     width: 100%;
     height: 332px;
     background-color: #434343;
+}
+.add_banner:hover .row-left, .add_banner:hover .row-right{
+    display: flex;
+}
+.add_banner img, .add_banner a{
+    width: 100%;
+    height: 100%;
+}
+
+.row-left, .row-right{
+    position: absolute;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 70px;
+    border-radius: 5px;
+    background-color: #fff;
+    transition: all 300ms;
+    cursor: pointer;
+}
+.row-left:hover, .row-right:hover{
+    background-color: #fc6625;
+}
+.row-left i, .row-right i{
+    color: #fc6625;
+    font-size: 30px;
+}
+.row-left:hover i, .row-right:hover i{
+    color: #fff;
+}
+.row-left{
+    left: 20px;
+}
+.row-right{
+    right: 20px;
+}
+
+main h2{
+    margin: 0 0 10px 130px;
+    font-size: 1.25rem;
 }
 
 .hardware_categories{
@@ -20,24 +55,28 @@ main{
     grid-template-rows: repeat(2, 104px);
     gap: 12px;
     justify-content: center;
-    margin: 0 auto;
+    margin: 0 auto 30px auto;
+}
+.hardware_categories a:hover p{
+    border-bottom: 1px solid #fc6625;
 }
 .hardware_categories a{
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
     height: 100%;
+    width: 100%;
 }
 .hardware_categories div{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 1px solid #8f9491;
+    border: 1px solid #fc6625;
+    border-radius: 3px;
     box-sizing: border-box;
     text-align: center;
-    padding: 10px;
+    background-color: #fff;
 }
 .hardware_categories img{
     max-width: 100%;
@@ -51,25 +90,46 @@ main{
 
 .shop_catalog {
     display: grid;
-    grid-template-columns: repeat(4, 260px);
-    grid-template-rows: repeat(1, 318px);
-    gap: 30px;
+    grid-template-columns: repeat(4, 230px);
+    grid-template-rows: repeat(1, 250px);
     justify-content: center;
-    margin: 30px auto;
-}
-.shop_catalog > div{
-    border: 1px solid #8f9491;
+    margin: 0 auto 30px auto;
+    height: 320px;
+    width: 80%;
+    border: 2px solid #fc6625;
+    border-radius: 5px;
+    background-color: #fff;
 }
 
 .image_container{
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 20px 0 10px 0;
     width: 100%;
     height: 75%;
 }
+.image_container div {
+    width: 100%;
+    height: 40%;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(252, 102, 37, 0.8);
+    border-radius: 0 0 5px 5px;
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.5s ease, text-shadow 0.8s ease-in-out;
+}
+.image_container:hover div {
+    opacity: 1;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+}
 .image_container img{
-    height: 80%;
+    height: 100%;
     width: auto;
 }
 
@@ -84,7 +144,8 @@ main{
     padding-left: 12px;
 }
 .product_price{
+    margin-top: 5px;
     padding-left: 12px;
-    font-size: 1.563rem;
+    font-size: 1.125rem;
     color: #fc6625;
 }

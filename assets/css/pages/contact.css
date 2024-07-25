@@ -1,0 +1,124 @@
+.container{
+    margin-top: 49px;
+    display: flex;
+    justify-content: center;
+}
+
+.form_cont{
+    display: flex;
+    align-items: center;
+    width: auto;
+    height: 470px;
+    background-color: #d9d9d9;
+}
+.form_cont h2{
+    font-size: 2.25rem;
+    color: #434343;
+}
+.form_cont form{
+    display: flex;
+    flex-direction: column;
+    padding: 0 45px;
+}
+.form_cont p{
+    margin-top: 15px;
+    font-size: 0.938rem;
+    color: #505050;
+}
+.form_cont input{
+    height: 40px;
+    margin-top: 18px;
+    padding-left: 15px;
+    border: 1px solid #fc6625;
+    border-radius: 3px;
+    outline: none;
+}
+.form_cont input::placeholder{
+    font-size: 0.938rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+.form_cont button{
+    font-size: 0.938rem;
+    margin-top: 6px;
+    height: 28px;
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    background-color: #fc6625;
+    cursor: pointer;
+}
+
+.user-message{
+    padding-bottom: 100px;
+}
+
+.contact_cont{
+    display: flex;
+    width: 470px;
+    height: 470px;
+}
+.contact_cont div{
+    margin-left: 40px;
+}
+.contact_cont h2{
+    font-size: 2.25rem;
+    color: #434343;
+    margin: 33px 0;
+}
+.contact_cont p{
+    margin: 15px 0 15px 0;
+    color: #505050;
+    font-size: 1.125rem;
+}
+.contact_cont h3{
+    color: #434343;
+    font-size: 1.25rem;
+}
+
+.image_adress{
+    background-color: #505050;
+    margin: 0 auto;
+    margin-top: 48px;
+    width: 95%;
+    height: 387px;
+}
+
+.suscribe_form{
+    display: flex;
+    justify-content: center;
+    margin: 81px 0 93px 0;
+}
+.suscribe_form h2{
+    font-size: 2.25rem;
+    color: #434343;
+}
+.suscribe_form input{
+    border: 1px solid #8f9491;
+    border-radius: 3px;
+    padding-left: 15px;
+    margin-left: 77px;
+    margin-right: 10px;
+    height: 46px;
+    width: 486px;
+}
+.suscribe_form input::placeholder{
+    font-size: 0.875rem;
+    color: #8f9491;
+    font-family: "IBM Plex Sans", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+.suscribe_form button{
+    height: 46px;
+    width: 129px;
+    color: #fff;
+    background-color: #fc6625;
+    border-radius: 3px;
+    border: none;
+    font-size: 0.875rem;
+    font-family: "IBM Plex Sans", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}

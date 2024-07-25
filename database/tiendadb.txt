@@ -1,173 +1,132 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Servidor: 127.0.0.1
--- Tiempo de generación: 02-07-2024 a las 23:02:49
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
 -- Base de datos: `tiendadb`
---
+CREATE DATABASE IF NOT EXISTS `tiendadb`;
+USE `tiendadb`;
 
--- --------------------------------------------------------
+-- Tabla `banner`
+CREATE TABLE `banner` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `url` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Estructura de tabla para la tabla `configracion`
---
+-- Tabla `categoría`
+CREATE TABLE `categoría` (
+  `id_categoría` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(255) NOT NULL,
+  PRIMARY KEY (`id_categoría`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `configracion` (
-  `nombre_empresa` varchar(255) NOT NULL,
-  `telefono` varchar(20) NOT NULL,
+-- Tabla `configuracion`
+CREATE TABLE `configuracion` (
+  `nombre_empresa` varchar(255) NOT NULL DEFAULT 'PCGateway',
+  `telefono` varchar(50) NOT NULL,
   `email` varchar(255) NOT NULL,
   `direccion` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `detalle_pedido`
---
-
+-- Tabla `detalle_pedido`
 CREATE TABLE `detalle_pedido` (
   `id_pedido` int(11) NOT NULL,
   `id_producto` int(11) NOT NULL,
-  `cantidad` int(11) NOT NULL
+  `cantidad` int(11) NOT NULL,
+  PRIMARY KEY (`id_pedido`,`id_producto`),
+  KEY `id_producto` (`id_producto`),
+  CONSTRAINT `detalle_pedido_ibfk_1` FOREIGN KEY (`id_pedido`) REFERENCES `pedido` (`id_pedido`),
+  CONSTRAINT `detalle_pedido_ibfk_2` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id_producto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `pedido`
---
-
+-- Tabla `pedido`
 CREATE TABLE `pedido` (
-  `id_pedido` int(11) NOT NULL,
-  `id_usuario` int(11) DEFAULT NULL,
+  `id_pedido` int(11) NOT NULL AUTO_INCREMENT,
+  `id_usuario` int(11) NOT NULL,
   `metodo_pago` varchar(50) NOT NULL,
   `fecha_pedido` date NOT NULL,
-  `total` decimal(10,2) NOT NULL
+  `total` decimal(10,2) NOT NULL,
+  PRIMARY KEY (`id_pedido`),
+  KEY `id_usuario` (`id_usuario`),
+  CONSTRAINT `pedido_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `producto`
---
-
+-- Tabla `producto`
 CREATE TABLE `producto` (
-  `id_producto` int(11) NOT NULL,
+  `id_producto` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) NOT NULL,
   `descripcion` text DEFAULT NULL,
   `precio` decimal(10,2) NOT NULL,
   `stock` int(11) NOT NULL,
-  `categoria` varchar(100) NOT NULL
+  `categoria` varchar(255) NOT NULL,
+  PRIMARY KEY (`id_producto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
+-- Tabla `producto_categoria`
+CREATE TABLE `producto_categoria` (
+  `id_producto` int(11) NOT NULL,
+  `id_categoría` int(11) NOT NULL,
+  PRIMARY KEY (`id_producto`,`id_categoría`),
+  KEY `id_categoría` (`id_categoría`),
+  CONSTRAINT `producto_categoria_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id_producto`),
+  CONSTRAINT `producto_categoria_ibfk_2` FOREIGN KEY (`id_categoría`) REFERENCES `categoría` (`id_categoría`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Estructura de tabla para la tabla `usuario`
---
-
+-- Tabla `usuario`
 CREATE TABLE `usuario` (
-  `id_usuario` int(11) NOT NULL,
-  `nombre` varchar(255) NOT NULL,
+  `id_usuario` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(255) NOT NULL,
-  `contrasena` varchar(255) NOT NULL,
-  `rol` varchar(50) NOT NULL
+  `nombre` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `rol` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `usuario`
---
+INSERT INTO `banner` (`id`, `url`) VALUES
+(1, 'https://thotcomputacion.com.uy/wp-content/uploads/2024/07/FuryRenegadeLE_BANNER-WEB.jpg'),
+(3, 'https://thotcomputacion.com.uy/wp-content/uploads/2024/05/GygabyteG5_BannerWeb-1.png');
 
-INSERT INTO `usuario` (`id_usuario`, `nombre`, `email`, `contrasena`, `rol`) VALUES
-(7, 'Dylan', 'lequinidylan@gmail.com', '$2y$10$UreLtitWiczLZKV.ccnU9OaZpZkFNtVMGX2yz1H9Bw9PuYFhMyKAS', ''),
-(8, 'Pablito', 'pablito123@gmail.com', '$argon2i$v=19$m=65536,t=4,p=1$cFFTM2F1TmZMREtLeHNCdg$oD9whbs4HDn+7DRUVuTPeeDzcQAu/sV+OaluQqbKS9g', '');
+-- Insertar datos en la tabla `categoría`
+INSERT INTO `categoría` (`id_categoría`, `nombre`) VALUES
+(1, 'Equipos armados'),
+(2, 'Notebooks'),
+(3, 'Consolas'),
+(4, 'Monitores'),
+(5, 'TV'),
+(6, 'Smartwatch'),
+(7, 'Mobiliario'),
+(8, 'Domótica'),
+(9, 'Componentes de PC'),
+(10, 'Streaming'),
+(11, 'Periféricos'),
+(12, 'Simuladores y accesorios');
 
---
--- Índices para tablas volcadas
---
+-- Insertar datos en la tabla `configuracion`
+INSERT INTO `configuracion` (`nombre_empresa`, `telefono`, `email`, `direccion`) VALUES
+('PCGateway', '123.456.789', 'info.pcgateway@mail.com', 'Paralela Sur, 15800 Ciudad de la Costa, Departamento de Canelones');
 
---
--- Indices de la tabla `detalle_pedido`
---
-ALTER TABLE `detalle_pedido`
-  ADD PRIMARY KEY (`id_pedido`,`id_producto`),
-  ADD KEY `id_producto` (`id_producto`);
+-- Insertar datos en la tabla `producto`
+INSERT INTO `producto` (`id_producto`, `nombre`, `descripcion`, `precio`, `stock`, `categoria`) VALUES
+(1, 'PC Gamer', 'PC de alto rendimiento para gaming', 1200.00, 10, 'Equipos armados'),
+(2, 'Laptop ASUS', 'Laptop ASUS con procesador Intel i7', 800.00, 15, 'Notebooks'),
+(3, 'PlayStation 5', 'Consola de videojuegos de última generación', 500.00, 20, 'Consolas'),
+(4, 'Monitor LG', 'Monitor 4K UHD de 27 pulgadas', 300.00, 25, 'Monitores'),
+(5, 'Smart TV Samsung', 'Smart TV Samsung de 55 pulgadas', 700.00, 30, 'TV'),
+(6, 'Apple Watch', 'Reloj inteligente Apple Watch Series 6', 400.00, 12, 'Smartwatch'),
+(7, 'Escritorio Gaming', 'Escritorio ergonómico para gaming', 200.00, 5, 'Mobiliario'),
+(8, 'Google Nest', 'Sistema de automatización para el hogar Google Nest', 150.00, 8, 'Domótica'),
+(9, 'Tarjeta gráfica RTX 3080', 'Tarjeta gráfica NVIDIA RTX 3080', 900.00, 7, 'Componentes de PC'),
+(10, 'Webcam Logitech', 'Cámara web HD para streaming', 100.00, 20, 'Streaming'),
+(11, 'Teclado Mecánico', 'Teclado mecánico RGB', 120.00, 18, 'Periféricos'),
+(12, 'Volante Logitech G29', 'Volante y pedales para simuladores', 300.00, 10, 'Simuladores y accesorios');
 
---
--- Indices de la tabla `pedido`
---
-ALTER TABLE `pedido`
-  ADD PRIMARY KEY (`id_pedido`),
-  ADD KEY `id_usuario` (`id_usuario`);
-
---
--- Indices de la tabla `producto`
---
-ALTER TABLE `producto`
-  ADD PRIMARY KEY (`id_producto`);
-
---
--- Indices de la tabla `usuario`
---
-ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id_usuario`),
-  ADD UNIQUE KEY `email` (`email`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `pedido`
---
-ALTER TABLE `pedido`
-  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `producto`
---
-ALTER TABLE `producto`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `usuario`
---
-ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `detalle_pedido`
---
-ALTER TABLE `detalle_pedido`
-  ADD CONSTRAINT `detalle_pedido_ibfk_1` FOREIGN KEY (`id_pedido`) REFERENCES `pedido` (`id_pedido`),
-  ADD CONSTRAINT `detalle_pedido_ibfk_2` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id_producto`);
-
---
--- Filtros para la tabla `pedido`
---
-ALTER TABLE `pedido`
-  ADD CONSTRAINT `pedido_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`);
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+-- Insertar datos en la tabla `producto_categoria`
+INSERT INTO `producto_categoria` (`id_producto`, `id_categoría`) VALUES
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4),
+(5, 5),
+(6, 6),
+(7, 7),
+(8, 8),
+(9, 9),
+(10, 10),
+(11, 11),
+(12, 12);
