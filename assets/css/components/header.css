@@ -290,6 +290,13 @@ header * {
     display: block;
 }
 
+.bx-cog, .bxs-package {
+    color: #fff;
+    font-size: 23px;
+    margin-right: 25px;
+    margin-left: auto;
+}
+
 .res_menu {
     display: none;
 }

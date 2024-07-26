@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     fetchConfiguration();
     fetchBanners();
-    fetchProducts();
 });
 
 function fetchConfiguration() {
@@ -77,77 +76,6 @@ function deleteBanner(id) {
     .catch(error => console.error('Error:', error));
 }
 
-function fetchProducts() {
-    fetch('../php/configuracion.php?action=getProducts')
-        .then(response => response.json())
-        .then(data => {
-            const productList = document.getElementById('productList');
-            productList.innerHTML = '';
-            data.forEach(product => {
-                const productDiv = document.createElement('div');
-                productDiv.innerHTML = `
-                    <div>
-                        <h3>${product.nombre}</h3>
-                        <p>${product.descripcion}</p>
-                        <p>Precio: ${product.precio}</p>
-                        <p>Stock: ${product.stock}</p>
-                        <p>Categoría: ${product.categoria}</p>
-                        <button onclick="deleteProduct(${product.id})">Eliminar</button>
-                    </div>
-                `;
-                productList.appendChild(productDiv);
-            });
-        })
-        .catch(error => console.error('Error:', error));
-}
-
-function addProduct(event) {
-    event.preventDefault();
-    const formData = new FormData(document.getElementById('productForm'));
-    const data = {
-        nombre: formData.get('product_name'),
-        descripcion: formData.get('product_description'),
-        precio: formData.get('product_price'),
-        stock: formData.get('product_stock'),
-        categoria: formData.get('product_category'),
-    };
-    fetch('../php/configuracion.php?action=addProduct', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            fetchProducts(); // Refresh products list
-        } else {
-            console.error('Error adding product:', data.error);
-        }
-    })
-    .catch(error => console.error('Error:', error));
-}
-
-function deleteProduct(id) {
-    fetch('../php/configuracion.php?action=deleteProduct', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ id }),
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            fetchProducts(); // Refresh products list
-        } else {
-            console.error('Error deleting product:', data.error);
-        }
-    })
-    .catch(error => console.error('Error:', error));
-}
-
 document.getElementById('configForm').addEventListener('submit', function (event) {
     event.preventDefault();
     const formData = new FormData(this);
@@ -174,5 +102,3 @@ document.getElementById('configForm').addEventListener('submit', function (event
     })
     .catch(error => console.error('Error:', error));
 });
-
-document.getElementById('productForm').addEventListener('submit', addProduct);

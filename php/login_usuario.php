@@ -9,7 +9,7 @@ if (isset($_POST['email']) && isset($_POST['pass'])) {
     try {
         include 'connection.php';
 
-        $stmt = $conn->prepare('SELECT nombre, password FROM usuario WHERE email = :email');
+        $stmt = $conn->prepare('SELECT nombre, password, rol FROM usuario WHERE email = :email');
         $stmt->bindParam(':email', $email);
         $stmt->execute();
 
@@ -17,6 +17,7 @@ if (isset($_POST['email']) && isset($_POST['pass'])) {
 
         if ($result && password_verify($pass, $result['password'])) {
             $_SESSION['user_name'] = $result['nombre'];
+            $_SESSION['user_role'] = $result['rol'];
             echo json_encode(['success' => true]);
         } else {
             echo json_encode(['success' => false]);

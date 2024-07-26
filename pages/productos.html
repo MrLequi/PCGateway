@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Productos</title>
+    <link rel="stylesheet" href="../assets/css/pages/productos.css">
+</head>
+<body>
+    <h1>Gestión de Productos</h1>
+
+    <!-- Botones de categorías -->
+    <div id="categorias" class="categorias-container">
+        <!-- Botones de las categorías serán generados dinámicamente -->
+    </div>
+
+    <!-- Formulario para agregar productos -->
+    <h2>Agregar Producto</h2>
+    <form id="productoForm">
+        <div>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+        </div>
+        <div>
+            <label for="descripcion">Descripción:</label>
+            <textarea id="descripcion" name="descripcion" required></textarea>
+        </div>
+        <div>
+            <label for="precio">Precio:</label>
+            <input type="number" id="precio" name="precio" step="0.01" required>
+        </div>
+        <div>
+            <label for="stock">Stock:</label>
+            <input type="number" id="stock" name="stock" required>
+        </div>
+        <div>
+            <label for="categoria">Categoría:</label>
+            <select id="categoria" name="categoria" required>
+                <!-- Las opciones de categoría serán generadas dinámicamente -->
+            </select>
+        </div>
+        <button type="submit">Agregar Producto</button>
+    </form>
+
+    <!-- Tabla de productos -->
+    <div id="productos" class="productos-container">
+        <!-- La tabla de productos se generará dinámicamente -->
+    </div>
+
+    <script src="../assets/js/productos.js"></script>
+</body>
+</html>

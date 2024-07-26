@@ -33,28 +33,8 @@ try {
         $stmt = $conn->prepare('DELETE FROM Banner WHERE id = ?');
         $stmt->execute([$data['id']]);
         echo json_encode(['success' => true]);
-    } elseif ($action === 'getProducts') {
-        $stmt = $conn->query('SELECT * FROM Producto');
-        $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        echo json_encode($products);
-    } elseif ($action === 'addProduct') {
-        $data = json_decode(file_get_contents('php://input'), true);
-        $stmt = $conn->prepare('INSERT INTO Producto (nombre, descripcion, precio, stock, categoria) VALUES (?, ?, ?, ?, ?)');
-        $stmt->execute([
-            $data['nombre'],
-            $data['descripcion'],
-            $data['precio'],
-            $data['stock'],
-            $data['categoria'],
-        ]);
-        echo json_encode(['success' => true]);
-    } elseif ($action === 'deleteProduct') {
-        $data = json_decode(file_get_contents('php://input'), true);
-        $stmt = $conn->prepare('DELETE FROM Producto WHERE id = ?');
-        $stmt->execute([$data['id']]);
-        echo json_encode(['success' => true]);
     } else {
-        echo json_encode(['error' => 'Invalid action']);
+        echo json_encode(['error' => 'Acción inválida']);
     }
 } catch (PDOException $e) {
     echo json_encode(['error' => $e->getMessage()]);
