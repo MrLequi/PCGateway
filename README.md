@@ -44,14 +44,13 @@ Sigue estos pasos para configurar el proyecto en tu máquina local:
 
 2. **Configurar XAMPP**:
     - Inicia Apache y MySQL desde el panel de control de XAMPP.
-    - Importa la base de datos `tiendadb.sql` incluida en la carpeta `database`:
+    - Descarga la base de datos `tiendadb.txt` incluida en la carpeta `database`:
         1. Abre phpMyAdmin en tu navegador.
-        2. Crea una nueva base de datos llamada `tiendadb`.
-        3. Importa el archivo `tiendadb.sql` en la base de datos `tiendadb`.
+        2. Ejecuta la consulta SQL.
 
 3. **Configurar el proyecto**:
     - Coloca la carpeta del proyecto en el directorio `htdocs` de XAMPP.
-    - Asegúrate de que los archivos de configuración de la base de datos (`config.php`) apunten correctamente a tu servidor MySQL.
+    - Asegúrate de que los archivos de configuración de la base de datos (`connection.php`) apunten correctamente a tu servidor MySQL.
 
 4. **Ejecutar la aplicación**:
     - Abre tu navegador y navega a `http://localhost/tienda-informatica`.
