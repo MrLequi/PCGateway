@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function fetchCategorias() {
-    fetch('../php/productos.php?action=getCategorias')
+    fetch('/pcgateway/php/productos.php?action=getCategorias')
         .then(response => response.json())
         .then(data => {
             const categoriasDiv = document.getElementById('categorias');
@@ -29,7 +29,7 @@ function fetchCategorias() {
 }
 
 function fetchProductos(categoriaId) {
-    fetch(`../php/productos.php?action=getProductos&categoriaId=${categoriaId}`)
+    fetch(`/pcgateway/php/productos.php?action=getProductos&categoriaId=${categoriaId}`)
         .then(response => response.json())
         .then(data => {
             const productosDiv = document.getElementById('productos');
@@ -39,6 +39,7 @@ function fetchProductos(categoriaId) {
                 const table = document.createElement('table');
                 table.innerHTML = `
                     <tr>
+                        <th>Imagen</th>
                         <th>Nombre</th>
                         <th>Descripción</th>
                         <th>Precio</th>
@@ -50,6 +51,7 @@ function fetchProductos(categoriaId) {
                 data.forEach(producto => {
                     const row = document.createElement('tr');
                     row.innerHTML = `
+                        <td><img src="${producto.imagen}" alt="${producto.nombre}" style="width: 100px; height: auto;"></td>
                         <td>${producto.nombre}</td>
                         <td>${producto.descripcion}</td>
                         <td>${producto.precio}</td>
@@ -77,9 +79,10 @@ function setupForm() {
             precio: formData.get('precio'),
             stock: formData.get('stock'),
             categoria: formData.get('categoria'),
+            imagen_url: formData.get('imagen_url')  // Añadido para la URL de la imagen
         };
 
-        fetch('../php/productos.php?action=addProduct', {
+        fetch('/pcgateway/php/productos.php?action=addProduct', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -99,19 +102,19 @@ function setupForm() {
     });
 }
 
-function deleteProducto(productId) {
-    fetch('../php/productos.php?action=deleteProduct', {
+function deleteProducto(id) {
+    fetch('/pcgateway/php/productos.php?action=deleteProduct', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ id: productId }),
+        body: JSON.stringify({ id }),
     })
     .then(response => response.json())
     .then(data => {
         if (data.success) {
             alert('Producto eliminado exitosamente.');
-            fetchCategorias();
+            fetchProductos(document.getElementById('categoria').value);
         } else {
             console.error('Error deleting product:', data.error);
         }

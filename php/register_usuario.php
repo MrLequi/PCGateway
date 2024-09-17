@@ -4,7 +4,35 @@ header('Content-Type: application/json');
 if (isset($_POST['nombre']) && isset($_POST['email']) && isset($_POST['pass'])) {
     $nombre = $_POST['nombre'];
     $email = $_POST['email'];
-    $pass = password_hash($_POST['pass'], PASSWORD_ARGON2I);
+    $pass = $_POST['pass'];
+
+    // Validación de la contraseña
+    if (strlen($pass) < 8) {
+        echo json_encode(['success' => false, 'error' => 'La contraseña debe tener al menos 8 caracteres.']);
+        exit;
+    }
+
+    if (!preg_match('/[A-Z]/', $pass)) {
+        echo json_encode(['success' => false, 'error' => 'La contraseña debe contener al menos una letra mayúscula.']);
+        exit;
+    }
+
+    if (!preg_match('/[a-z]/', $pass)) {
+        echo json_encode(['success' => false, 'error' => 'La contraseña debe contener al menos una letra minúscula.']);
+        exit;
+    }
+
+    if (!preg_match('/[0-9]/', $pass)) {
+        echo json_encode(['success' => false, 'error' => 'La contraseña debe contener al menos un número.']);
+        exit;
+    }
+
+    if (!preg_match('/[\W_]/', $pass)) {
+        echo json_encode(['success' => false, 'error' => 'La contraseña debe contener al menos un carácter especial.']);
+        exit;
+    }
+
+    $pass = password_hash($pass, PASSWORD_ARGON2I);
 
     try {
         include 'connection.php';
@@ -28,11 +56,9 @@ if (isset($_POST['nombre']) && isset($_POST['email']) && isset($_POST['pass'])) 
         if ($stmt->execute()) {
             echo json_encode(['success' => true]);
         } else {
-            error_log("Error al ejecutar la consulta: " . print_r($stmt->errorInfo(), true));
             echo json_encode(['success' => false, 'error' => 'Error al ejecutar la consulta']);
         }
     } catch (PDOException $e) {
-        error_log("Error en la base de datos: " . $e->getMessage());
         echo json_encode(['error' => $e->getMessage()]);
     }
 } else {

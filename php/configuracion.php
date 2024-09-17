@@ -1,6 +1,7 @@
 <?php
 header('Content-Type: application/json');
 require 'connection.php';
+session_start();
 
 $action = isset($_GET['action']) ? $_GET['action'] : '';
 
@@ -20,17 +21,21 @@ try {
         ]);
         echo json_encode(['success' => true]);
     } elseif ($action === 'getBanners') {
-        $stmt = $conn->query('SELECT * FROM Banner');
+        $stmt = $conn->query('SELECT id, imagen FROM banner');
         $banners = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($banners as &$banner) {
+            $banner['imagen'] = base64_encode($banner['imagen']);
+        }
         echo json_encode($banners);
     } elseif ($action === 'addBanner') {
         $data = json_decode(file_get_contents('php://input'), true);
-        $stmt = $conn->prepare('INSERT INTO Banner (url) VALUES (?)');
-        $stmt->execute([$data['url']]);
+        $imagen = base64_decode($data['imagen']);
+        $stmt = $conn->prepare('INSERT INTO banner (imagen) VALUES (?)');
+        $stmt->execute([$imagen]);
         echo json_encode(['success' => true]);
     } elseif ($action === 'deleteBanner') {
         $data = json_decode(file_get_contents('php://input'), true);
-        $stmt = $conn->prepare('DELETE FROM Banner WHERE id = ?');
+        $stmt = $conn->prepare('DELETE FROM banner WHERE id = ?');
         $stmt->execute([$data['id']]);
         echo json_encode(['success' => true]);
     } else {

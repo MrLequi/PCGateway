@@ -4,8 +4,8 @@
             <i class='bx bx-map icon'></i><p class="ibm-plex-sans-regular">Pinar, Canelones, Uruguay</p>
         </div>
         <div class="cont_sec">
-            <i class='bx bx-map-alt icon'></i><a href="#"><p class="ibm-plex-sans-regular">Adresses shops</p></a>
-            <i class='bx bx-user-circle icon'></i>
+            <i class='bx bx-map-alt icon'></i><a href="https://maps.app.goo.gl/hDpk1NXLmYH9Bu23A"><p class="ibm-plex-sans-regular">Adresses shops</p></a>
+            <i id="user-icon" class='bx bx-user-circle icon'></i>
             <span id="user-info"></span>
         </div>
     </div>
@@ -16,19 +16,19 @@
         </div>
         <div class="cont_logotipo">
             <div class="cont_nameshop">
-                <a href="#"><h2 class="ibm-plex-sans-bold">PCGateway</h2></a>
+                <a href="/pcgateway/"><h2 class="ibm-plex-sans-bold">PCGateway</h2></a>
             </div>
             <div class="cont_img">
-                <a href="#"><img class="logotipo_img" src="assets/images/logotipo-icon.png" alt=""></a>
+                <a href="#"><img class="logotipo_img" src="/pcgateway/assets/images/logotipo-icon.png" alt=""></a>
             </div>
         </div>
         <div class="search_bar">
-            <form method="POST" action="#">
+            <form method="GET" action="/pcgateway/pages/products.php">
                 <div class="search_input">
-                    <input type="text" name="user_search" placeholder="Your searched...">
+                    <input type="text" name="search" placeholder="Your searched...">
                 </div>
                 <div class="search_icon">
-                    <button><i class='bx bx-search'></i></button>
+                    <button type="submit"><i class='bx bx-search'></i></button>
                 </div>
             </form>
         </div>
@@ -37,11 +37,11 @@
             <p class="ibm-plex-sans-regular contact">098.921.935</p>
         </div>
         <div class="user_area">
-            <a href="#"><i class='bx bx-user-circle icon'></i></a>
+            <a href="#"><i id="user-icon" class='bx bx-user-circle icon'></i></a> <!-- Cambia a una etiqueta de enlace con el mismo ID -->
             <a href="#"><i class='bx bx-heart'></i></a>
             <a href="#"><i class='bx bx-cart'></i></a>
             <div>
-                <p class="ibm-plex-sans-regular">Shopping Cart</p>
+                <p class="ibm-plex-sans-regular">Shopping Cart (0)</p>
                 <p class="ibm-plex-sans-regular price">$0.00</p>
             </div>
         </div>
@@ -52,11 +52,7 @@
             <p class="ibm-plex-sans-semibold">All categories</p>
             <div class="menu-content" id="categories-container"></div>
         </div>
-        <div class="nav_pages">
-            <a href="index.php"><p class="ibm-plex-sans-regular">Home</p></a>
-            <a href="contact.php"><p class="ibm-plex-sans-regular">Contact</p></a>
-        </div>
     </section>
 </header>
-<script src="assets/js/categories.js"></script>
-<script src="assets/js/header.js"></script>
+<script src="/pcgateway/assets/js/categories.js"></script>
+<script src="/pcgateway/assets/js/header.js"></script>

@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function fetchConfiguration() {
-    fetch('../php/configuracion.php?action=getConfig')
+    fetch('/pcgateway/php/configuracion.php?action=getConfig')
         .then(response => response.json())
         .then(data => {
             document.getElementById('nombre_empresa').value = data.nombre_empresa;
@@ -16,7 +16,7 @@ function fetchConfiguration() {
 }
 
 function fetchBanners() {
-    fetch('../php/configuracion.php?action=getBanners')
+    fetch('/pcgateway/php/configuracion.php?action=getBanners')
         .then(response => response.json())
         .then(data => {
             const bannersDiv = document.getElementById('banners');
@@ -24,7 +24,7 @@ function fetchBanners() {
             data.forEach(banner => {
                 const bannerDiv = document.createElement('div');
                 bannerDiv.innerHTML = `
-                    <img src="${banner.url}" alt="Banner" style="width: 200px;">
+                    <img src="data:image/jpeg;base64,${banner.imagen}" alt="Banner" style="width: 200px;">
                     <button onclick="deleteBanner(${banner.id})">Eliminar</button>
                 `;
                 bannersDiv.appendChild(bannerDiv);
@@ -34,31 +34,37 @@ function fetchBanners() {
 }
 
 function addBanner() {
-    const bannerUrl = document.getElementById('banner_url').value;
-    if (bannerUrl) {
-        fetch('../php/configuracion.php?action=addBanner', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ url: bannerUrl }),
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                fetchBanners(); // Refresh banners list
-            } else {
-                console.error('Error adding banner:', data.error);
-            }
-        })
-        .catch(error => console.error('Error:', error));
+    const fileInput = document.getElementById('banner_image');
+    const file = fileInput.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onloadend = function () {
+            const base64Image = reader.result.split(',')[1];
+            fetch('/pcgateway/php/configuracion.php?action=addBanner', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ imagen: base64Image }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    fetchBanners(); // Refresh banners list
+                } else {
+                    console.error('Error adding banner:', data.error);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        };
+        reader.readAsDataURL(file);
     } else {
-        alert('Por favor, ingresa una URL válida.');
+        alert('Por favor, selecciona una imagen.');
     }
 }
 
 function deleteBanner(id) {
-    fetch('../php/configuracion.php?action=deleteBanner', {
+    fetch('/pcgateway/php/configuracion.php?action=deleteBanner', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -85,7 +91,7 @@ document.getElementById('configForm').addEventListener('submit', function (event
         email: formData.get('email'),
         direccion: formData.get('direccion'),
     };
-    fetch('../php/configuracion.php?action=updateConfig', {
+    fetch('/pcgateway/php/configuracion.php?action=updateConfig', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

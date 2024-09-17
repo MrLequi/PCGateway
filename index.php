@@ -17,8 +17,8 @@
 
     <main>
         <div class="add_banner">
-            <a href="#"><img src="assets/images/banner/GygabyteG5_BannerWeb-1.png" alt=""></a>
-            <div class="row-left"><i class='bx bx-chevron-left' ></i></div>
+            <img src="assets/images/banner/FuryRenegadeLE_BANNER-WEB.jpg" alt="Banner">
+            <div class="row-left"><i class='bx bx-chevron-left'></i></div>
             <div class="row-right"><i class='bx bx-chevron-right'></i></div>
         </div>
 

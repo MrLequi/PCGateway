@@ -1,0 +1,190 @@
+/* Layout General */
+.categorie-product {
+    display: flex;
+    gap: 20px; /* Espacio entre las columnas */
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+/* Categorías */
+.categories {
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0.5em 1em;
+    border-radius: 8px;
+    padding: 20px;
+    width: 300px;
+}
+
+.categories h3 {
+    text-transform: uppercase;
+    font-size: 1.25rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.categories ul {
+    list-style: none;
+    padding: 0;
+}
+
+.categories li {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.categories p {
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.categories p:hover {
+    margin-left: 10px;
+    color: #fc6625;
+}
+
+/* Contenedor de Productos */
+.products-container {
+    flex-grow: 1;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0.5em 1em;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.select-field {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.select-field p {
+    margin-right: 10px;
+    font-size: 1rem;
+    color: #555;
+}
+
+.select-field select {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.select-field select:hover {
+    border-color: #fc6625;
+}
+
+/* Productos */
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.item {
+    position: relative;
+    border: 1px solid #f1f1f1;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.item:hover {
+    transform: translateY(-5px);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0.5em 1em;
+}
+
+.image_container {
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    border-bottom: 1px solid #f4f4f4;
+}
+
+.image_container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.image_container:hover img {
+    transform: scale(1.05);
+}
+
+.product-name {
+    margin: 10px 5px;
+    font-size: 1rem;
+    text-align: center;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.product-name:hover {
+    color: #fc6625;
+}
+
+.product-price {
+    font-size: 1.25rem;
+    text-align: center;
+    color: #fc6625;
+    margin-bottom: 10px;
+}
+
+/* Paginación */
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination-button {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #fc6625;
+    font-size: 1rem;
+    padding: 8px 12px;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.pagination-button:hover {
+    background-color: #fc6625;
+    color: #fff;
+}
+
+.pagination-button.active {
+    background-color: #fc6625;
+    color: #fff;
+    border: 1px solid #fc6625;
+}
+
+.pagination-button i {
+    font-size: 1.2rem;
+}
+
+.product-actions {
+    display: flex;
+}
+
+.cart {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #fc6625;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cart i {
+    color: #fff;
+}

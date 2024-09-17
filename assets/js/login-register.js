@@ -57,6 +57,20 @@ function register() {
     }
 }
 
+function validateName(name) {
+    const namePattern = /^[a-zA-Z\s]+$/;
+    return namePattern.test(name);
+}
+
+function validateEmail(email) {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(email);
+}
+
+function validatePassword(password) {
+    return password.length >= 8;
+}
+
 function loginVerify() {
     const email = document.getElementById('login-email').value;
     const pass = document.getElementById('login-pass').value;
@@ -67,11 +81,11 @@ function loginVerify() {
     datos.append('email', email);
     datos.append('pass', pass);
 
-    fetch('../php/login_usuario.php', { method: 'POST', body: datos })
+    fetch('/pcgateway/php/login_usuario.php', { method: 'POST', body: datos })
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                window.location.href = '../index.php';
+                window.location.href = '/pcgateway/index.php';
             } else {
                 alert('Usuario o contraseña incorrectos');
             }
@@ -86,12 +100,27 @@ function registerUser() {
     const email = document.getElementById('register-email').value;
     const pass = document.getElementById('register-pass').value;
 
+    if (!validateName(nombre)) {
+        alert('Nombre inválido. Solo se permiten letras y espacios.');
+        return;
+    }
+
+    if (!validateEmail(email)) {
+        alert('Correo electrónico inválido.');
+        return;
+    }
+
+    if (!validatePassword(pass)) {
+        alert('La contraseña debe tener al menos 8 caracteres.');
+        return;
+    }
+
     let datos = new FormData();
     datos.append('nombre', nombre);
     datos.append('email', email);
     datos.append('pass', pass);
 
-    fetch('../php/register_usuario.php', { method: 'POST', body: datos })
+    fetch('/pcgateway/php/register_usuario.php', { method: 'POST', body: datos })
         .then(response => response.json())
         .then(data => {
             if (data.success) {

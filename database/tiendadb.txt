@@ -5,8 +5,30 @@ USE `tiendadb`;
 -- Tabla `banner`
 CREATE TABLE `banner` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `url` varchar(255) NOT NULL,
+  `imagen` varchar(255) NOT NULL,  -- Campo para almacenar la URL de la imagen
   PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Tabla `usuario`
+CREATE TABLE `usuario` (
+  `id_usuario` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) NOT NULL,
+  `nombre` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `rol` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_usuario`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Tabla `pedido`
+CREATE TABLE `pedido` (
+  `id_pedido` int(11) NOT NULL AUTO_INCREMENT,
+  `id_usuario` int(11) NOT NULL,
+  `metodo_pago` varchar(50) NOT NULL,
+  `fecha_pedido` date NOT NULL,
+  `total` decimal(10,2) NOT NULL,
+  PRIMARY KEY (`id_pedido`),
+  KEY `id_usuario` (`id_usuario`),
+  CONSTRAINT `pedido_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Tabla `categoría`
@@ -14,6 +36,18 @@ CREATE TABLE `categoría` (
   `id_categoría` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) NOT NULL,
   PRIMARY KEY (`id_categoría`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Tabla `producto`
+CREATE TABLE `producto` (
+  `id_producto` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(255) NOT NULL,
+  `descripcion` text DEFAULT NULL,
+  `precio` decimal(10,2) NOT NULL,
+  `stock` int(11) NOT NULL,
+  `categoria` varchar(255) NOT NULL,
+  `imagen` varchar(255) DEFAULT NULL,  -- Campo para almacenar la URL de la imagen del producto
+  PRIMARY KEY (`id_producto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Tabla `configuracion`
@@ -35,29 +69,6 @@ CREATE TABLE `detalle_pedido` (
   CONSTRAINT `detalle_pedido_ibfk_2` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id_producto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Tabla `pedido`
-CREATE TABLE `pedido` (
-  `id_pedido` int(11) NOT NULL AUTO_INCREMENT,
-  `id_usuario` int(11) NOT NULL,
-  `metodo_pago` varchar(50) NOT NULL,
-  `fecha_pedido` date NOT NULL,
-  `total` decimal(10,2) NOT NULL,
-  PRIMARY KEY (`id_pedido`),
-  KEY `id_usuario` (`id_usuario`),
-  CONSTRAINT `pedido_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- Tabla `producto`
-CREATE TABLE `producto` (
-  `id_producto` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(255) NOT NULL,
-  `descripcion` text DEFAULT NULL,
-  `precio` decimal(10,2) NOT NULL,
-  `stock` int(11) NOT NULL,
-  `categoria` varchar(255) NOT NULL,
-  PRIMARY KEY (`id_producto`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 -- Tabla `producto_categoria`
 CREATE TABLE `producto_categoria` (
   `id_producto` int(11) NOT NULL,
@@ -67,20 +78,6 @@ CREATE TABLE `producto_categoria` (
   CONSTRAINT `producto_categoria_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id_producto`),
   CONSTRAINT `producto_categoria_ibfk_2` FOREIGN KEY (`id_categoría`) REFERENCES `categoría` (`id_categoría`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- Tabla `usuario`
-CREATE TABLE `usuario` (
-  `id_usuario` int(11) NOT NULL AUTO_INCREMENT,
-  `email` varchar(255) NOT NULL,
-  `nombre` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `rol` varchar(50) NOT NULL,
-  PRIMARY KEY (`id_usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-INSERT INTO `banner` (`id`, `url`) VALUES
-(1, 'https://thotcomputacion.com.uy/wp-content/uploads/2024/07/FuryRenegadeLE_BANNER-WEB.jpg'),
-(3, 'https://thotcomputacion.com.uy/wp-content/uploads/2024/05/GygabyteG5_BannerWeb-1.png');
 
 -- Insertar datos en la tabla `categoría`
 INSERT INTO `categoría` (`id_categoría`, `nombre`) VALUES
@@ -102,19 +99,19 @@ INSERT INTO `configuracion` (`nombre_empresa`, `telefono`, `email`, `direccion`)
 ('PCGateway', '123.456.789', 'info.pcgateway@mail.com', 'Paralela Sur, 15800 Ciudad de la Costa, Departamento de Canelones');
 
 -- Insertar datos en la tabla `producto`
-INSERT INTO `producto` (`id_producto`, `nombre`, `descripcion`, `precio`, `stock`, `categoria`) VALUES
-(1, 'PC Gamer', 'PC de alto rendimiento para gaming', 1200.00, 10, 'Equipos armados'),
-(2, 'Laptop ASUS', 'Laptop ASUS con procesador Intel i7', 800.00, 15, 'Notebooks'),
-(3, 'PlayStation 5', 'Consola de videojuegos de última generación', 500.00, 20, 'Consolas'),
-(4, 'Monitor LG', 'Monitor 4K UHD de 27 pulgadas', 300.00, 25, 'Monitores'),
-(5, 'Smart TV Samsung', 'Smart TV Samsung de 55 pulgadas', 700.00, 30, 'TV'),
-(6, 'Apple Watch', 'Reloj inteligente Apple Watch Series 6', 400.00, 12, 'Smartwatch'),
-(7, 'Escritorio Gaming', 'Escritorio ergonómico para gaming', 200.00, 5, 'Mobiliario'),
-(8, 'Google Nest', 'Sistema de automatización para el hogar Google Nest', 150.00, 8, 'Domótica'),
-(9, 'Tarjeta gráfica RTX 3080', 'Tarjeta gráfica NVIDIA RTX 3080', 900.00, 7, 'Componentes de PC'),
-(10, 'Webcam Logitech', 'Cámara web HD para streaming', 100.00, 20, 'Streaming'),
-(11, 'Teclado Mecánico', 'Teclado mecánico RGB', 120.00, 18, 'Periféricos'),
-(12, 'Volante Logitech G29', 'Volante y pedales para simuladores', 300.00, 10, 'Simuladores y accesorios');
+INSERT INTO `producto` (`id_producto`, `nombre`, `descripcion`, `precio`, `stock`, `categoria`, `imagen`) VALUES
+(1, 'PC Gamer', 'PC de alto rendimiento para gaming', 1200.00, 10, 'Equipos armados', 'https://example.com/images/pc-gamer.jpg'),
+(2, 'Laptop ASUS', 'Laptop ASUS con procesador Intel i7', 800.00, 15, 'Notebooks', 'https://example.com/images/laptop-asus.jpg'),
+(3, 'PlayStation 5', 'Consola de videojuegos de última generación', 500.00, 20, 'Consolas', 'https://example.com/images/playstation5.jpg'),
+(4, 'Monitor LG', 'Monitor 4K UHD de 27 pulgadas', 300.00, 25, 'Monitores', 'https://example.com/images/monitor-lg.jpg'),
+(5, 'Smart TV Samsung', 'Smart TV Samsung de 55 pulgadas', 700.00, 30, 'TV', 'https://example.com/images/smart-tv-samsung.jpg'),
+(6, 'Apple Watch', 'Reloj inteligente Apple Watch Series 6', 400.00, 12, 'Smartwatch', 'https://example.com/images/apple-watch.jpg'),
+(7, 'Escritorio Gaming', 'Escritorio ergonómico para gaming', 200.00, 5, 'Mobiliario', 'https://example.com/images/escritorio-gaming.jpg'),
+(8, 'Google Nest', 'Sistema de automatización para el hogar Google Nest', 150.00, 8, 'Domótica', 'https://example.com/images/google-nest.jpg'),
+(9, 'Tarjeta gráfica RTX 3080', 'Tarjeta gráfica NVIDIA RTX 3080', 900.00, 7, 'Componentes de PC', 'https://example.com/images/rtx-3080.jpg'),
+(10, 'Webcam Logitech', 'Cámara web HD para streaming', 100.00, 20, 'Streaming', 'https://example.com/images/webcam-logitech.jpg'),
+(11, 'Teclado Mecánico', 'Teclado mecánico RGB', 120.00, 18, 'Periféricos', 'https://example.com/images/teclado-mecanico.jpg'),
+(12, 'Volante Logitech G29', 'Volante y pedales para simuladores', 300.00, 10, 'Simuladores y accesorios', 'https://example.com/images/volante-logitech.jpg');
 
 -- Insertar datos en la tabla `producto_categoria`
 INSERT INTO `producto_categoria` (`id_producto`, `id_categoría`) VALUES

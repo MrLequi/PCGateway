@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
     console.log('header.js cargado'); // Verificar que el archivo se carga
 
-    fetch('php/session_status.php')
+    // Actualizar el estado del usuario
+    fetch('/pcgateway/php/session_status.php')
         .then(response => response.json())
         .then(data => {
             console.log('Respuesta de session_status:', data); // Verificar la respuesta
@@ -15,17 +16,20 @@ document.addEventListener('DOMContentLoaded', function () {
                 links += '<a href="contact.php"><p class="ibm-plex-sans-regular">Contact</p></a>';
 
                 if (data.userRole === 'Admin') {
-                    links += '<a href="pages/configuracion.html"><i class="bx bx-cog"></i></a>';
-                    links += '<a href="pages/productos.html"><i class="bx bxs-package"></i></a>';
+                    links += '<a href="/pcgateway/pages/configuracion.html"><i class="bx bx-cog"></i></a>';
+                    links += '<a href="/pcgateway/pages/productos.html"><i class="bx bxs-package"></i></a>';
                 } else if (data.userRole === 'Vendedor') {
-                    links += '<a href="pages/productos.html"><i class="bx bxs-package"></i></a>';
+                    links += '<a href="/pcgateway/pages/productos.html"><i class="bx bxs-package"></i></a>';
                 }
 
                 navPages.innerHTML = links;
 
             } else {
-                document.getElementById('user-info').innerHTML = `<a href="pages/login.html"><p class="ibm-plex-sans-regular">Login</p></a> | <a href="pages/login.html"><p class="ibm-plex-sans-regular">Register</p></a>`;
+                document.getElementById('user-info').innerHTML = `<a href="/pcgateway/pages/login.html"><p class="ibm-plex-sans-regular">Login</p></a> | <a href="/pcgateway/pages/login.html"><p class="ibm-plex-sans-regular">Register</p></a>`;
             }
+
+            // Actualizar el carrito
+            actualizarCarrito();
         })
         .catch(error => {
             console.error('Error:', error);
@@ -33,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function logout() {
-    fetch('php/logout.php', { method: 'POST' })
+    fetch('/pcgateway/php/logout.php', { method: 'POST' })
         .then(response => response.json())
         .then(data => {
             if (data.success) {
@@ -43,4 +47,33 @@ function logout() {
         .catch(error => {
             console.error('Error:', error);
         });
+}
+
+function actualizarCarrito() {
+    let cart = JSON.parse(localStorage.getItem('cart')) || {};
+    let totalItems = 0;
+    let totalPrice = 0;
+
+    for (const productId in cart) {
+        if (cart.hasOwnProperty(productId)) {
+            // Aquí deberías reemplazar con una llamada a la API que devuelva el precio del producto
+            const producto = getProductoById(productId); // Función ficticia para obtener datos del producto
+            if (producto) {
+                totalItems += cart[productId];
+                totalPrice += producto.precio * cart[productId];
+            }
+        }
+    }
+
+    document.querySelector('.user_area p:first-of-type').textContent = `Shopping Cart (${totalItems})`;
+    document.querySelector('.user_area .price').textContent = `$${totalPrice.toFixed(2)}`;
+}
+
+function getProductoById(productId) {
+    // Función ficticia para obtener datos del producto. Deberías implementar una API o método para obtener el precio.
+    const productos = {
+        '1': { precio: 10.00 },
+        '2': { precio: 15.50 }
+    };
+    return productos[productId];
 }

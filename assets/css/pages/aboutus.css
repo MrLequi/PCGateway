@@ -1,0 +1,33 @@
+body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f5f5f5;
+    color: #333;
+}
+h1, h2 {
+    color: #fc6625;
+    text-align: center;
+}
+.section {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.section i {
+    font-size: 40px;
+    color: #fc6625;
+    display: block;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.stats {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+.stats div {
+    margin-bottom: 10px;
+}

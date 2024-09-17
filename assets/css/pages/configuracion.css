@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: "IBM Plex Sans", sans-serif;
     background-color: #f4f4f4;
     color: #333;
     margin: 0;
@@ -58,10 +60,25 @@ button:hover {
 h2 {
     margin-top: 30px;
     font-size: 24px;
+    color: #fc6625;
 }
 
 #banners {
     margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+#banners div {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #banners img {
@@ -69,4 +86,19 @@ h2 {
     height: auto;
     display: block;
     margin-bottom: 10px;
+}
+
+#banners button {
+    margin-top: 10px;
+    background-color: #e55b1e;
+}
+
+#banners button:hover {
+    background-color: #d45d1d;
+}
+
+#message {
+    text-align: center;
+    font-weight: bold;
+    color: #fc6625;
 }

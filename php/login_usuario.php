@@ -3,8 +3,8 @@ header('Content-Type: application/json');
 session_start();
 
 if (isset($_POST['email']) && isset($_POST['pass'])) {
-    $email = $_POST['email'];
-    $pass = $_POST['pass'];
+    $email = trim($_POST['email']);
+    $pass = trim($_POST['pass']);
 
     try {
         include 'connection.php';

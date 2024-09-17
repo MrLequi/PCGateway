@@ -20,8 +20,8 @@ try {
         echo json_encode($productos);
     } elseif ($action === 'addProduct') {
         $data = json_decode(file_get_contents('php://input'), true);
-        $stmt = $conn->prepare('INSERT INTO producto (nombre, descripcion, precio, stock, categoria) VALUES (?, ?, ?, ?, ?)');
-        $stmt->execute([$data['nombre'], $data['descripcion'], $data['precio'], $data['stock'], $data['categoria']]);
+        $stmt = $conn->prepare('INSERT INTO producto (nombre, descripcion, precio, stock, categoria, imagen) VALUES (?, ?, ?, ?, ?, ?)');
+        $stmt->execute([$data['nombre'], $data['descripcion'], $data['precio'], $data['stock'], $data['categoria'], $data['imagen_url']]);
         $lastId = $conn->lastInsertId();
 
         $stmt = $conn->prepare('INSERT INTO producto_categoria (id_producto, id_categoría) VALUES (?, ?)');

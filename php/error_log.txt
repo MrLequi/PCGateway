@@ -21,3 +21,35 @@
 [24-Jul-2024 23:13:36 Europe/Berlin] PHP Warning:  Undefined array key "id" in C:\xampp\htdocs\Página Web\php\configuracion.php on line 54
 [24-Jul-2024 23:13:36 Europe/Berlin] PHP Warning:  Undefined array key "id" in C:\xampp\htdocs\Página Web\php\configuracion.php on line 54
 [25-Jul-2024 04:35:49 Europe/Berlin] Error de conexión: SQLSTATE[HY000] [2002] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+[08-Aug-2024 14:18:42 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tiendadb.productos' doesn't exist in C:\xampp\htdocs\Página Web\php\fetch_products.php:25
+Stack trace:
+#0 C:\xampp\htdocs\Página Web\php\fetch_products.php(25): PDO->query('SELECT * FROM p...')
+#1 {main}
+  thrown in C:\xampp\htdocs\Página Web\php\fetch_products.php on line 25
+[08-Aug-2024 14:20:38 Europe/Berlin] PHP Warning:  Undefined property: PDOStatement::$num_row in C:\xampp\htdocs\Página Web\php\fetch_products.php on line 27
+[08-Aug-2024 14:20:43 Europe/Berlin] PHP Warning:  Undefined property: PDOStatement::$num_row in C:\xampp\htdocs\Página Web\php\fetch_products.php on line 27
+[08-Aug-2024 14:21:32 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tiendadb.productos' doesn't exist in C:\xampp\htdocs\Página Web\php\fetch_products.php:9
+Stack trace:
+#0 C:\xampp\htdocs\Página Web\php\fetch_products.php(9): PDOStatement->execute(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\Página Web\php\fetch_products.php on line 9
+[12-Aug-2024 23:54:25 Europe/Berlin] PHP Warning:  Undefined array key "imagen_url" in C:\xampp\htdocs\Página Web\php\productos.php on line 24
+[12-Aug-2024 23:58:55 Europe/Berlin] PHP Warning:  Undefined array key "imagen_url" in C:\xampp\htdocs\Página Web\php\productos.php on line 24
+[13-Aug-2024 00:00:50 Europe/Berlin] PHP Warning:  Undefined array key "imagen_url" in C:\xampp\htdocs\Página Web\php\productos.php on line 24
+[13-Aug-2024 00:02:22 Europe/Berlin] PHP Warning:  Undefined array key "imagen_url" in C:\xampp\htdocs\Página Web\php\productos.php on line 24
+[13-Aug-2024 00:04:50 Europe/Berlin] PHP Warning:  Undefined array key "imagen_url" in C:\xampp\htdocs\Página Web\php\productos.php on line 24
+[13-Aug-2024 18:34:14 Europe/Berlin] PHP Warning:  Undefined array key "imagen_url" in C:\xampp\htdocs\Página Web\php\productos.php on line 24
+[19-Aug-2024 19:48:29 Europe/Berlin] Error de conexión: SQLSTATE[HY000] [2002] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+[19-Aug-2024 19:48:43 Europe/Berlin] Error de conexión: SQLSTATE[HY000] [2002] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+[19-Aug-2024 19:48:45 Europe/Berlin] Error de conexión: SQLSTATE[HY000] [2002] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+[19-Aug-2024 19:49:08 Europe/Berlin] Error de conexión: SQLSTATE[HY000] [2002] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+[19-Aug-2024 19:49:12 Europe/Berlin] Error de conexión: SQLSTATE[HY000] [2002] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+[19-Aug-2024 19:49:16 Europe/Berlin] Error de conexión: SQLSTATE[HY000] [2002] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+[19-Aug-2024 19:49:20 Europe/Berlin] Error de conexión: SQLSTATE[HY000] [2002] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+[19-Aug-2024 19:49:24 Europe/Berlin] Error de conexión: SQLSTATE[HY000] [2002] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+[19-Aug-2024 19:49:28 Europe/Berlin] Error de conexión: SQLSTATE[HY000] [2002] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+[19-Aug-2024 19:49:33 Europe/Berlin] Error de conexión: SQLSTATE[HY000] [2002] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+[19-Aug-2024 19:50:41 Europe/Berlin] Error de conexión: SQLSTATE[HY000] [2002] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+[19-Aug-2024 20:03:38 Europe/Berlin] Error de conexión: SQLSTATE[HY000] [2002] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+[19-Aug-2024 20:04:14 Europe/Berlin] Error de conexión: SQLSTATE[HY000] [2002] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+[11-Sep-2024 16:43:01 Europe/Berlin] Error de conexión: SQLSTATE[HY000] [2002] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
