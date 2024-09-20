@@ -53,3 +53,51 @@ Stack trace:
 [19-Aug-2024 20:03:38 Europe/Berlin] Error de conexión: SQLSTATE[HY000] [2002] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
 [19-Aug-2024 20:04:14 Europe/Berlin] Error de conexión: SQLSTATE[HY000] [2002] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
 [11-Sep-2024 16:43:01 Europe/Berlin] Error de conexión: SQLSTATE[HY000] [2002] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+[19-Sep-2024 16:57:28 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id' in 'field list' in C:\xampp\htdocs\PCGateway\php\user_management.php:86
+Stack trace:
+#0 C:\xampp\htdocs\PCGateway\php\user_management.php(86): PDOStatement->execute()
+#1 C:\xampp\htdocs\PCGateway\php\user_management.php(30): getAllUsers()
+#2 {main}
+  thrown in C:\xampp\htdocs\PCGateway\php\user_management.php on line 86
+[19-Sep-2024 16:59:33 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id' in 'field list' in C:\xampp\htdocs\PCGateway\php\user_management.php:86
+Stack trace:
+#0 C:\xampp\htdocs\PCGateway\php\user_management.php(86): PDOStatement->execute()
+#1 C:\xampp\htdocs\PCGateway\php\user_management.php(30): getAllUsers()
+#2 {main}
+  thrown in C:\xampp\htdocs\PCGateway\php\user_management.php on line 86
+[19-Sep-2024 17:08:21 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id' in 'field list' in C:\xampp\htdocs\PCGateway\php\user_management.php:86
+Stack trace:
+#0 C:\xampp\htdocs\PCGateway\php\user_management.php(86): PDOStatement->execute()
+#1 C:\xampp\htdocs\PCGateway\php\user_management.php(30): getAllUsers()
+#2 {main}
+  thrown in C:\xampp\htdocs\PCGateway\php\user_management.php on line 86
+[19-Sep-2024 17:08:29 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id' in 'field list' in C:\xampp\htdocs\PCGateway\php\user_management.php:86
+Stack trace:
+#0 C:\xampp\htdocs\PCGateway\php\user_management.php(86): PDOStatement->execute()
+#1 C:\xampp\htdocs\PCGateway\php\user_management.php(30): getAllUsers()
+#2 {main}
+  thrown in C:\xampp\htdocs\PCGateway\php\user_management.php on line 86
+[19-Sep-2024 17:20:46 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id' in 'field list' in C:\xampp\htdocs\PCGateway\php\user_management.php:88
+Stack trace:
+#0 C:\xampp\htdocs\PCGateway\php\user_management.php(88): PDOStatement->execute()
+#1 C:\xampp\htdocs\PCGateway\php\user_management.php(30): getAllUsers()
+#2 {main}
+  thrown in C:\xampp\htdocs\PCGateway\php\user_management.php on line 88
+[19-Sep-2024 17:24:10 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id' in 'field list' in C:\xampp\htdocs\PCGateway\php\user_management.php:88
+Stack trace:
+#0 C:\xampp\htdocs\PCGateway\php\user_management.php(88): PDOStatement->execute()
+#1 C:\xampp\htdocs\PCGateway\php\user_management.php(30): getAllUsers()
+#2 {main}
+  thrown in C:\xampp\htdocs\PCGateway\php\user_management.php on line 88
+[19-Sep-2024 17:37:02 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id' in 'field list' in C:\xampp\htdocs\PCGateway\php\user_management.php:88
+Stack trace:
+#0 C:\xampp\htdocs\PCGateway\php\user_management.php(88): PDOStatement->execute()
+#1 C:\xampp\htdocs\PCGateway\php\user_management.php(30): getAllUsers()
+#2 {main}
+  thrown in C:\xampp\htdocs\PCGateway\php\user_management.php on line 88
+[19-Sep-2024 23:03:11 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id' in 'field list' in C:\xampp\htdocs\PCGateway\php\user_management.php:88
+Stack trace:
+#0 C:\xampp\htdocs\PCGateway\php\user_management.php(88): PDOStatement->execute()
+#1 C:\xampp\htdocs\PCGateway\php\user_management.php(30): getAllUsers()
+#2 {main}
+  thrown in C:\xampp\htdocs\PCGateway\php\user_management.php on line 88
