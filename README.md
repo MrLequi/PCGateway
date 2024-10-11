@@ -39,12 +39,12 @@ Sigue estos pasos para configurar el proyecto en tu máquina local:
 
 1. **Clonar el repositorio**:
     ```bash
-    git clone https://github.com/tu-usuario/tienda-informatica.git
+    git clone https://github.com/MrLequi/Ecommerce-Project.git
     ```
 
 2. **Configurar XAMPP**:
     - Inicia Apache y MySQL desde el panel de control de XAMPP.
-    - Descarga la base de datos `tiendadb.txt` incluida en la carpeta `database`:
+    - Descarga la base de datos `PCGateway.sql` incluida en la carpeta `database`:
         1. Abre phpMyAdmin en tu navegador.
         2. Ejecuta la consulta SQL.
 
@@ -53,7 +53,7 @@ Sigue estos pasos para configurar el proyecto en tu máquina local:
     - Asegúrate de que los archivos de configuración de la base de datos (`connection.php`) apunten correctamente a tu servidor MySQL.
 
 4. **Ejecutar la aplicación**:
-    - Abre tu navegador y navega a `http://localhost/tienda-informatica`.
+    - Abre tu navegador y navega a `http://localhost/PCGateway`.
 
 ## Uso
 
