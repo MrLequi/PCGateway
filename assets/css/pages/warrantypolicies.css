@@ -1,0 +1,77 @@
+.warrantyplicies {
+    max-width: 100%;
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+    margin-top: 56px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.warrantyplicies h1 {
+    font-size: 2.25rem;
+    margin-bottom: 19px;
+}
+
+.warrantyplicies ol {
+    font-size: 1rem;
+    margin-bottom: 58px;
+}
+
+.warrantyplicies ul {
+    list-style: disc;
+    margin-left: 28px;
+}
+
+.warrantyplicies h3 {
+    font-size: 1.0625rem;
+    margin-bottom: 42px;
+}
+
+.warrantyplicies div {
+    margin-bottom: 20px;
+}
+
+@media screen and (max-width: 768px) {
+    .warrantyplicies {
+        width: 95%;
+    }
+
+    .warrantyplicies h1 {
+        font-size: 2rem;
+    }
+
+    .warrantyplicies ol {
+        font-size: 0.9375rem;
+    }
+
+    .warrantyplicies ul {
+        margin-left: 20px;
+    }
+
+    .warrantyplicies h3 {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .warrantyplicies h1 {
+        font-size: 1.75rem;
+    }
+
+    .warrantyplicies ol {
+        font-size: 0.875rem;
+    }
+
+    .warrantyplicies ul {
+        margin-left: 18px;
+    }
+
+    .warrantyplicies h3 {
+        font-size: 0.9375rem;
+    }
+
+    .warrantyplicies div {
+        margin-bottom: 15px;
+    }
+}

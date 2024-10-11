@@ -10,16 +10,14 @@
     <link rel="stylesheet" href="assets/css/typography.css">
     <link rel="stylesheet" href="assets/css/layout.css">
     <link rel="icon" href="assets/images/icons/logotipo-icon.ico">
-    <title>HOME</title>
+    <title>HOME | PCGateway</title>
 </head>
 <body>
     <?php include 'includes/header.php';?>
 
     <main>
         <div class="add_banner">
-            <img src="assets/images/banner/FuryRenegadeLE_BANNER-WEB.jpg" alt="Banner">
-            <div class="row-left"><i class='bx bx-chevron-left'></i></div>
-            <div class="row-right"><i class='bx bx-chevron-right'></i></div>
+            <div class="banner-slide"></div>
         </div>
 
         <section class="hardware_categories">
@@ -73,59 +71,102 @@
             </div>
         </section>
 
-        <h2 class="poppins-bold">Destacados</h2>
-        <section class="shop_catalog">
-            <div>
-                <a href="#">
-                    <div class="image_container">
-                        <img src="assets/images/items/item1.jpg" alt="">
-                        <div><p class="ibm-plex-sans-regular">Ver detalle</p></div>
-                    </div>
-                    <div class="product_container">
-                        <p class="product_name ibm-plex-sans-medium">Equipo AMD Ryzen 5 7600 Full Gamer - 16gb DDR5 - SSD - RTX4060</p>
-                        <p class="product_price ibm-plex-sans-medium">US$1,300.00</p>
-                    </div>
-                </a>
+        <section class="prominent">
+            <h2 class="ibm-plex-sans-bold">Destacados</h2>
+            <div class="product_gallery">
+                <div class="left_row">
+                    <i class='bx bx-chevron-left'></i>
+                </div>
+                <div class="product">
+                    <a href="#">
+                        <img src="" alt="">
+                        <p class="name ibm-plex-sans-semibold">Equipo AMD Athlon 3000g - 8gb - SSD - Radeon Graphics</p>
+                    </a>
+                    <p class="price ibm-plex-sans-medium">US$299.00</p>
+                </div>
+                <div class="product">
+                    <a href="#">
+                        <img src="" alt="">
+                        <p class="name ibm-plex-sans-semibold">Equipo AMD Athlon 3000g - 8gb - SSD - Radeon Graphics</p>
+                    </a>
+                    <p class="price ibm-plex-sans-medium">US$299.00</p>
+                </div>
+                <div class="product">
+                    <a href="#">
+                        <img src="" alt="">
+                        <p class="name ibm-plex-sans-semibold">Equipo AMD Athlon 3000g - 8gb - SSD - Radeon Graphics</p>
+                    </a>
+                    <p class="price ibm-plex-sans-medium">US$299.00</p>
+                </div>
+                <div class="product">
+                    <a href="#">
+                        <img src="" alt="">
+                        <p class="name ibm-plex-sans-semibold">Equipo AMD Athlon 3000g - 8gb - SSD - Radeon Graphics</p>
+                    </a>
+                    <p class="price ibm-plex-sans-medium">US$299.00</p>
+                </div>
+                <div class="right_row">
+                    <i class='bx bx-chevron-right' ></i>
+                </div>
             </div>
-            <div>
-                <a href="#">
-                    <div class="image_container">
-                        <img src="assets/images/items/item2.jpg" alt="">
-                        <div><p class="ibm-plex-sans-regular">Ver detalle</p></div>
-                    </div>
-                    <div class="product_container">
-                        <p class="product_name ibm-plex-sans-medium">Equipo Intel Core i7 14700Kf Full Gamer - 32gb - SSD PCIe - RTX4070</p>
-                        <p class="product_price ibm-plex-sans-medium">US$2,625.00</p>
-                    </div>
-                </a>
+        </section>
+
+        <div class="add_banner2">
+            <img src="/pcgateway/assets/images/banner/12Cuotas_MiniBanner-v2-1024x123.png" alt="">
+        </div>
+
+        <section class="offers">
+            <h2 class="ibm-plex-sans-bold">Offers</h2>
+            <div class="product_gallery">
+                <div class="left_row">
+                    <i class='bx bx-chevron-left'></i>
+                </div>
+                <div class="product">
+                    <a href="#">
+                        <img src="" alt="">
+                        <p class="name ibm-plex-sans-semibold">Equipo AMD Athlon 3000g - 8gb - SSD - Radeon Graphics</p>
+                    </a>
+                    <p class="price ibm-plex-sans-medium">US$299.00</p>
+                </div>
+                <div class="product">
+                    <a href="#">
+                        <img src="" alt="">
+                        <p class="name ibm-plex-sans-semibold">Equipo AMD Athlon 3000g - 8gb - SSD - Radeon Graphics</p>
+                    </a>
+                    <p class="price ibm-plex-sans-medium">US$299.00</p>
+                </div>
+                <div class="product">
+                    <a href="#">
+                        <img src="" alt="">
+                        <p class="name ibm-plex-sans-semibold">Equipo AMD Athlon 3000g - 8gb - SSD - Radeon Graphics</p>
+                    </a>
+                    <p class="price ibm-plex-sans-medium">US$299.00</p>
+                </div>
+                <div class="product">
+                    <a href="#">
+                        <img src="" alt="">
+                        <p class="name ibm-plex-sans-semibold">Equipo AMD Athlon 3000g - 8gb - SSD - Radeon Graphics</p>
+                    </a>
+                    <p class="price ibm-plex-sans-medium">US$299.00</p>
+                </div>
+                <div class="right_row">
+                    <i class='bx bx-chevron-right' ></i>
+                </div>
             </div>
-            <div>
-                <a href="#">
-                    <div class="image_container">
-                        <img src="assets/images/items/item3.jpg" alt="">
-                        <div><p class="ibm-plex-sans-regular">Ver detalle</p></div>
-                    </div>
-                    <div class="product_container">
-                        <p class="product_name ibm-plex-sans-medium">Equipo Intel Core i5 10400f Pro Gamer 16gb - SSD - RTX3060 12gb</p>
-                        <p class="product_price ibm-plex-sans-medium">US$950.00</p>
-                    </div>
-                </a>
-            </div>
-            <div>
-                <a href="#">
-                    <div class="image_container">
-                        <img src="assets/images/items/item4.jpg" alt="">
-                        <div><p class="ibm-plex-sans-regular">Ver detalle</p></div>
-                    </div>
-                    <div class="product_container">
-                        <p class="product_name ibm-plex-sans-medium">Equipo Inte Core i5 10400f Pro Gamer 16gb - SSD - GTX1650</p>
-                        <p class="product_price ibm-plex-sans-medium">US$675.00</p>
-                    </div>
-                </a>
-            </div>
+        </section>
+
+        <section class="offers_and_news">
+            <i class='bx bx-envelope'></i>
+            <p class="ibm-plex-sans-bold">Recive our offers and news</p>
+            <form action="">
+                <input class="poppins-light" type="text" placeholder="you@example.com">
+                <button><p class="poppins-light">SUSCRIBE</p></button>
+            </form>
         </section>
     </main>
 
     <?php include 'includes/footer.php';?>
+
+    <script src="/pcgateway/assets/js/banner.js"></script>
 </body>
 </html>

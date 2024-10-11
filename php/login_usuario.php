@@ -9,13 +9,14 @@ if (isset($_POST['email']) && isset($_POST['pass'])) {
     try {
         include 'connection.php';
 
-        $stmt = $conn->prepare('SELECT nombre, password, rol FROM usuario WHERE email = :email');
+        $stmt = $conn->prepare('SELECT id_usuario, nombre, password, rol FROM usuario WHERE email = :email');
         $stmt->bindParam(':email', $email);
         $stmt->execute();
 
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($result && password_verify($pass, $result['password'])) {
+            $_SESSION['user_id'] = $result['id_usuario'];
             $_SESSION['user_name'] = $result['nombre'];
             $_SESSION['user_role'] = $result['rol'];
             echo json_encode(['success' => true]);

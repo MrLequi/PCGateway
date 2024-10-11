@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generar Catálogo PDF</title>
+    <link rel="stylesheet" href="/pcgateway/assets/css/pages/pdf_catalogo.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Generar Catálogo de Productos</h1>
+        <form id="catalogForm">
+            <label for="categories">Selecciona las categorías:</label>
+            <div id="categoryList"></div>
+            <button type="submit" id="generatePdfBtn">Generar PDF</button>
+        </form>
+        <div id="message"></div>
+    </div>
+    <script src="/pcgateway/assets/js/pdf-catalogo.js"></script>
+</body>
+</html>

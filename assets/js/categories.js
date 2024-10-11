@@ -9,7 +9,7 @@ function fetchCategories() {
             const container = document.getElementById('categories-container');
             if (data.categories) {
                 container.innerHTML = data.categories.map(cat => 
-                    `<a class="ibm-plex-sans-regular" href="/pcgateway/pages/products.php?category=${encodeURIComponent(cat.nombre)}">
+                    `<a class="ibm-plex-sans-regular" href="/pcgateway/pages/catalog.php?category=${encodeURIComponent(cat.nombre)}">
                         <p class="name-categories">${cat.nombre}</p>
                     </a>`
                 ).join('');

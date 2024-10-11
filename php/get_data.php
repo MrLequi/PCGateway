@@ -19,7 +19,7 @@ $queryCategories = $conn->prepare("SELECT * FROM `categoría`");
 $queryCategories->execute();
 $categories = $queryCategories->fetchAll(PDO::FETCH_ASSOC);
 
-// Recuperar productos según la categoría y la búsqueda
+// Recuperar productos según la categoría o la búsqueda
 $queryProducts = $conn->prepare("
     SELECT p.*, c.nombre AS categoria_nombre 
     FROM `producto` p 

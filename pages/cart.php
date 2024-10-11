@@ -14,7 +14,7 @@
         <section class="cart">
             <h2>Shopping Cart</h2>
             <div id="cart-items">
-                <!-- Los ítems del carrito se cargarán aquí mediante JavaScript -->
+                
             </div>
         </section>
     </main>

@@ -24,7 +24,7 @@ function fetchBanners() {
             data.forEach(banner => {
                 const bannerDiv = document.createElement('div');
                 bannerDiv.innerHTML = `
-                    <img src="data:image/jpeg;base64,${banner.imagen}" alt="Banner" style="width: 200px;">
+                    <img src="${banner.imagen}" alt="Banner" style="width: 200px;">
                     <button onclick="deleteBanner(${banner.id})">Eliminar</button>
                 `;
                 bannersDiv.appendChild(bannerDiv);
@@ -34,32 +34,26 @@ function fetchBanners() {
 }
 
 function addBanner() {
-    const fileInput = document.getElementById('banner_image');
-    const file = fileInput.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onloadend = function () {
-            const base64Image = reader.result.split(',')[1];
-            fetch('/pcgateway/php/configuracion.php?action=addBanner', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ imagen: base64Image }),
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    fetchBanners(); // Refresh banners list
-                } else {
-                    console.error('Error adding banner:', data.error);
-                }
-            })
-            .catch(error => console.error('Error:', error));
-        };
-        reader.readAsDataURL(file);
+    const bannerUrl = document.getElementById('banner_url').value;
+    if (bannerUrl) {
+        fetch('/pcgateway/php/configuracion.php?action=addBanner', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ imagen: bannerUrl }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                fetchBanners();
+            } else {
+                console.error('Error al agregar el banner:', data.error);
+            }
+        })
+        .catch(error => console.error('Error:', error));
     } else {
-        alert('Por favor, selecciona una imagen.');
+        alert('Por favor, ingresa una URL de imagen.');
     }
 }
 
@@ -74,7 +68,7 @@ function deleteBanner(id) {
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            fetchBanners(); // Refresh banners list
+            fetchBanners();
         } else {
             console.error('Error deleting banner:', data.error);
         }

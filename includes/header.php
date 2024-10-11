@@ -23,9 +23,9 @@
             </div>
         </div>
         <div class="search_bar">
-            <form method="GET" action="/pcgateway/pages/products.php">
+            <form method="GET" action="/pcgateway/pages/catalog.php">
                 <div class="search_input">
-                    <input type="text" name="search" placeholder="Your searched...">
+                    <input class="poppins-light" type="text" name="search" placeholder="Your searched...">
                 </div>
                 <div class="search_icon">
                     <button type="submit"><i class='bx bx-search'></i></button>
@@ -37,7 +37,7 @@
             <p class="ibm-plex-sans-regular contact">098.921.935</p>
         </div>
         <div class="user_area">
-            <a href="#"><i id="user-icon" class='bx bx-user-circle icon'></i></a> <!-- Cambia a una etiqueta de enlace con el mismo ID -->
+            <a href="#"><i id="user-icon" class='bx bx-user-circle icon'></i></a>
             <a href="#"><i class='bx bx-heart'></i></a>
             <a href="#"><i class='bx bx-cart'></i></a>
             <div>

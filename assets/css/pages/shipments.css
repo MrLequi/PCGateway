@@ -1,0 +1,61 @@
+.shipments {
+    max-width: 100%;
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+    margin-top: 56px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.shipments h1 {
+    font-size: 2.25rem;
+    margin-bottom: 25px;
+}
+
+.shipments h2 {
+    font-size: 1.75rem;
+    margin-top: 12px;
+}
+
+.shipments ul {
+    margin-top: 12px;
+}
+
+.shipments ul li {
+    font-size: 1rem;
+    margin-bottom: 12px;
+}
+
+@media screen and (max-width: 768px) {
+    .shipments {
+        width: 95%;
+    }
+
+    .shipments h1 {
+        font-size: 2rem;
+    }
+
+    .shipments h2 {
+        font-size: 1.5rem;
+    }
+
+    .shipments ul li {
+        font-size: 0.9375rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .shipments h1 {
+        font-size: 1.75rem;
+    }
+
+    .shipments h2 {
+        font-size: 1.375rem;
+    }
+
+    .shipments ul li {
+        font-size: 0.875rem;
+        margin-bottom: 10px;
+    }
+}

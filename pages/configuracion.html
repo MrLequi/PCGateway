@@ -33,13 +33,15 @@
         <button type="submit">Guardar Configuración</button>
     </form>
 
-    <h2>Imágenes Banner</h2>
-    <div id="banners"></div>
-    <div>
-        <label for="banner_image">Agregar Banner:</label>
-        <input type="file" id="banner_image" name="banner_image" accept="image/*">
-        <button type="button" onclick="addBanner()">Agregar</button>
-    </div>
+    <section class="banner-management">
+        <h2>Imágenes Banner</h2>
+        <div id="banners"></div>
+        <label for="banner_url">Agregar URL del Banner:</label>
+        <div class="form">
+            <input type="text" id="banner_url" name="banner_url" placeholder="https://example.com/banner.jpg">
+            <button type="button" onclick="addBanner()">Agregar</button>
+        </div>
+    </section>
 
     <script src="../assets/js/configuracion.js"></script>
 </body>

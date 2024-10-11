@@ -4,10 +4,9 @@
             <div class="company_info">
                 <h3 class="poppins-medium">COMPANY</h3>
                 <a href="/pcgateway/pages/aboutus.php"><p class="poppins-light">About Us</p></a>
-                <a href="#"><p class="poppins-light">Shipping</p></a>
-                <a href="#"><p class="poppins-light">Warranty Policies</p></a>
-                <a href="#"><p class="poppins-light">Careers</p></a>
-                <a href="#"><p class="poppins-light">Privacy</p></a>
+                <a href="/pcgateway/pages/shipments.php"><p class="poppins-light">Shipments</p></a>
+                <a href="/pcgateway/pages/warrantypolicies.php"><p class="poppins-light">Warranty Policies</p></a>
+                <a href="/pcgateway/pages/privacy.php"><p class="poppins-light">Privacy</p></a>
             </div>
             <div class="tax_info">
                 <h3 class="poppins-medium">TAXES</h3>

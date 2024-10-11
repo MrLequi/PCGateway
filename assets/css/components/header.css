@@ -1,6 +1,7 @@
 header * {
     text-decoration: none;
     color: black;
+    box-sizing: unset;
 }
 
 .cont_sup {
@@ -8,40 +9,11 @@ header * {
     height: 7vh;
     width: 100%;
     align-items: center;
-    font-size: 0.875rem;
+    font-size: 1vw;
 }
 
-.user_menu {
-    position: relative;
-    display: inline-block;
-}
-
-.user_menu_content {
-    display: none;
-    position: absolute;
-    background-color: #ffffff;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-.user_menu_content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-.user_menu_content a:hover {
-    background-color: #f1f1f1;
-}
-
-.user_menu:hover .user_menu_content {
-    display: block;
-}
-
-.cont_sup p {
-    margin: 0 0.313em 0 0.313em;
+.cont_sup i {
+    font-size: 1.5vw;
 }
 
 .header_direccion {
@@ -57,7 +29,7 @@ header * {
 }
 
 .cont_sec p:hover {
-    border-bottom: 1px solid #fc6625;
+    color: #fc6625;
 }
 
 .cont_sec span{
@@ -85,7 +57,6 @@ header * {
 .cont_logotipo {
     position: absolute;
     left: 80px;
-    top: 53px;
 }
 
 .cont_img {
@@ -123,11 +94,11 @@ header * {
 .search_bar input {
     width: 100%;
     height: 100%;
-    border: 2px solid #fc6625;
-    border-radius: 3px;
+    border: 1px solid #dbdbdb;
+    border-radius: 5px;
     outline: none;
     padding-left: 15px;
-    box-shadow: rgba(0, 0, 0, 0.40) 1.95px 1.95px 2.6px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
 }
 
 .search_input {
@@ -137,26 +108,42 @@ header * {
 }
 
 .search_icon {
-    background-color: #fc6625;
-    border: 2px solid #fc6625;
-    border-radius: 3px;
-    box-shadow: rgba(0, 0, 0, 0.40) 1.95px 1.95px 2.6px;
+    background-color: #fff;
+    border-radius: 5px;
     height: 100%;
     width: 7%;
+
+    transition: box-shadow .3s ease;
+}
+.search_icon:hover {
+    box-shadow: rgba(0, 0, 0, 0.40) 1.95px 1.95px 2.6px;
+    
+}
+.search_icon button:hover {
+    background-color: #fc6625;
+}
+.search_icon:hover i {
+    color: #fff;
 }
 
 .search_icon i {
+    color: #000;
     font-size: 18px;
+
+    transition: color .3s ease;
 }
 
 .search_icon button {
+    background: #f4f4f4;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 100%;
-    background-color: #fc6625;
+    border-radius: 5px;
     border: none;
+
+    transition: background-color .3s ease;
 }
 
 .search_icon button:hover {
@@ -227,7 +214,6 @@ header * {
     height: 110%;
     background-color: #fc6625;
 }
-
 .nav_categories > p {
     color: #fff;
     font-size: 0.875rem;
@@ -237,16 +223,6 @@ header * {
     color: #fff;
     font-size: 1.2rem;
     margin: 0 5px 1px 30px;
-}
-
-.bxs-package, .bx-cog {
-    color: #fff;
-    font-size: 23px;
-    margin-right: 25px;
-    transition: text-shadow 0.3s ease-in-out;
-}
-.bxs-package:hover, .bx-cog:hover {
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
 }
 
 .nav_bar .menu-content {
@@ -270,6 +246,7 @@ header * {
 .nav_bar .menu-content a:hover {
     background-color: #f2f2f2;
 }
+
 .menu-content a:hover p{
     font-weight: 500;
     color: #fc6625;
@@ -297,7 +274,6 @@ header * {
     .search_bar {
         width: 300px;
     }
-
     .search_input {
         width: 85%;
     }
@@ -308,9 +284,6 @@ header * {
 
 @media screen and (max-width: 1115px) {
     .search_bar {
-        display: none;
-    }
-    .cont_sup {
         display: none;
     }
     .nav_bar {
@@ -347,5 +320,40 @@ header * {
     .header_contact {
         right: 320px;
         top: 42px;
+    }
+    .user_area p {
+        display: none;
+    } 
+    .cont_sup {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 755px) {
+    .header_contact {
+        display: none;
+    }
+    .cart {
+        display: none;
+    }
+    .price {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 444px) {
+    .user_area {
+        display: none;
+    }
+    .cont_logotipo {
+        position: absolute;
+        left: 50%;
+    }
+    .logotipo_img {
+        position: absolute;
+        margin-left: 50%;
+    }
+    .cont_nameshop {
+        display: none;
     }
 }

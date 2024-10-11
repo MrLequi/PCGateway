@@ -23,13 +23,10 @@ try {
     } elseif ($action === 'getBanners') {
         $stmt = $conn->query('SELECT id, imagen FROM banner');
         $banners = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        foreach ($banners as &$banner) {
-            $banner['imagen'] = base64_encode($banner['imagen']);
-        }
         echo json_encode($banners);
     } elseif ($action === 'addBanner') {
         $data = json_decode(file_get_contents('php://input'), true);
-        $imagen = base64_decode($data['imagen']);
+        $imagen = $data['imagen'];
         $stmt = $conn->prepare('INSERT INTO banner (imagen) VALUES (?)');
         $stmt->execute([$imagen]);
         echo json_encode(['success' => true]);
@@ -44,4 +41,3 @@ try {
 } catch (PDOException $e) {
     echo json_encode(['error' => $e->getMessage()]);
 }
-?>

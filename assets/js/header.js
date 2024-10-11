@@ -1,14 +1,11 @@
 document.addEventListener('DOMContentLoaded', function () {
-    console.log('header.js cargado'); // Verificar que el archivo se carga
 
-    // Actualizar el estado del usuario
     fetch('/pcgateway/php/session_status.php')
         .then(response => response.json())
         .then(data => {
-            console.log('Respuesta de session_status:', data); // Verificar la respuesta
+            console.log('Respuesta de session_status:', data);
 
             if (data.loggedIn) {
-                // Separar los enlaces de perfil y logout
                 document.getElementById('user-info').innerHTML = `
                     <a href="/pcgateway/pages/perfil.php" id="profile-link">
                         <p class="ibm-plex-sans-regular">${data.userName}</p>
@@ -18,7 +15,6 @@ document.addEventListener('DOMContentLoaded', function () {
                         <p class="ibm-plex-sans-regular">Logout</p>
                     </a>`;
 
-                // Asignar el evento de logout
                 document.getElementById('logout-link').addEventListener('click', logout);
 
             } else {
@@ -42,10 +38,20 @@ function logout() {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                window.location.href = '/pcgateway/index.php'; // Redirigir correctamente al index
+                window.location.href = '/pcgateway/index.php';
             }
         })
         .catch(error => {
             console.error('Error:', error);
         });
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    const menuButton = document.querySelector('.res_menu');
+    const menuContent = document.querySelector('.menu-content');
+
+    menuButton.addEventListener('click', () => {
+        menuContent.classList.toggle('active');
+    });
+});

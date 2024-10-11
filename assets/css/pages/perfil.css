@@ -1,205 +1,217 @@
 /* Estilos generales */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f9;
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+/* Estilos para el contenedor principal */
 main {
-    width: 80%;
-    margin: 40px auto;
-    padding: 20px;
+    width: 100%;
+    max-width: 1254px;
     background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-h2, h3 {
-    color: #fc6625;
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-/* Estilo para el formulario de actualización del perfil */
-#user-update-form {
+    margin: 0 auto;
+    margin-top: 20px;
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
-    margin-bottom: 40px;
+    padding: 20px;
+    gap: 43px; /* Añade esta propiedad para separar secciones */
 }
 
-#user-update-form label {
-    font-weight: bold;
-    margin-bottom: 10px;
+/* Estilos para las listas de navegación */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-#user-update-form input[type="text"] {
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+li a {
+    color: #777777;
+    transition: color 0.3s ease, font-weight 0.3s ease;
+}
+li a:hover {
+    color: #000;
+    font-weight: 700;
 }
 
-#user-update-form button {
-    background-color: #fc6625;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
+.bold {
+    color: #000;
 }
 
-#user-update-form button:hover {
-    background-color: #e55b20;
+/* Estilos de la sección de cuenta y manejo */
+.account, .details {
+    display: flex;
+    flex-direction: column;
 }
 
-/* Sección de administración de usuarios */
-#admin-section {
-    margin-top: 40px;
-}
-
-#admin-section button {
-    background-color: #fc6625;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-bottom: 20px;
-}
-
-#admin-section button:hover {
-    background-color: #e55b20;
-}
-
-/* Estilo para la tabla de usuarios */
-table {
+/* Sección my_account y manage */
+.my_account, .manage {
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.my_account h5, .manage h5 {
+    font-size: 1rem;
+    color: #666666;
+}
+.my_account li, .manage li {
+    border-bottom: 1px solid #929191;
+    padding: 10px 0;
 }
 
-table th, table td {
-    padding: 12px 15px;
-    text-align: left;
-    border-bottom: 1px solid #ccc;
+/* Estilos para la sección de detalles */
+.details {
+    width: 100%;
+}
+.details label, .details input {
+    font-size: 1rem;
+    color: #777777;
+    outline: none;
 }
 
-table th {
-    background-color: #fc6625;
-    color: white;
-    font-size: 16px;
-}
-
-table tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-table tbody tr:hover {
-    background-color: #f1f1f1;
-}
-
-table select {
-    padding: 5px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 14px;
-}
-
-/* Estilo para el botón de eliminar usuario */
-table button {
-    background-color: #e74c3c;
-    color: white;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-table button:hover {
-    background-color: #c0392b;
-}
-
-#user-list {
-    margin-top: 20px;
-    display: none;
-}
-
-#user-list tbody tr td:last-child {
-    text-align: center;
-}
-
-#back-to-home {
+.icon_text {
+    margin-bottom: 20px;
     display: flex;
     align-items: center;
-    text-decoration: none;
-    color: #fc6625;
-    font-size: 18px;
-    font-weight: bold;
+}
+.icon_text i {
+    margin-right: 10px;
+    font-size: 3rem;
+    color: #d3d3d4;
+}
+.icon_text h3 {
+    color: #000;
+    font-size: 1.5rem;
+}
+
+.name_surname {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.name_surname div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 22px;
+}
+
+.name, .surname {
+    width: 100%;
+    height: 48px;
+    margin-top: 8px;
+    border-radius: 5px;
+    border: 1px solid #777777;
+    padding-left: 14px;
+}
+
+.display_name, .email {
+    display: flex;
+    flex-direction: column;
     margin-bottom: 20px;
 }
 
-#back-to-home i {
-    font-size: 24px;
-    margin-right: 8px;
-}
-
-#back-to-home:hover {
-    color: #e55b20;
-}
-
-#icons-section {
-    margin-top: 20px;
-}
-
-#icons-section a {
-    text-decoration: none;
-    color: #fc6625;
-    font-size: 24px;
-    margin-right: 15px;
-    display: inline-flex;
-    align-items: center;
-    transition: color 0.3s ease;
-}
-
-#icons-section a:hover {
-    color: #333;
-}
-
-#icons-section i {
-    margin-right: 8px;
-}
-
-#user-update-form {
-    margin-top: 20px;
-}
-
-#user-update-form label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-#user-update-form input[type="text"] {
+.display_name input, .email input {
     width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    height: 48px;
+    margin-top: 8px;
+    border-radius: 5px;
+    border: 1px solid #777777;
+    padding-left: 14px;
 }
 
-#user-update-form button {
-    padding: 10px 15px;
-    background-color: #fc6625;
-    color: white;
+.display_name p {
+    font-size: 0.875rem;
+    color: #777777;
+}
+
+.stared {
+    color: red;
+}
+
+/* Estilos para cambiar contraseña */
+.change_pass {
+    width: 100%;
+    border: 2px solid #777777;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.change_pass div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.change_pass input {
+    height: 48px;
+    border-radius: 5px;
+    border: 1px solid #777777;
+    padding-left: 14px;
+    font-size: 1rem;
+}
+
+.change_pass h3 {
+    margin-bottom: 12px;
+    font-size: 1rem;
+}
+
+/* Estilos para el botón */
+.account form button {
+    padding: 13px 30px;
+    font-size: 1.125rem;
+    color: #fff;
+    background-color: #000;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
+    transition: background-color 0.3s ease;
+    max-width: 200px; /* Limitar el ancho máximo del botón a 200px */
+}
+.account form button:hover {
+    background-color: #fc6625;
 }
 
-#user-update-form button:hover {
-    background-color: #e54e2b;
+.message {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    display: none; /* Oculto por defecto */
+}
+
+.message.success {
+    background-color: #4CAF50; /* Verde */
+    color: white;
+}
+
+.message.error {
+    background-color: #f44336; /* Rojo */
+    color: white;
+}
+
+/* Media Queries para pantallas pequeñas */
+@media (min-width: 768px) {
+    main {
+        display: flex;
+        flex-direction: row;
+        gap: 43px; /* Mantén la separación entre secciones en pantallas grandes */
+    }
+
+    .my_account, .manage {
+        width: 265px;
+    }
+
+    .details {
+        width: calc(100% - 308px);
+    }
+
+    .name_surname {
+        flex-direction: row;
+        gap: 20px;
+    }
+
+    .name, .surname, .display_name input, .email input {
+        width: 100%;
+    }
 }

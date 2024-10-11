@@ -1,0 +1,55 @@
+.privacy {
+    max-width: 100%;
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+    margin-top: 56px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.privacy h1 {
+    font-size: 2.25rem;
+    margin-bottom: 35px;
+}
+
+.privacy h3 {
+    font-size: 1.25rem;
+}
+
+.privacy p, .privacy ul {
+    font-size: 1rem;
+    margin-bottom: 22px;
+}
+
+@media screen and (max-width: 768px) {
+    .privacy {
+        width: 95%;
+    }
+
+    .privacy h1 {
+        font-size: 2rem;
+    }
+
+    .privacy h3 {
+        font-size: 1.125rem;
+    }
+
+    .privacy p, .privacy ul {
+        font-size: 0.9375rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .privacy h1 {
+        font-size: 1.75rem;
+    }
+
+    .privacy h3 {
+        font-size: 1rem;
+    }
+
+    .privacy p, .privacy ul {
+        font-size: 0.875rem;
+    }
+}
