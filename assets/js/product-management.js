@@ -57,7 +57,10 @@ function fetchProductos(categoriaId) {
                         <td>${producto.precio}</td>
                         <td>${producto.stock}</td>
                         <td>${producto.categoria}</td>
-                        <td><button onclick="deleteProducto(${producto.id_producto})">Eliminar</button></td>
+                        <td>
+                            <button onclick="editProducto(${producto.id_producto})">Editar</button>
+                            <button onclick="deleteProducto(${producto.id_producto})">Eliminar</button>
+                        </td>
                     `;
                     table.appendChild(row);
                 });
@@ -69,11 +72,29 @@ function fetchProductos(categoriaId) {
         .catch(error => console.error('Error:', error));
 }
 
+function editProducto(id) {
+    fetch(`/pcgateway/php/product-management.php?action=getProductoById&id_producto=${id}`)
+        .then(response => response.json())
+        .then(producto => {
+            // Rellenar el formulario con los datos del producto
+            document.getElementById('id_producto').value = producto.id_producto;
+            document.getElementById('imagen_url').value = producto.imagen;
+            document.getElementById('nombre').value = producto.nombre;
+            document.getElementById('descripcion').value = producto.descripcion;
+            document.getElementById('precio').value = producto.precio;
+            document.getElementById('stock').value = producto.stock;
+            document.getElementById('categoria').value = producto.categoria;
+        })
+        .catch(error => console.error('Error:', error));
+}
+
 function setupForm() {
     document.getElementById('productoForm').addEventListener('submit', function (event) {
         event.preventDefault();
         const formData = new FormData(this);
+        const id_producto = formData.get('id_producto');
         const data = {
+            id_producto: id_producto ? id_producto : null,
             nombre: formData.get('nombre'),
             descripcion: formData.get('descripcion'),
             precio: formData.get('precio'),
@@ -82,7 +103,8 @@ function setupForm() {
             imagen_url: formData.get('imagen_url')
         };
 
-        fetch('/pcgateway/php/product-management.php?action=addProduct', {
+        const action = id_producto ? 'updateProduct' : 'addProduct';
+        fetch(`/pcgateway/php/product-management.php?action=${action}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -92,10 +114,10 @@ function setupForm() {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                alert('Producto agregado exitosamente.');
+                alert('Producto guardado exitosamente.');
                 fetchProductos(data.categoria);
             } else {
-                console.error('Error adding product:', data.error);
+                console.error('Error:', data.error);
             }
         })
         .catch(error => console.error('Error:', error));

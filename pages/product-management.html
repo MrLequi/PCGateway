@@ -14,9 +14,10 @@
         
     </div>
 
-    <!-- Formulario para agregar productos -->
-    <h2>Agregar Producto</h2>
+    <!-- Formulario para agregar o actualizar productos -->
+    <h2>Agregar/Actualizar Producto</h2>
     <form id="productoForm">
+        <input type="hidden" id="id_producto" name="id_producto"> <!-- Campo oculto para el ID del producto -->
         <div>
             <label for="imagen_url">URL de Imagen:</label>
             <input type="text" id="imagen_url" name="imagen_url" required>
@@ -43,7 +44,7 @@
                 
             </select>
         </div>
-        <button type="submit">Agregar Producto</button>
+        <button type="submit">Guardar Producto</button>
     </form>
 
     <!-- Tabla de productos -->

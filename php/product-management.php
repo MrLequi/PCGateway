@@ -38,6 +38,18 @@ try {
         $stmt->execute([$data['id']]);
 
         echo json_encode(['success' => true]);
+    } elseif ($action === 'getProductoById') {
+        $id_producto = isset($_GET['id_producto']) ? intval($_GET['id_producto']) : 0;
+        $stmt = $conn->prepare('SELECT * FROM producto WHERE id_producto = ?');
+        $stmt->execute([$id_producto]);
+        $producto = $stmt->fetch(PDO::FETCH_ASSOC);
+        echo json_encode($producto);
+    } elseif ($action === 'updateProduct') {
+        $data = json_decode(file_get_contents('php://input'), true);
+        $stmt = $conn->prepare('UPDATE producto SET nombre = ?, descripcion = ?, precio = ?, stock = ?, categoria = ?, imagen = ? WHERE id_producto = ?');
+        $stmt->execute([$data['nombre'], $data['descripcion'], $data['precio'], $data['stock'], $data['categoria'], $data['imagen_url'], $data['id_producto']]);
+    
+        echo json_encode(['success' => true]);
     } else {
         echo json_encode(['error' => 'Acción inválida']);
     }

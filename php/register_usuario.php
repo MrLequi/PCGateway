@@ -32,6 +32,7 @@ if (isset($_POST['nombre']) && isset($_POST['email']) && isset($_POST['pass'])) 
         exit;
     }
 
+    // Hashear la contraseña usando Argon2
     $pass = password_hash($pass, PASSWORD_ARGON2I);
 
     try {
@@ -47,14 +48,19 @@ if (isset($_POST['nombre']) && isset($_POST['email']) && isset($_POST['pass'])) 
             exit;
         }
 
-        // Insertar nuevo usuario
+        // Insertar nuevo usuario en la base de datos
         $stmt = $conn->prepare('INSERT INTO usuario (nombre, email, password) VALUES (:nombre, :email, :password)');
         $stmt->bindParam(':nombre', $nombre);
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':password', $pass);
 
         if ($stmt->execute()) {
-            echo json_encode(['success' => true]);
+            // Si la inserción fue exitosa, enviar el correo de confirmación
+            if (sendConfirmationEmail($email, $nombre)) {
+                echo json_encode(['success' => true]);
+            } else {
+                echo json_encode(['success' => false, 'error' => 'Registro exitoso pero no se pudo enviar el correo']);
+            }
         } else {
             echo json_encode(['success' => false, 'error' => 'Error al ejecutar la consulta']);
         }
@@ -64,4 +70,15 @@ if (isset($_POST['nombre']) && isset($_POST['email']) && isset($_POST['pass'])) 
 } else {
     echo json_encode(['error' => 'Faltan parámetros']);
 }
-?>
+
+// Función para enviar el correo de confirmación usando mail()
+function sendConfirmationEmail($email, $nombre) {
+    $to = $email;
+    $subject = 'Confirmación de Registro | PCGateway';
+    $message = "Hola $nombre,\n\nGracias por registrarte en nuestro sitio. Haz clic en el siguiente enlace para confirmar tu registro:\nhttp://localhost/pcgateway/confirmar?email=$email";
+    $headers = 'From: lequinidylan@gmail.com' . "\r\n" .
+               'Reply-To: lequinidylan@gmail.com' . "\r\n" .
+               'X-Mailer: PHP/' . phpversion();
+
+    return mail($to, $subject, $message, $headers);
+}

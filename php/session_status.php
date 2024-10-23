@@ -6,7 +6,10 @@ $response = [
     'loggedIn' => isset($_SESSION['user_name']),
     'userName' => $_SESSION['user_name'] ?? '',
     'userRole' => $_SESSION['user_role'] ?? '',
-    'userId' => $_SESSION['user_id'] ?? ''
+    'userId' => $_SESSION['user_id'] ?? '',
+    'userEmail' => $_SESSION['user_email'] ?? '',
+    'userApellidos' => $_SESSION['user_apellidos'] ?? '',
+    'userDisplayName' => $_SESSION['user_display_name'] ?? ''
 ];
 
 echo json_encode($response);

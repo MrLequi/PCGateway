@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrar Usuarios</title>
+    <link rel="stylesheet" href="/pcgateway/assets/css/pages/user_manage.css">
+    <script src="/pcgateway/assets/js/user-manage.js" defer></script>
+</head>
+<body>
+    <h1>Administración de Usuarios</h1>
+
+    <!-- Botones de filtro -->
+    <div id="filters">
+        <button class="filter-btn" id="sort-az" onclick="filterUsers('name', 'asc')">A-Z</button>
+        <button class="filter-btn" id="sort-za" onclick="filterUsers('name', 'desc')">Z-A</button>
+        <button class="filter-btn" id="sort-oldest" onclick="filterUsers('date', 'asc')">Más antiguos</button>
+        <button class="filter-btn" id="sort-newest" onclick="filterUsers('date', 'desc')">Más recientes</button>
+    </div>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Rol</th>
+                <th>Fecha de Creación</th>
+                <th>Cambiar Rol</th>
+            </tr>
+        </thead>
+        <tbody id="usuarios-table">
+            <!-- Los datos de los usuarios se cargarán aquí -->
+        </tbody>
+    </table>
+</body>
+</html>

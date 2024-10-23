@@ -24,6 +24,17 @@ document.addEventListener('DOMContentLoaded', function () {
                     container.appendChild(checkbox);
                     container.appendChild(label);
                     categoryList.appendChild(container);
+
+                    // Agregar el evento de click al checkbox
+                    checkbox.addEventListener('click', function() {
+                        if (checkbox.checked) {
+                            container.style.backgroundColor = '#4CAF50';
+                            container.style.color = '#fff';
+                        } else {
+                            container.style.backgroundColor = '';
+                            container.style.color = '';
+                        }
+                    });
                 });
             } else if (data.error) {
                 messageDiv.innerText = 'Error al cargar categorías: ' + data.error;

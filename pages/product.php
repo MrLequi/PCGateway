@@ -37,6 +37,7 @@
                     <button class="plus"><i class='bx bx-plus'></i></button>
                     <button class="add_to_cart_button"><i class='bx bx-cart'></i><p class="poppins-bold">AÑADIR AL CARRITO</p></button>
                 </section>
+                <div id="messageBox" class="message"></div>
                 <section class="wish_list">
                     <i class='bx bx-heart'></i><p class="poppins-bold">AÑADIR A LA LISTA DE DESEADOS</p>
                 </section>

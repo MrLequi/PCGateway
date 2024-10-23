@@ -21,19 +21,19 @@ h1 {
 
 label {
     font-size: 1.2em;
-    margin-bottom: 10px;
-    display: block;
 }
 
 #categoryList {
     display: flex;
+    justify-content: center;
+    gap: 10px;
     flex-wrap: wrap;
     margin-bottom: 20px;
 }
-
-.category {
-    margin-right: 10px;
-    margin-bottom: 10px;
+#categoryList div {
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s linear;
 }
 
 button {

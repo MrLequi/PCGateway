@@ -100,6 +100,7 @@ function registerUser() {
     const email = document.getElementById('register-email').value;
     const pass = document.getElementById('register-pass').value;
 
+    // Validaciones de campo
     if (!validateName(nombre)) {
         alert('Nombre inválido. Solo se permiten letras y espacios.');
         return;
@@ -120,17 +121,23 @@ function registerUser() {
     datos.append('email', email);
     datos.append('pass', pass);
 
+    // Mostrar mensaje de procesamiento
+    alert('Procesando registro. Esto puede tardar unos momentos...');
+
+    // Enviar la solicitud de registro
     fetch('/pcgateway/php/register_usuario.php', { method: 'POST', body: datos })
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                alert('Registro exitoso');
-                iniciarSesion();
+                alert('Registro exitoso. Se ha enviado un correo de confirmación.');
+                iniciarSesion();  // Cambia la vista para el login
             } else {
+                // Mostrar mensaje de error si el correo ya está registrado o hay otro problema
                 alert(data.error || 'Error en el registro');
             }
         })
         .catch(error => {
             console.error('Error:', error);
+            alert('Hubo un error en el registro. Por favor, inténtalo nuevamente.');
         });
 }

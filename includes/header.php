@@ -16,7 +16,7 @@
         </div>
         <div class="cont_logotipo">
             <div class="cont_nameshop">
-                <a href="/pcgateway/"><h2 class="ibm-plex-sans-bold">PCGateway</h2></a>
+                <a href="/pcgateway/"><h2 class="raleway-black">PCGateway</h2></a>
             </div>
             <div class="cont_img">
                 <a href="#"><img class="logotipo_img" src="/pcgateway/assets/images/logotipo-icon.png" alt=""></a>
@@ -32,17 +32,13 @@
                 </div>
             </form>
         </div>
-        <div class="header_contact">
-            <p class="ibm-plex-sans-regular">24/7</p>
-            <p class="ibm-plex-sans-regular contact">098.921.935</p>
-        </div>
         <div class="user_area">
             <a href="#"><i id="user-icon" class='bx bx-user-circle icon'></i></a>
-            <a href="#"><i class='bx bx-heart'></i></a>
-            <a href="#"><i class='bx bx-cart'></i></a>
+            <a href="/pcgateway/pages/wishlist.php"><i class='bx bx-heart'></i></a>
+            <a href="/pcgateway/pages/cart.php"><i class='bx bx-cart'></i></a>
             <div>
-                <p class="ibm-plex-sans-regular">Shopping Cart (0)</p>
-                <p class="ibm-plex-sans-regular price">$0.00</p>
+                <p class="ibm-plex-sans-regular">Shopping Cart <span class="poppins-semibold">(0)</span></p>
+                <p class="poppins-semibold price">$0.00</p>
             </div>
         </div>
     </section>

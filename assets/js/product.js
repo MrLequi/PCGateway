@@ -3,6 +3,17 @@ document.addEventListener("DOMContentLoaded", function() {
     const productName = params.get('name');
     let quantity = 1;
 
+    const messageBox = document.getElementById('messageBox');
+
+    function showMessage(message, isSuccess) {
+        messageBox.textContent = message;
+        messageBox.className = isSuccess ? 'message success' : 'message error';
+        messageBox.style.display = 'block'; // Mostrar el mensaje
+        setTimeout(() => {
+            messageBox.style.display = 'none'; // Ocultar el mensaje después de 5 segundos
+        }, 5000);
+    }
+
     if (productName) {
         fetch(`/pcgateway/php/product.php?name=${encodeURIComponent(productName)}`)
             .then(response => response.json())
@@ -55,13 +66,16 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                alert('Producto añadido al carrito');
+                showMessage('Producto añadido al carrito', true); // Mensaje de éxito
+            } else if (data.message === 'Usuario no autenticado') {
+                window.location.href = "/pcgateway/pages/login.html"; // Redirigir a la página de login
             } else {
-                alert(`Error al añadir el producto al carrito: ${data.message}`);
+                showMessage(`Error al añadir el producto al carrito: ${data.message}`, false); // Mensaje de error
             }
         })
         .catch(error => {
             console.error('Error adding product to cart:', error);
+            showMessage('Ocurrió un error al añadir el producto al carrito', false); // Mensaje de error genérico
         });
     });
 });

@@ -11,8 +11,7 @@ main {
     max-width: 1254px;
     background-color: #fff;
     margin: 0 auto;
-    margin-top: 20px;
-    border-radius: 5px;
+    border-radius: 0 0 5px 5px;
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -46,6 +45,9 @@ li a:hover {
 }
 
 /* Sección my_account y manage */
+.manage {
+    display: none;
+}
 .my_account, .manage {
     width: 100%;
     margin-bottom: 20px;

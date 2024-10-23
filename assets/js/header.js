@@ -1,10 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
 
+    // Obtener estado de sesión (usuario)
     fetch('/pcgateway/php/session_status.php')
         .then(response => response.json())
         .then(data => {
-            console.log('Respuesta de session_status:', data);
-
             if (data.loggedIn) {
                 document.getElementById('user-info').innerHTML = `
                     <a href="/pcgateway/pages/perfil.php" id="profile-link">
@@ -14,8 +13,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     <a href="#" id="logout-link">
                         <p class="ibm-plex-sans-regular">Logout</p>
                     </a>`;
-
                 document.getElementById('logout-link').addEventListener('click', logout);
+
+                // Llamar a la función para obtener el carrito si el usuario está autenticado
+                updateCartInfo();
 
             } else {
                 document.getElementById('user-info').innerHTML = `
@@ -31,27 +32,52 @@ document.addEventListener('DOMContentLoaded', function () {
         .catch(error => {
             console.error('Error:', error);
         });
-});
 
-function logout() {
-    fetch('/pcgateway/php/logout.php', { method: 'POST' })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                window.location.href = '/pcgateway/index.php';
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-}
+    // Función para cerrar sesión
+    function logout() {
+        fetch('/pcgateway/php/logout.php', { method: 'POST' })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    window.location.href = '/pcgateway/index.php';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
 
-document.addEventListener('DOMContentLoaded', function () {
+    // Obtener los datos del carrito y actualizarlos en el header
+    function updateCartInfo() {
+        fetch('/pcgateway/php/cart_backend.php')
+            .then(response => response.json())
+            .then(data => {
+                if (data.empty) {
+                    document.querySelector('.user_area .ibm-plex-sans-regular').textContent = 'Shopping Cart (0)';
+                    document.querySelector('.user_area .price').textContent = '$0.00';
+                } else {
+                    let totalItems = 0;
+                    let totalPrice = 0.00;
 
-    const menuButton = document.querySelector('.res_menu');
-    const menuContent = document.querySelector('.menu-content');
+                    data.items.forEach(item => {
+                        totalItems += item.cantidad;
+                        totalPrice += parseFloat(item.subtotal);
+                    });
 
-    menuButton.addEventListener('click', () => {
+                    document.querySelector('.user_area .ibm-plex-sans-regular').textContent = `Shopping Cart (${totalItems})`;
+                    document.querySelector('.user_area .price').textContent = `$${totalPrice.toFixed(2)}`;
+                }
+            })
+            .catch(error => {
+                console.error('Error al obtener el carrito:', error);
+            });
+    }
+
+    // Mostrar/Ocultar menú hamburguesa
+    const hamburgerMenu = document.getElementById('hamburger-menu');
+    const menuContent = document.getElementById('hamburger-menu-content');
+    
+    hamburgerMenu.addEventListener('click', function () {
         menuContent.classList.toggle('active');
     });
 });
