@@ -11,3 +11,10 @@ body{
 body *{
     text-decoration: none;
 }
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #4d4d4d;
+        color: #f4f4f4;
+    }
+}

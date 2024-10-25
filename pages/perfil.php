@@ -38,9 +38,20 @@
         <section class="details">
             <div class="icon_text">
                 <i class='bx bx-user'></i>
-                <h3 class="ibm-plex-sans-bold">Account details</h3>
+                <div class="account_details_div">
+                    <h3 class="ibm-plex-sans-bold">Account details</h3>
+                </div>
+                <div class="dark_light_toggle">
+                    <i class='bx bx-sun'></i>
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                    <i class='bx bx-moon' ></i>
+                </div>
             </div>
             <div class="account">
+            
                 <form id="profileForm" method="POST">
                     <div class="name_surname">
                         <div>
@@ -81,6 +92,7 @@
 
                 </form>
             </div>
+            
         </section>
     </main>
 

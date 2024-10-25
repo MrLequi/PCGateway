@@ -8,7 +8,40 @@ header * {
     height: 7vh;
     width: 100%;
     align-items: center;
-    font-size: 0.875rem;
+    font-size: 1vw;
+}
+
+.cont_sup i {
+    font-size: 1.5vw;
+}
+
+.user_menu {
+    position: relative;
+    display: inline-block;
+}
+
+.user_menu_content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.user_menu_content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.user_menu_content a:hover {
+    background-color: #f1f1f1;
+}
+
+.user_menu:hover .user_menu_content {
+    display: block;
 }
 
 .cont_sup p {
@@ -24,11 +57,13 @@ header * {
 .cont_sec {
     position: absolute;
     display: flex;
+    flex-direction: row;
+    align-items: center;
     right: 18vh;
 }
 
 .cont_sec p:hover {
-    color: #fc6625;
+    border-bottom: 1px solid #fc6625;
 }
 
 .cont_sec span{
@@ -56,18 +91,17 @@ header * {
 .cont_logotipo {
     position: absolute;
     left: 80px;
-    top: 56px;
 }
 
 .cont_img {
-    height: 40px;
+    height: 37px;
     width: auto;
 }
 
 .cont_nameshop {
     position: absolute;
-    left: 7px;
-    top: 4px;
+    top: 3px;
+    left: 8px;
 }
 
 .cont_nameshop h2 {
@@ -95,11 +129,12 @@ header * {
 .search_bar input {
     width: 100%;
     height: 100%;
-    border: 1px solid #dbdbdb;
-    border-radius: 5px;
+    border: 2px solid #fc6625;
+    border-radius: 3px;
     outline: none;
     padding-left: 15px;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+    box-shadow: rgba(0, 0, 0, 0.40) 1.95px 1.95px 2.6px;
+    color: black;
 }
 
 .search_input {
@@ -110,14 +145,14 @@ header * {
 
 .search_icon {
     background-color: #fc6625;
-    border-radius: 5px;
+    border: 2px solid #fc6625;
+    border-radius: 3px;
     box-shadow: rgba(0, 0, 0, 0.40) 1.95px 1.95px 2.6px;
     height: 100%;
     width: 7%;
 }
 
 .search_icon i {
-    color: #fff;
     font-size: 18px;
 }
 
@@ -128,7 +163,6 @@ header * {
     width: 100%;
     height: 100%;
     background-color: #fc6625;
-    border-radius: 5px;
     border: none;
 }
 
@@ -149,15 +183,19 @@ header * {
 .user_area {
     position: absolute;
     display: flex;
-    right: 130px;
+    right: 70px;
 }
 
 .price {
     color: #fc6625;
 }
 
+.user_area {
+    margin-top: 15px;
+}
+
 .user_area i {
-    font-size: 30px;
+    font-size: 27px;
     transition: color 0.3s ease-in-out;
 }
 
@@ -166,7 +204,7 @@ header * {
 }
 
 .user_area a {
-    margin: 0 6px 0 18px;
+    margin: 4px 4px 0 12px;
 }
 
 .nav_bar {
@@ -187,15 +225,16 @@ header * {
     display: flex;
     align-items: center;
     height: 100%;
-    width: 18%;
+    width: 15rem;
     left: 48px;
-    background-color: #000;
+    background-color: #1a1a1a;
     transition: all 300ms;
 }
 .nav_categories:hover{
     height: 110%;
     background-color: #fc6625;
 }
+
 .nav_categories > p {
     color: #fff;
     font-size: 0.875rem;
@@ -205,6 +244,33 @@ header * {
     color: #fff;
     font-size: 1.2rem;
     margin: 0 5px 1px 30px;
+}
+
+.nav_pages {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    left: 330px;
+}
+.nav_pages p {
+    color: #fff;
+    transition: text-shadow 0.3s ease-in-out;
+    font-size: 0.875rem;
+    margin-right: 25px;
+}
+.nav_pages p:hover {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+    border-bottom: 2px solid #fff;
+}
+
+.bxs-package, .bx-cog {
+    color: #fff;
+    font-size: 23px;
+    margin-right: 25px;
+    transition: text-shadow 0.3s ease-in-out;
+}
+.bxs-package:hover, .bx-cog:hover {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
 }
 
 .nav_bar .menu-content {
@@ -228,7 +294,6 @@ header * {
 .nav_bar .menu-content a:hover {
     background-color: #f2f2f2;
 }
-
 .menu-content a:hover p{
     font-weight: 500;
     color: #fc6625;
@@ -238,6 +303,7 @@ header * {
     font-size: 0.875rem;
     transition: color 0.2s ease-in-out;
     padding: 12px 0 12px 17px;
+    border-top: 2px solid #8f9491;
 }
 
 .nav_bar > div:hover .menu-content {
@@ -256,7 +322,6 @@ header * {
     .search_bar {
         width: 300px;
     }
-
     .search_input {
         width: 85%;
     }
@@ -267,9 +332,6 @@ header * {
 
 @media screen and (max-width: 1115px) {
     .search_bar {
-        display: none;
-    }
-    .cont_sup {
         display: none;
     }
     .nav_bar {
@@ -307,4 +369,89 @@ header * {
         right: 320px;
         top: 42px;
     }
+    .user_area p {
+        display: none;
+    } 
+    .cont_sup {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 755px) {
+    .header_contact {
+        display: none;
+    }
+    .cart {
+        display: none;
+    }
+    .price {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 444px) {
+    .user_area {
+        display: none;
+    }
+    .cont_logotipo {
+        position: absolute;
+        left: 50%;
+    }
+    .logotipo_img {
+        position: absolute;
+        margin-left: 50%;
+    }
+    .cont_nameshop {
+        display: none;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    header * {
+        color: #fff;
+    }
+    header i {
+        color: #fc6625;
+    }
+    header {
+        background-color: #1a1a1a;
+    }
+
+    .cont_nameshop h2 {
+        color: #ececec;
+    }
+    .cont_sup {
+        color: #1a1a1a;
+    }
+
+    .bx-search {
+        color: #ececec;
+    }
+    .search_bar input {
+        background-color: #ececec;
+    }
+
+    .nav_categories {
+        background-color: #fc6625;
+    }
+    .nav_categories:hover{
+        height: 110%;
+        background-color: #ececec;
+    }
+    .nav_bar .menu-content {
+        background-color: #1a1a1a;
+    }
+    .nav_categories > p {
+        color: #ececec;
+    }
+    .nav_categories > i {
+        color: #ececec;
+    }
+    .nav_categories:hover > p {
+        color: #fc6625;
+    }
+    .nav_categories:hover > i {
+        color: #fc6625;
+    }
+
 }

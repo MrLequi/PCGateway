@@ -25,7 +25,7 @@
         <div class="search_bar">
             <form method="GET" action="/pcgateway/pages/catalog.php">
                 <div class="search_input">
-                    <input class="poppins-light" type="text" name="search" placeholder="Your searched...">
+                    <input class="poppins-light" type="text" name="search" placeholder="Search...">
                 </div>
                 <div class="search_icon">
                     <button type="submit"><i class='bx bx-search'></i></button>

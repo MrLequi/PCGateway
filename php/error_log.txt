@@ -334,3 +334,4 @@ Stack trace:
 #0 {main}
   thrown in C:\xampp\htdocs\PCGateway\php\cart_backend.php on line 26
 [22-Oct-2024 21:56:47 Europe/Berlin] PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in C:\xampp\htdocs\PCGateway\php\register_usuario.php on line 83
+[25-Oct-2024 00:34:23 Europe/Berlin] PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in C:\xampp\htdocs\PCGateway\php\register_usuario.php on line 83

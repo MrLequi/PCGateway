@@ -70,5 +70,5 @@ INSERT INTO `producto_categoria` (`id_producto`, `id_categoría`) VALUES
 INSERT INTO `usuario` (`id_usuario`, `email`, `nombre`, `password`, `rol`, `apellidos`, `display_name`, `fecha_creacion`) VALUES
 (5, 'lequinidylan@gmail.com', 'Dylan', '$argon2i$v=19$m=65536,t=4,p=1$TVBRYTR4azlLblplV0JLTg$15JTrlWYzOnSn13B8Jm1XbF76PQXZzSHa+SDNgEzb5w', 'Admin', 'Lequini', 'MrLequi', '2024-10-15 17:16:52'),
 (6, 'manuelg@gmail.com', 'Manuel', '$argon2i$v=19$m=65536,t=4,p=1$YmFwcXFUOXdzUW0zWGRFVg$0EZJeQPF77lDcata3Pa2vBjPOTsoQhN99gjqkrIYmvk', 'Vendedor', 'García', 'Manuel', '2024-10-15 17:16:52'),
-(7, 'leonardov@gmail.com', 'Leonardo', '$argon2i$v=19$m=65536,t=4,p=1$L1MvVWg2SDNDWXJ2MjZLMw$w9HPj9iJkMrtqEDNUQaLj1uGXvxIdARlZeEND/DwzCM', '', NULL, NULL, '2024-10-15 17:23:53');
+(7, 'leonardov@gmail.com', 'Leonardo', '$argon2i$v=19$m=65536,t=4,p=1$L1MvVWg2SDNDWXJ2MjZLMw$w9HPj9iJkMrtqEDNUQaLj1uGXvxIdARlZeEND/DwzCM', 'Admin', 'Varela', 'Leonardo', '2024-10-15 17:23:53');
 

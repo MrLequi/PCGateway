@@ -11,6 +11,7 @@ main {
     max-width: 1254px;
     background-color: #fff;
     margin: 0 auto;
+    margin-top: 2.5%;
     border-radius: 0 0 5px 5px;
     display: flex;
     flex-direction: column;
@@ -81,9 +82,14 @@ li a:hover {
     font-size: 3rem;
     color: #d3d3d4;
 }
+
 .icon_text h3 {
     color: #000;
     font-size: 1.5rem;
+}
+
+.account_details_div {
+    width: 20rem;
 }
 
 .name_surname {
@@ -192,7 +198,78 @@ li a:hover {
     color: white;
 }
 
-/* Media Queries para pantallas pequeñas */
+/*dark/light mode toggle*/
+
+.dark_light_toggle {
+    display: flex;
+    justify-content: end;
+    width: 100%;
+}
+
+.dark_light_toggle .bx-moon {
+    font-size: 2.2rem;
+    color: #d3d3d4;
+}
+
+.dark_light_toggle .bx-sun {
+    font-size: 2.2rem;
+    color: #fc6625;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin-right: 2%;
+  }
+  
+  /* hide default checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #fc6625;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: #fff;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  /*rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+/* Media Queries*/
 @media (min-width: 768px) {
     main {
         display: flex;
@@ -215,5 +292,69 @@ li a:hover {
 
     .name, .surname, .display_name input, .email input {
         width: 100%;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .dark_light_toggle .bx-sun {
+        font-size: 2.2rem;
+        color: #d3d3d4;
+    }
+    .dark_light_toggle .bx-moon {
+        font-size: 2.2rem;
+        color: #fc6625;
+    }
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 30px;
+        bottom: 4px;
+        background-color: #fff;
+        -webkit-transition: .4s;
+        transition: .4s;
+      }
+    input:checked + .slider:before {
+        -webkit-transform: translateX(-26px);
+        -ms-transform: translateX(-26px);
+        transform: translateX(-26px);
+      }
+
+    main {
+        background-color: #1a1a1a;
+    }
+    .account form button {
+        background-color: #fff;
+        color: #000;
+    }
+    li a {
+        color: #777777;
+        transition: color 0.3s ease, font-weight 0.3s ease;
+    }
+    li a:hover {
+        color: #d3d3d4;
+        font-weight: 700;
+    }
+    
+    .bold {
+        color: #d3d3d4;
+    }
+
+    .icon_text h3 {
+        color: #d3d3d4;
+    }
+
+    h3 {
+        color: #d3d3d4;
+    }
+
+    .account form input {
+        color: #fff;
+        background-color: #777777;
+    }
+
+    .account form label {
+        color: #fff;
     }
 }
