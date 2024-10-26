@@ -15,7 +15,7 @@
 <body>
     <?php include '../includes/header.php'; ?>
 
-    <main>
+    <main id="cart-main" style="display: none;"> <!-- Añadido id y ocultar con display:none -->
         <div class="ruta">
             <h2 class="ibm-plex-sans-bold" style="color: #fc6625;">Cart</h2>
             <i class='bx bx-chevron-right'></i>

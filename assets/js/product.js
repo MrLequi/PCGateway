@@ -6,12 +6,13 @@ document.addEventListener("DOMContentLoaded", function() {
     const messageBox = document.getElementById('messageBox');
 
     function showMessage(message, isSuccess) {
-        messageBox.textContent = message;
-        messageBox.className = isSuccess ? 'message success' : 'message error';
-        messageBox.style.display = 'block'; // Mostrar el mensaje
-        setTimeout(() => {
-            messageBox.style.display = 'none'; // Ocultar el mensaje después de 5 segundos
-        }, 5000);
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your work has been saved",
+            showConfirmButton: false,
+            timer: 1500
+          });
     }
 
     if (productName) {
@@ -67,6 +68,9 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(data => {
             if (data.success) {
                 showMessage('Producto añadido al carrito', true); // Mensaje de éxito
+
+                // Llamar a la función para actualizar el header del carrito
+                updateCartInfo(); // Llamar la función que actualiza el carrito
             } else if (data.message === 'Usuario no autenticado') {
                 window.location.href = "/pcgateway/pages/login.html"; // Redirigir a la página de login
             } else {
@@ -78,4 +82,30 @@ document.addEventListener("DOMContentLoaded", function() {
             showMessage('Ocurrió un error al añadir el producto al carrito', false); // Mensaje de error genérico
         });
     });
+
+    // Función para actualizar la información del carrito en el header
+    function updateCartInfo() {
+        fetch('/pcgateway/php/cart_backend.php')
+            .then(response => response.json())
+            .then(data => {
+                if (data.empty) {
+                    document.querySelector('.user_area .ibm-plex-sans-regular').textContent = 'Shopping Cart (0)';
+                    document.querySelector('.user_area .price').textContent = '$0.00';
+                } else {
+                    let totalItems = 0;
+                    let totalPrice = 0.00;
+
+                    data.items.forEach(item => {
+                        totalItems += item.cantidad;
+                        totalPrice += parseFloat(item.subtotal);
+                    });
+
+                    document.querySelector('.user_area .ibm-plex-sans-regular').textContent = `Shopping Cart (${totalItems})`;
+                    document.querySelector('.user_area .price').textContent = `$${totalPrice.toFixed(2)}`;
+                }
+            })
+            .catch(error => {
+                console.error('Error al obtener el carrito:', error);
+            });
+    }
 });

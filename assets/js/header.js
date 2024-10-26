@@ -58,12 +58,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 } else {
                     let totalItems = 0;
                     let totalPrice = 0.00;
-
+    
                     data.items.forEach(item => {
                         totalItems += item.cantidad;
                         totalPrice += parseFloat(item.subtotal);
                     });
-
+    
                     document.querySelector('.user_area .ibm-plex-sans-regular').textContent = `Shopping Cart (${totalItems})`;
                     document.querySelector('.user_area .price').textContent = `$${totalPrice.toFixed(2)}`;
                 }

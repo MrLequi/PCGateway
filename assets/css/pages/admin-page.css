@@ -1,0 +1,35 @@
+.manage {
+    height: 946px;
+    background-color: #fff;
+    display: flex;
+}
+
+.panel_izq {
+    width: 283px;
+    height: 100%;
+    background-color: #fc6625;
+}
+.panel_izq img {
+    width: 250px;
+    height: 250px;
+    margin: 0 17px 27px 17px;
+}
+.panel_izq ul {
+    margin-left: 48px;
+    list-style: none;
+}
+.panel_izq li {
+    font-size: 1.063rem;
+    color: #fff;
+    
+    display: flex;
+    align-items: center;
+    width: 235px;
+    height: 36px;
+    border-radius: 50px 0 0 50px;
+    margin-bottom: 22px;
+}
+.panel_izq li:hover {
+    background-color: #fff;
+    color: #000;
+}
