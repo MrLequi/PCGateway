@@ -28,8 +28,59 @@
     height: 36px;
     border-radius: 50px 0 0 50px;
     margin-bottom: 22px;
+    padding-left: 10px
 }
-.panel_izq li:hover {
+.panel_izq .selected {
     background-color: #fff;
     color: #000;
+}
+
+.panel_der {
+    margin: auto;
+}
+
+.hello a {
+    color: #fc6625;
+}
+
+.hello p {
+    color: #838383;
+}
+
+.admin_grid {
+    display: grid;
+    grid-template-columns: repeat(3, 15vw);
+    grid-template-rows: repeat(3, 10vw);
+    gap: 20px;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.admin_grid div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    box-sizing: border-box;
+    text-align: center;
+    color: #838383;
+    background-color: #fff;
+    border: 1px solid #838383;
+    font-size: .8vw;
+}
+
+.admin_grid i {
+    font-size: 3vw;
+}
+
+.admin_grid div:hover i {
+    font-size: 4vw;
+    color: #fc6625;
+    transition: all .4s;
+}
+.admin_grid div:hover {
+    border: 2px solid #fc6625;
+    color: #fc6625;
+    transition: all .4s;
 }
