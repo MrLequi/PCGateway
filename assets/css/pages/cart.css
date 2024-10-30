@@ -181,3 +181,15 @@
     font-size: 1.25rem;
     color: #777;
 }
+
+@media (prefers-color-scheme: dark) {
+    .header_table th {
+        background-color: #777;
+    }
+    .cart > div {
+        background-color: #777;
+    }
+    .total p:nth-child(2) {
+        color: #fff;
+    }
+}
