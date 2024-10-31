@@ -108,3 +108,24 @@ form button {
 form button:hover {
     background-color: #e55620;
 }
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #555;
+        color: white;
+    }
+    h1, h2 {
+        text-align: center;
+        color: #fff;
+    }
+    form {
+        background: #1a1a1a;
+    }
+    form input, form textarea, form select  {
+        background-color: #555;
+        color: white;
+    }
+    h1 {
+        background-color: #1a1a1a;
+    }
+}   

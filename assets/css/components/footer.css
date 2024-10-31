@@ -94,3 +94,23 @@ footer {
     font-size: 0.9rem;
     border-top: 1px solid rgba(255, 255, 255, 0.3);
 }
+
+@media (prefers-color-scheme: dark) {
+    .footer_container {
+        background-color: #1a1a1a;
+    }
+    .footer_row p, .footer_row a {
+        color: #fc6625;
+    }
+    footer * {
+        color: #fc6625;
+    }
+    .social_media i {
+        color: #fff;
+        font-size: 1.5rem;
+        transition: color 0.3s ease-in-out;
+    }
+    .social_media a {
+        background-color: #fc6625;
+    }
+}

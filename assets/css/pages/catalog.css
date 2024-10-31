@@ -174,3 +174,32 @@
 .pagination-button i {
     font-size: 1.2rem;
 }
+
+@media (prefers-color-scheme: dark) {
+    .categorie-product {
+        background-color: #4d4d4d;
+    }
+    .categories {
+        background-color: #1a1a1a;
+    }
+    .categories h3 {
+        color: #555;
+    }
+    .products-container {
+        background-color: #1a1a1a;
+        color: white;
+    }
+    .item {
+        border: 1px solid #4d4d4d;
+        background-color: #4d4d4d;
+    }
+    .product-name {
+        color: white;
+    }
+    .image_container {
+        border-bottom: 1px solid #4d4d4d;
+    }
+    .pagination-button {
+        background-color: #4d4d4d;
+    }
+}   

@@ -109,3 +109,13 @@
         font-size: 0.8125rem;
     }
 }
+@media (prefers-color-scheme: dark) {
+    .about_us_details {
+        background-color: #1a1a1a;
+        color: #fff;
+    }
+    .about_us_details i {
+        color: #fff;
+    }
+}
+

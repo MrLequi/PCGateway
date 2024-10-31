@@ -53,3 +53,13 @@ button:hover {
     margin-top: 20px;
     text-align: center;
 }
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #4d4d4d;
+        color: white;
+    }
+    .container {
+        background-color: #1a1a1a;
+    }
+}   

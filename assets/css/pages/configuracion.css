@@ -122,3 +122,17 @@ h2 {
 .banner-management input {
     margin-right: 10px;
 }
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #4d4d4d;
+        color: #f4f4f4;
+    }
+    #banners div {
+        background: #333;
+        border: 1px solid #555;
+    }
+    form {
+        background: #333;
+    }
+}
