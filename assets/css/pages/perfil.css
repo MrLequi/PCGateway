@@ -201,7 +201,7 @@ li a:hover {
 /*dark/light mode toggle*/
 
 .dark_light_toggle {
-    display: flex;
+    display: none;
     justify-content: end;
     width: 100%;
 }

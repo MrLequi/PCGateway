@@ -1,3 +1,19 @@
+const switchCheckbox = document.getElementById('switchCheckbox');
+
+switchCheckbox.addEventListener("click", () => {
+
+    if(localStorage.getItem("theme")){
+        if(localStorage.getItem("theme") == "dark"){
+            localStorage.setItem("theme", "light");
+        } else {
+            localStorage.setItem("theme", "dark");
+        }
+    } else {
+        localStorage.setItem("theme", "light");
+    }
+    alert(localStorage.getItem("theme"));
+  })
+
 document.addEventListener("DOMContentLoaded", () => {
     // Obtener los datos del usuario cuando la página cargue
     fetch('/pcgateway/php/session_status.php')

@@ -45,7 +45,7 @@
                     <i class='bx bx-sun'></i>
                     <label class="switch">
                         <input type="checkbox">
-                        <span class="slider round"></span>
+                        <span class="slider round" id="switchCheckbox"></span>
                     </label>
                     <i class='bx bx-moon' ></i>
                 </div>
@@ -98,6 +98,6 @@
 
     <?php include '../includes/footer.php';?>
 
-    <script src="/pcgateway/assets/js/perfil.js"></script>
+    <script src="/PCGateway/assets/js/perfil.js"></script>
 </body>
 </html>
