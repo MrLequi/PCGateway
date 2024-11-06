@@ -18,16 +18,16 @@ async function filterUsers(type, order) {
     usuarios.forEach(usuario => {
         const row = document.createElement('tr');
         row.innerHTML = `
-            <td>${usuario.nombre}</td>
-            <td>${usuario.email}</td>
-            <td>${usuario.rol}</td>
-            <td>${usuario.fecha_creacion}</td>
-            <td>
+            <td class="ibm-plex-sans-regular">${usuario.nombre}</td>
+            <td class="ibm-plex-sans-regular">${usuario.email}</td>
+            <td class="ibm-plex-sans-regular">
                 <select onchange="updateRol(${usuario.id_usuario}, this.value)">
                     <option value="Admin" ${usuario.rol === 'Admin' ? 'selected' : ''}>Admin</option>
                     <option value="Vendedor" ${usuario.rol === 'Vendedor' ? 'selected' : ''}>Vendedor</option>
+                    <option value="Usuario" ${usuario.rol === 'Usuario' ? 'selected' : ''}>Usuario</option>
                 </select>
             </td>
+            <td class="ibm-plex-sans-regular">${usuario.fecha_creacion}</td>
         `;
         usuariosTable.appendChild(row);
     });
@@ -35,14 +35,35 @@ async function filterUsers(type, order) {
 
 // Función para actualizar el rol del usuario
 async function updateRol(id_usuario, nuevoRol) {
-    await fetch('/pcgateway/php/user_manage.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ id_usuario, rol: nuevoRol }),
+    const result = await Swal.fire({
+        title: "Do you want to save the changes?",
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: "Save",
+        denyButtonText: `Don't save`
     });
-    alert('Rol actualizado correctamente');
+
+    if (result.isConfirmed) {
+        // Si el usuario confirma, realiza la solicitud para actualizar el rol
+        const response = await fetch('/pcgateway/php/user_manage.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ id_usuario, rol: nuevoRol }),
+        });
+
+        if (response.ok) {
+            Swal.fire("Saved!", "Role updated successfully", "success");
+            filterUsers();
+        } else {
+            Swal.fire("Error", "There was an error updating the role", "error");
+        }
+    } else if (result.isDenied) {
+        // Si el usuario selecciona "Don't save", muestra mensaje informativo
+        Swal.fire("Changes are not saved", "", "info");
+        filterUsers();
+    }
 }
 
 // Llamar a la función de filtro por defecto al cargar la página (A-Z)

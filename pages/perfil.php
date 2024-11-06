@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="/pcgateway/assets/css/typography.css">
     <link rel="stylesheet" href="/pcgateway/assets/css/layout.css">
     <link rel="icon" href="/pcgateway/assets/images/icons/logotipo-icon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.14.4/dist/sweetalert2.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.14.4/dist/sweetalert2.all.min.js"></script>
     <title>Account Details | PCGateway</title>
 </head>
 <body>

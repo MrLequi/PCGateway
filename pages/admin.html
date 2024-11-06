@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/pages/admin.css">
+</head>
+<body>
+    <main>
+        <div class="contenedor__admin">
+            <div class="caja__trasera">
+                <div class="caja__trasera-login">
+                    <h3>Acceso para Administradores y Vendedores</h3>
+                    <p>Inicia sesión para acceder al panel administrativo</p>
+                </div>
+            </div>
+            <div class="contenedor__login">
+                <form class="formulario__admin" method="post" onsubmit="event.preventDefault(); adminLogin();">
+                    <h2>Iniciar Sesión</h2>
+                    <input type="email" id="admin-email" placeholder="Correo Electrónico" name="email" required>
+                    <input type="password" id="admin-pass" placeholder="Contraseña" name="pass" required>
+                    <button type="submit">Entrar</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    <script src="../assets/js/login-admin.js"></script>
+</body>
+</html>

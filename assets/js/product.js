@@ -3,18 +3,28 @@ document.addEventListener("DOMContentLoaded", function() {
     const productName = params.get('name');
     let quantity = 1;
 
-    const messageBox = document.getElementById('messageBox');
+    const quantityElement = document.getElementById('productQuantity');
 
+    // Función para mostrar mensajes usando SweetAlert
     function showMessage(message, isSuccess) {
-        Swal.fire({
+        const Toast = Swal.mixin({
+            toast: true,
             position: "top-end",
-            icon: "success",
-            title: "Your work has been saved",
             showConfirmButton: false,
-            timer: 1500
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.onmouseenter = Swal.stopTimer;
+              toast.onmouseleave = Swal.resumeTimer;
+            }
+          });
+          Toast.fire({
+            icon: isSuccess ? "success" : "error",
+            title: message
           });
     }
 
+    // Cargar datos del producto
     if (productName) {
         fetch(`/pcgateway/php/product.php?name=${encodeURIComponent(productName)}`)
             .then(response => response.json())
@@ -25,7 +35,6 @@ document.addEventListener("DOMContentLoaded", function() {
                     document.getElementById('productStock').textContent = `${data.product.stock} disponible(s)`;
                     document.getElementById('productCategory').textContent = data.product.categoria;
                     document.getElementById('productImage').src = data.product.imagen;
-                    document.getElementById('productImage').alt = data.product.nombre;
                     document.getElementById('productDescription').textContent = data.product.descripcion;
                     document.title = `${data.product.nombre} | PCGateway`;
                 } else {
@@ -39,7 +48,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // Actualizar la cantidad
-    const quantityElement = document.getElementById('productQuantity');
     document.querySelector('.plus').addEventListener('click', function() {
         quantity++;
         quantityElement.textContent = quantity;
@@ -52,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    // Enviar el producto al carrito
+    // Añadir producto al carrito
     document.querySelector('.add_to_cart_button').addEventListener('click', function() {
         fetch('/pcgateway/php/add_to_cart.php', {
             method: 'POST',
@@ -67,45 +75,46 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                showMessage('Producto añadido al carrito', true); // Mensaje de éxito
-
-                // Llamar a la función para actualizar el header del carrito
-                updateCartInfo(); // Llamar la función que actualiza el carrito
+                showMessage('Producto añadido al carrito', true);
+                updateCartInfo();
             } else if (data.message === 'Usuario no autenticado') {
-                window.location.href = "/pcgateway/pages/login.html"; // Redirigir a la página de login
+                window.location.href = "/pcgateway/pages/login.html";
             } else {
-                showMessage(`Error al añadir el producto al carrito: ${data.message}`, false); // Mensaje de error
+                showMessage(`Error al añadir el producto al carrito: ${data.message}`, false);
             }
         })
         .catch(error => {
             console.error('Error adding product to cart:', error);
-            showMessage('Ocurrió un error al añadir el producto al carrito', false); // Mensaje de error genérico
+            showMessage('Ocurrió un error al añadir el producto al carrito', false);
         });
     });
 
-    // Función para actualizar la información del carrito en el header
+    // Actualizar información del carrito en el header
     function updateCartInfo() {
-        fetch('/pcgateway/php/cart_backend.php')
+        fetch('/pcgateway/php/cart_backend.php?action=loadCart')
             .then(response => response.json())
             .then(data => {
                 if (data.empty) {
                     document.querySelector('.user_area .ibm-plex-sans-regular').textContent = 'Shopping Cart (0)';
                     document.querySelector('.user_area .price').textContent = '$0.00';
-                } else {
+                } else if (data.items && Array.isArray(data.items)) {
                     let totalItems = 0;
                     let totalPrice = 0.00;
-
                     data.items.forEach(item => {
                         totalItems += item.cantidad;
                         totalPrice += parseFloat(item.subtotal);
                     });
-
                     document.querySelector('.user_area .ibm-plex-sans-regular').textContent = `Shopping Cart (${totalItems})`;
                     document.querySelector('.user_area .price').textContent = `$${totalPrice.toFixed(2)}`;
+                } else {
+                    document.querySelector('.user_area .ibm-plex-sans-regular').textContent = 'Shopping Cart (0)';
+                    document.querySelector('.user_area .price').textContent = '$0.00';
                 }
             })
             .catch(error => {
                 console.error('Error al obtener el carrito:', error);
+                document.querySelector('.user_area .ibm-plex-sans-regular').textContent = 'Shopping Cart (0)';
+                document.querySelector('.user_area .price').textContent = '$0.00';
             });
     }
 });

@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+body {
+    background-color: #f4f4f4;
+    font-family: 'Roboto', sans-serif;
+}
+
+main {
+    width: 100%;
+    padding: 20px;
+    margin: auto;
+    margin-top: 100px;
+}
+
+.contenedor__admin {
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    position: relative;
+}
+
+.caja__trasera {
+    background-color: #fc6625;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    color: white;
+}
+
+.caja__trasera h3 {
+    font-weight: 400;
+    font-size: 24px;
+}
+
+.caja__trasera p {
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.contenedor__login {
+    width: 100%;
+    max-width: 400px;
+    background: white;
+    margin: auto;
+    margin-top: 20px;
+    padding: 50px 20px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+.contenedor__login form h2 {
+    color: #fc6625;
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.contenedor__login form input {
+    width: 100%;
+    margin-top: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #F2F2F2;
+    font-size: 16px;
+}
+
+.contenedor__login form button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #fc6625;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.contenedor__login form button:hover {
+    background: #e0551f;
+}

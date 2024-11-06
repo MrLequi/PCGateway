@@ -28,9 +28,11 @@ document.addEventListener('DOMContentLoaded', function () {
                     // Agregar el evento de click al checkbox
                     checkbox.addEventListener('click', function() {
                         if (checkbox.checked) {
-                            container.style.backgroundColor = '#4CAF50';
+                            container.style.border = '1px solid #4caf50';
+                            container.style.backgroundColor = 'rgba(76, 175, 80, 0.6)';
                             container.style.color = '#fff';
                         } else {
+                            container.style.border = '';
                             container.style.backgroundColor = '';
                             container.style.color = '';
                         }

@@ -10,7 +10,7 @@ if (isset($_POST['email']) && isset($_POST['pass'])) {
         include 'connection.php';
 
         // Actualiza la consulta para obtener todos los datos que necesitamos
-        $stmt = $conn->prepare('SELECT id_usuario, email, nombre, password, rol, apellidos, display_name FROM usuario WHERE email = :email');
+        $stmt = $conn->prepare('SELECT id_usuario, email, nombre, password, rol, apellidos, display_name FROM usuario WHERE email = :email AND (rol != "Admin" AND rol != "Vendedor")');
         $stmt->bindParam(':email', $email);
         $stmt->execute();
 

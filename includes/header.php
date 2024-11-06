@@ -11,9 +11,7 @@
     </div>
 
     <section class="header_sec">
-        <div class="res_menu">
-            <i class='bx bx-menu'></i>
-        </div>
+        <i class='bx bx-menu'></i>
         <div class="cont_logotipo">
             <div class="cont_nameshop">
                 <a href="/pcgateway/"><h2 class="raleway-black">PCGateway</h2></a>
@@ -24,16 +22,12 @@
         </div>
         <div class="search_bar">
             <form method="GET" action="/pcgateway/pages/catalog.php">
-                <div class="search_input">
-                    <input class="poppins-light" type="text" name="search" placeholder="Your searched...">
-                </div>
-                <div class="search_icon">
-                    <button type="submit"><i class='bx bx-search'></i></button>
-                </div>
+                <input class="poppins-light" type="text" name="search" placeholder="Your searched...">
+                <button type="submit"><i class='bx bx-search'></i></button>
             </form>
         </div>
         <div class="user_area">
-            <a href="#"><i id="user-icon" class='bx bx-user-circle icon'></i></a>
+            <a href="/pcgateway/pages/perfil.php"><i id="user-icon" class='bx bx-user-circle'></i></a>
             <a href="/pcgateway/pages/wishlist.php"><i class='bx bx-heart'></i></a>
             <a href="/pcgateway/pages/cart.php"><i class='bx bx-cart'></i></a>
             <div>
@@ -42,13 +36,24 @@
             </div>
         </div>
     </section>
+    <!-- Menú lateral deslizable -->
+    <div class="side-menu" id="side-menu">
+        <div class="search_bar_res">
+            <form method="GET" action="/pcgateway/pages/catalog.php">
+                <input class="poppins-light" type="text" name="search" placeholder="Your searched...">
+                <button type="submit"><i class='bx bx-search'></i></button>
+            </form>
+        </div>
+        <div id="categories-res-container"></div> <!-- Se llenará con JavaScript -->
+    </div>
     <section class="nav_bar">
         <div class="nav_categories">
-            <i class='bx bx-menu-alt-left'></i>
-            <p class="ibm-plex-sans-semibold">All categories</p>
+            <i class='bx bx-menu'></i>
+            <p class="poppins-semibold">CATEGORIES</p>
             <div class="menu-content" id="categories-container"></div>
         </div>
     </section>
 </header>
-<script src="/pcgateway/assets/js/categories.js"></script>
 <script src="/pcgateway/assets/js/header.js"></script>
+<script src="/pcgateway/assets/js/cart.js"></script>
+<script src="/pcgateway/assets/js/categories.js"></script>

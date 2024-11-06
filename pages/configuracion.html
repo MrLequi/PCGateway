@@ -4,44 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Configuración</title>
-    <link rel="stylesheet" href="../assets/css/pages/configuracion.css">
+    <link rel="stylesheet" href="/pcgateway/assets/css/pages/configuracion.css">
+    <link rel="stylesheet" href="/pcgateway/assets/css/pages/admin-page.css">
+    <link rel="stylesheet" href="/pcgateway/assets/css/layout.css">
+    <link rel="stylesheet" href="/pcgateway/assets/css/typography.css">
 </head>
 <body>
-    <h1>Configuración de la Tienda</h1>
+    <main class="manage">
+        <section class="panel_izq">
+            <img src="../assets/images/icons/PCGateway.png" alt="">
 
-    <!-- Mensaje de estado -->
-    <div id="message" style="margin-bottom: 20px;"></div>
+            <ul>
+                <li class="poppins-medium"><a href="/pcgateway/pages/admin-page.html">DESKTOP</a></li>
+                <li class="poppins-medium"><a href="/pcgateway/pages/product-management.html">PRODUCTS</a></li>
+                <li class="poppins-medium"><a href="/pcgateway/pages/pdf_catalogo.html">CATALOG TO PDF</a></li>
+                <li class="poppins-medium"><a href="/pcgateway/pages/user_manage.html">USER MANAGE</a></li>
+                <li class="poppins-medium selected">SETTINGS</li>
+                <li class="poppins-medium"><a href="/pcgateway/pages/dashboard.html">DASHBOARD</a></li>
+                <li class="poppins-medium"><a href="/pcgateway/pages/promociones.html">PROMO</a></li>
+            </ul>
+        </section>
 
-    <!-- Formulario para actualizar configuración -->
-    <form id="configForm">
-        <div>
-            <label for="nombre_empresa">Nombre de la Empresa:</label>
-            <input type="text" id="nombre_empresa" name="nombre_empresa">
-        </div>
-        <div>
-            <label for="telefono">Teléfono:</label>
-            <input type="text" id="telefono" name="telefono">
-        </div>
-        <div>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email">
-        </div>
-        <div>
-            <label for="direccion">Dirección:</label>
-            <input type="text" id="direccion" name="direccion">
-        </div>
-        <button type="submit">Guardar Configuración</button>
-    </form>
+        <section class="config">
+            <!-- Mensaje de estado -->
+            <div id="message" style="margin-bottom: 20px;"></div>
 
-    <section class="banner-management">
-        <h2>Imágenes Banner</h2>
-        <div id="banners"></div>
-        <label for="banner_url">Agregar URL del Banner:</label>
-        <div class="form">
-            <input type="text" id="banner_url" name="banner_url" placeholder="https://example.com/banner.jpg">
-            <button type="button" onclick="addBanner()">Agregar</button>
-        </div>
-    </section>
+            <!-- Formulario para actualizar configuración -->
+            <form id="configForm">
+                <div>
+                    <label for="nombre_empresa">Nombre de la Empresa:</label>
+                    <input type="text" id="nombre_empresa" name="nombre_empresa">
+                </div>
+                <div>
+                    <label for="telefono">Teléfono:</label>
+                    <input type="text" id="telefono" name="telefono">
+                </div>
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email">
+                </div>
+                <div>
+                    <label for="direccion">Dirección:</label>
+                    <input type="text" id="direccion" name="direccion">
+                </div>
+                <button type="submit">Guardar Configuración</button>
+            </form>
+
+            <section class="banner-management">
+                <h2>Imágenes Banner</h2>
+                <label for="banner_url">Agregar URL del Banner:</label>
+                <div class="form">
+                    <input type="text" id="banner_url" name="banner_url" placeholder="https://example.com/banner.jpg">
+                    <button type="button" onclick="addBanner()">Agregar</button>
+                </div>
+                <div id="banners"></div>
+            </section>
+        </section>
+    </main>
 
     <script src="../assets/js/configuracion.js"></script>
 </body>

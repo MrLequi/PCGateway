@@ -4,7 +4,7 @@ header('Content-Type: application/json');
 include 'connection.php';
 
 try {
-    $stmt = $conn->query("SELECT id_categoría, nombre FROM Categoría");
+    $stmt = $conn->query("SELECT id_categoría, nombre FROM categoría");
     $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
     echo json_encode(['categories' => $categories]);

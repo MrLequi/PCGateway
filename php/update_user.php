@@ -58,8 +58,14 @@ if (!empty($_POST['current_password']) && !empty($_POST['new_password']) && !emp
     ]);
 }
 
-// Verificar si la actualización fue exitosa
+// Si la actualización fue exitosa, actualiza los datos en la sesión
 if ($result) {
+    // Actualizar los datos en la sesión con los valores de $_POST
+    $_SESSION['user_name'] = $_POST['nombre'];
+    $_SESSION['user_email'] = $_POST['email'];
+    $_SESSION['user_apellidos'] = $_POST['apellidos'];
+    $_SESSION['user_display_name'] = $_POST['display_name'];
+
     echo json_encode(['success' => 'User updated successfully']);
 } else {
     echo json_encode(['error' => 'Failed to update user']);

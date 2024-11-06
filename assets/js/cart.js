@@ -6,10 +6,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Función para cargar los productos del carrito
     function loadCart() {
-        fetch('/pcgateway/php/cart_backend.php')
+        fetch('/pcgateway/php/cart_backend.php?action=loadCart')
             .then(response => response.json())
             .then(data => {
-                // Limpiar la tabla para evitar productos repetidos
                 cartTable.innerHTML = `
                     <tr class="header_table">
                         <th>PRODUCT</th>
@@ -20,7 +19,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 `;
 
                 if (data.empty) {
-                    // Si el carrito está vacío, mostrar el ícono, mensaje y botón
                     mainContent.innerHTML = `
                         <div class="empty-cart">
                             <i class='bx bx-cart-alt' style="font-size: 5rem; color: #777;"></i>
@@ -31,12 +29,10 @@ document.addEventListener('DOMContentLoaded', function () {
                         </div>
                     `;
 
-                    // Agregar evento de click para redirigir al catálogo
                     document.querySelector('.return-to-shop').addEventListener('click', function () {
                         window.location.href = '/pcgateway/pages/catalog.php';
                     });
 
-                    // Esconder el total del carrito
                     cartTotal.textContent = 'US$ 0.00';
                     cartMain.style.display = 'block';
                 } else {
@@ -59,9 +55,13 @@ document.addEventListener('DOMContentLoaded', function () {
                                 </td>
                                 <td class="price ibm-plex-sans-medium">US$ ${precio.toFixed(2)}</td>
                                 <td class="amount">
-                                    <button class="less"><i class='bx bx-minus'></i></button>
+                                    <button class="less" data-product-id="${item.id_producto}" data-cart-id="${item.id_carrito}">
+                                        <i class='bx bx-minus'></i>
+                                    </button>
                                     <div class="amount"><p id="productQuantity" class="poppins-bold">${item.cantidad}</p></div>
-                                    <button onclick="updateAmount(${item.id_producto}, ${item.id_carrito}, ${item.cantidad+1})" class="plus"><i class='bx bx-plus'></i></button>
+                                    <button class="plus" data-product-id="${item.id_producto}" data-cart-id="${item.id_carrito}">
+                                        <i class='bx bx-plus'></i>
+                                    </button>
                                 </td>
                                 <td class="subtotal ibm-plex-sans-bold">US$ ${subtotal.toFixed(2)}</td>
                             </tr>
@@ -72,9 +72,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     });
 
                     cartTotal.textContent = `US$ ${total.toFixed(2)}`;
-                    cartMain.style.display = 'block'; // Mostrar el contenido del carrito
+                    cartMain.style.display = 'block';
 
-                    // Añadir evento de click para eliminar productos
                     document.querySelectorAll('.remove-product').forEach(button => {
                         button.addEventListener('click', function () {
                             const productId = this.getAttribute('data-product-id');
@@ -88,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Función para eliminar productos del carrito
     function removeProductFromCart(productId) {
-        fetch('/pcgateway/php/cart_backend.php', {
+        fetch('/pcgateway/php/cart_backend.php?action=removeProduct', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -98,19 +97,82 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                // Recargar el carrito después de la eliminación
-                loadCart();
+                loadCart(); // Recargar el carrito principal
+                updateCartInfo(); // Actualizar la información del carrito en el header
             } else {
                 console.error('Error removing product:', data.message);
             }
         })
         .catch(error => console.error('Error removing product:', error));
+    }    
+
+    // Función para actualizar la cantidad de un producto en el carrito
+    function updateAmount(productId, cartId, newQuantity) {
+        fetch('/pcgateway/php/cart_backend.php?action=updateQuantity', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                product_id: productId,
+                cart_id: cartId,
+                new_quantity: newQuantity
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                loadCart();
+            } else {
+                console.error('Error updating product quantity:', data.message);
+            }
+        })
+        .catch(error => console.error('Error updating product quantity:', error));
     }
 
-    function updateAmount() {
-        
+    // Manejar eventos de clic en los botones de cantidad
+    document.addEventListener('click', function (e) {
+        if (e.target.closest('.plus')) {
+            const productId = e.target.closest('.plus').dataset.productId;
+            const cartId = e.target.closest('.plus').dataset.cartId;
+            const currentQuantity = parseInt(e.target.closest('.amount').querySelector('.poppins-bold').textContent, 10);
+            updateAmount(productId, cartId, currentQuantity + 1);
+        }
+        if (e.target.closest('.less')) {
+            const productId = e.target.closest('.less').dataset.productId;
+            const cartId = e.target.closest('.less').dataset.cartId;
+            const currentQuantity = parseInt(e.target.closest('.amount').querySelector('.poppins-bold').textContent, 10);
+            if (currentQuantity > 1) {
+                updateAmount(productId, cartId, currentQuantity - 1);
+            }
+        }
+    });
+
+    function updateCartInfo() {
+        fetch('/pcgateway/php/cart_backend.php?action=loadCart')
+            .then(response => response.json())
+            .then(data => {
+                if (data.empty) {
+                    document.querySelector('.user_area .ibm-plex-sans-regular').textContent = 'Shopping Cart (0)';
+                    document.querySelector('.user_area .price').textContent = '$0.00';
+                } else {
+                    let totalItems = 0;
+                    let totalPrice = 0.00;
+    
+                    data.items.forEach(item => {
+                        totalItems += item.cantidad;
+                        totalPrice += parseFloat(item.subtotal);
+                    });
+    
+                    document.querySelector('.user_area .ibm-plex-sans-regular').textContent = `Shopping Cart (${totalItems})`;
+                    document.querySelector('.user_area .price').textContent = `$${totalPrice.toFixed(2)}`;
+                }
+            })
+            .catch(error => {
+                console.error('Error al obtener el carrito:', error);
+            });
     }
 
-    // Cargar el carrito inicialmente
+    // Cargar el carrito al inicio
     loadCart();
 });

@@ -4,33 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administrar Usuarios</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.14.5/dist/sweetalert2.min.css">
     <link rel="stylesheet" href="/pcgateway/assets/css/pages/user_manage.css">
+    <link rel="stylesheet" href="/pcgateway/assets/css/pages/admin-page.css">
+    <link rel="stylesheet" href="/pcgateway/assets/css/layout.css">
+    <link rel="stylesheet" href="/pcgateway/assets/css/typography.css">
     <script src="/pcgateway/assets/js/user-manage.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.14.5/dist/sweetalert2.all.min.js"></script>
 </head>
 <body>
-    <h1>Administración de Usuarios</h1>
+    <main class="manage">
+        <section class="panel_izq">
+            <img src="../assets/images/icons/PCGateway.png" alt="">
 
-    <!-- Botones de filtro -->
-    <div id="filters">
-        <button class="filter-btn" id="sort-az" onclick="filterUsers('name', 'asc')">A-Z</button>
-        <button class="filter-btn" id="sort-za" onclick="filterUsers('name', 'desc')">Z-A</button>
-        <button class="filter-btn" id="sort-oldest" onclick="filterUsers('date', 'asc')">Más antiguos</button>
-        <button class="filter-btn" id="sort-newest" onclick="filterUsers('date', 'desc')">Más recientes</button>
-    </div>
+            <ul>
+                <li class="poppins-medium"><a href="/pcgateway/pages/admin-page.html">DESKTOP</a></li>
+                <li class="poppins-medium"><a href="/pcgateway/pages/product-management.html">PRODUCTS</a></li>
+                <li class="poppins-medium"><a href="/pcgateway/pages/pdf_catalogo.html">CATALOG TO PDF</a></li>
+                <li class="poppins-medium selected">USER MANAGE</li>
+                <li class="poppins-medium"><a href="/pcgateway/pages/configuracion.html">SETTINGS</a></li>
+                <li class="poppins-medium"><a href="/pcgateway/pages/dashboard.html">DASHBOARD</a></li>
+                <li class="poppins-medium"><a href="/pcgateway/pages/promociones.html">PROMO</a></li>
+            </ul>
+        </section>
 
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Email</th>
-                <th>Rol</th>
-                <th>Fecha de Creación</th>
-                <th>Cambiar Rol</th>
-            </tr>
-        </thead>
-        <tbody id="usuarios-table">
-            <!-- Los datos de los usuarios se cargarán aquí -->
-        </tbody>
-    </table>
+        <section class="user_manage">
+            <!-- Botones de filtro -->
+            <div id="filters">
+                <button class="filter-btn" id="sort-az" onclick="filterUsers('name', 'asc')">A-Z</button>
+                <button class="filter-btn" id="sort-za" onclick="filterUsers('name', 'desc')">Z-A</button>
+                <button class="filter-btn" id="sort-oldest" onclick="filterUsers('date', 'asc')">Más antiguos</button>
+                <button class="filter-btn" id="sort-newest" onclick="filterUsers('date', 'desc')">Más recientes</button>
+            </div>
+
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th class="poppins-semibold">Nombre</th>
+                        <th class="poppins-semibold">Email</th>
+                        <th class="poppins-semibold">Rol</th>
+                        <th class="poppins-semibold">Fecha de Creación</th>
+                    </tr>
+                </thead>
+                <tbody id="usuarios-table">
+                    <!-- Los datos de los usuarios se cargarán aquí -->
+                </tbody>
+            </table>
+        </section>
+    </main>
 </body>
 </html>

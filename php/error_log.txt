@@ -334,3 +334,10 @@ Stack trace:
 #0 {main}
   thrown in C:\xampp\htdocs\PCGateway\php\cart_backend.php on line 26
 [22-Oct-2024 21:56:47 Europe/Berlin] PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in C:\xampp\htdocs\PCGateway\php\register_usuario.php on line 83
+[27-Oct-2024 16:39:40 Europe/Berlin] PHP Warning:  Undefined array key "product_id" in C:\xampp\htdocs\PCGateway\php\cart_backend.php on line 61
+[27-Oct-2024 16:39:40 Europe/Berlin] PHP Warning:  Undefined array key "new_quantity" in C:\xampp\htdocs\PCGateway\php\cart_backend.php on line 62
+[27-Oct-2024 16:39:40 Europe/Berlin] PHP Warning:  Undefined array key "cart_id" in C:\xampp\htdocs\PCGateway\php\cart_backend.php on line 63
+[27-Oct-2024 16:44:09 Europe/Berlin] PHP Warning:  Undefined array key "product_id" in C:\xampp\htdocs\PCGateway\php\cart_backend.php on line 61
+[27-Oct-2024 16:44:09 Europe/Berlin] PHP Warning:  Undefined array key "new_quantity" in C:\xampp\htdocs\PCGateway\php\cart_backend.php on line 62
+[27-Oct-2024 16:44:09 Europe/Berlin] PHP Warning:  Undefined array key "cart_id" in C:\xampp\htdocs\PCGateway\php\cart_backend.php on line 63
+[28-Oct-2024 17:28:15 Europe/Berlin] PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in C:\xampp\htdocs\PCGateway\php\register_usuario.php on line 83

@@ -52,11 +52,15 @@ header * {
     align-items: center;
     font-size: 0.875rem;
 }
+.header_sec .bx-menu {
+    display: none;
+}
 
 .cont_logotipo {
+    display: flex;
+    align-items: center;
     position: absolute;
     left: 80px;
-    top: 56px;
 }
 
 .cont_img {
@@ -82,12 +86,13 @@ header * {
 .search_bar {
     position: absolute;
     left: 330px;
-    width: 550px;
+    width: 35%;
     height: 31px;
 }
 
 .search_bar form {
     display: flex;
+    gap: 8px;
     width: 100%;
     height: 100%;
 }
@@ -95,45 +100,21 @@ header * {
 .search_bar input {
     width: 100%;
     height: 100%;
-    border: 1px solid #dbdbdb;
+    border: none;
     border-radius: 5px;
     outline: none;
     padding-left: 15px;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
 }
 
-.search_input {
-    height: 100%;
-    width: 90%;
-    margin-right: 23px;
-}
-
-.search_icon {
-    background-color: #fc6625;
-    border-radius: 5px;
-    box-shadow: rgba(0, 0, 0, 0.40) 1.95px 1.95px 2.6px;
-    height: 100%;
-    width: 7%;
-}
-
-.search_icon i {
-    color: #fff;
-    font-size: 18px;
-}
-
-.search_icon button {
+.search_bar button {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 100%;
+    width: 8%;
     background-color: #fc6625;
     border-radius: 5px;
     border: none;
-}
-
-.search_icon button:hover {
-    cursor: pointer;
 }
 
 .header_contact {
@@ -149,7 +130,7 @@ header * {
 .user_area {
     position: absolute;
     display: flex;
-    right: 130px;
+    right: 9.5%;
 }
 
 .price {
@@ -173,7 +154,6 @@ header * {
     height: 55px;
     display: flex;
     align-items: center;
-    margin-top: 17px;
     background-color: #fc6625;
     position: relative;
 }
@@ -193,7 +173,6 @@ header * {
     transition: all 300ms;
 }
 .nav_categories:hover{
-    height: 110%;
     background-color: #fc6625;
 }
 .nav_categories > p {
@@ -204,7 +183,7 @@ header * {
 .nav_categories i {
     color: #fff;
     font-size: 1.2rem;
-    margin: 0 5px 1px 30px;
+    margin: 0 6px 0 12px;
 }
 
 .nav_bar .menu-content {
@@ -252,59 +231,111 @@ header * {
     display: none;
 }
 
-@media screen and (max-width: 1365px) {
-    .search_bar {
-        width: 300px;
-    }
-
-    .search_input {
-        width: 85%;
-    }
-    .search_icon {
-        width: 15%;
-    }
+/* Estilo para el menú lateral deslizable */
+.side-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: -100%; /* Oculto fuera de pantalla */
+    width: 300px;
+    height: 100%;
+    background-color: #ffffff;
+    box-shadow: 3px 0 6px rgba(0, 0, 0, 0.3);
+    transition: left 0.4s ease;
+    z-index: 1000;
+    padding: 20px;
+    font-family: 'Poppins', sans-serif;
 }
 
-@media screen and (max-width: 1115px) {
-    .search_bar {
-        display: none;
-    }
-    .cont_sup {
-        display: none;
-    }
-    .nav_bar {
-        display: none;
-    }
+.side-menu.open {
+    left: 0; /* Muestra el menú */
+}
 
+/* Estilo para la barra de búsqueda */
+.side-menu .search_bar_res {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.side-menu .search_bar_res form {
+    display: flex;
+}
+
+.side-menu .search_bar_res input {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: inset 0px 3px 4px rgba(0, 0, 0, 0.1);
+    font-size: 0.875rem;
+    outline: none;
+    transition: border 0.3s ease;
+}
+
+.side-menu .search_bar_res input:focus {
+    border-color: #fc6625;
+}
+
+.side-menu .search_bar_res button {
+    background-color: #fc6625;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.side-menu .search_bar_res button:hover {
+    background-color: #e05622;
+}
+
+/* Estilo para el contenedor de categorías */
+#categories-res-container {
+    padding-top: 15px;
+    border-top: 1px solid #ececec;
+}
+
+#categories-res-container a {
+    padding: 5px 0;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+#categories-res-container a:hover {
+    color: #fc6625;
+    font-weight: 500;
+}
+
+@media (max-width: 990px) {
     .header_sec {
-        height: 100px;
         border-bottom: 3px solid #fc6625;
     }
-
-    .cont_logotipo {
-        display: flex;
-        top: 40px;
-        left: 70px;
-    }
-    
-    .res_menu {
+    .header_include .bx-menu {
         display: block;
-        position: absolute;
-        top: 42px;
-        left: 35px;
-        font-size: 30px;
+        margin-left: 40px;
+        font-size: 1.875rem;
+    }
+    .header_include .bx-menu:hover {
         cursor: pointer;
     }
 
+    .cont_sup, .search_bar, .nav_bar {
+        display: none;
+    }
+
+    .user_area > div {
+        display: none;
+    }
     .user_area .bx-user-circle {
         display: block;
     }
-
-    .user_area {
-        top: 31px;
-    }
-    .header_contact {
-        right: 320px;
-        top: 42px;
+    
+    .side-menu {
+        display: block;
     }
 }

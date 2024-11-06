@@ -4,53 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Productos</title>
-    <link rel="stylesheet" href="../assets/css/pages/product-management.css">
+    <link rel="stylesheet" href="/pcgateway/assets/css/pages/product-management.css">
+    <link rel="stylesheet" href="/pcgateway/assets/css/pages/admin-page.css">
+    <link rel="stylesheet" href="/pcgateway/assets/css/layout.css">
+    <link rel="stylesheet" href="/pcgateway/assets/css/typography.css">
 </head>
 <body>
-    <h1>Gestión de Productos</h1>
+    <main class="manage">
+        <section class="panel_izq">
+            <img src="/pcgateway/assets/images/icons/PCGateway.png" alt="">
 
-    <!-- Botones de categorías -->
-    <div id="categorias" class="categorias-container">
-        
-    </div>
+            <ul>
+                <li class="poppins-medium"><a href="/pcgateway/pages/admin-page.html">DESKTOP</a></li>
+                <li class="poppins-medium selected">PRODUCTS</li>
+                <li class="poppins-medium"><a href="/pcgateway/pages/pdf_catalogo.html">CATALOG TO PDF</a></li>
+                <li class="poppins-medium"><a href="/pcgateway/pages/user_manage.html">USER MANAGE</a></li>
+                <li class="poppins-medium"><a href="/pcgateway/pages/configuracion.html">SETTINGS</a></li>
+                <li class="poppins-medium"><a href="/pcgateway/pages/dashboard.html">DASHBOARD</a></li>
+                <li class="poppins-medium"><a href="/pcgateway/pages/promociones.html">PROMO</a></li>
+            </ul>
+        </section>
 
-    <!-- Formulario para agregar o actualizar productos -->
-    <h2>Agregar/Actualizar Producto</h2>
-    <form id="productoForm">
-        <input type="hidden" id="id_producto" name="id_producto"> <!-- Campo oculto para el ID del producto -->
-        <div>
-            <label for="imagen_url">URL de Imagen:</label>
-            <input type="text" id="imagen_url" name="imagen_url" required>
-        </div>        
-        <div>
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" required>
-        </div>
-        <div>
-            <label for="descripcion">Descripción:</label>
-            <textarea id="descripcion" name="descripcion" required></textarea>
-        </div>
-        <div>
-            <label for="precio">Precio:</label>
-            <input type="number" id="precio" name="precio" step="0.01" required>
-        </div>
-        <div>
-            <label for="stock">Stock:</label>
-            <input type="number" id="stock" name="stock" required>
-        </div>
-        <div>
-            <label for="categoria">Categoría:</label>
-            <select id="categoria" name="categoria" required>
-                
-            </select>
-        </div>
-        <button type="submit">Guardar Producto</button>
-    </form>
+        <div class="main-content">
+            <!-- Botones de categorías -->
+            <div id="categorias" class="categorias-container"></div>
 
-    <!-- Tabla de productos -->
-    <div id="productos" class="productos-container">
-        
-    </div>
+            <!-- Formulario para agregar o actualizar productos -->
+            <form id="productoForm">
+                <input type="hidden" id="id_producto" name="id_producto"> <!-- Campo oculto para el ID del producto -->
+                <div>
+                    <label for="imagen_url">URL de Imagen:</label>
+                    <input type="text" id="imagen_url" name="imagen_url" required>
+                </div>        
+                <div>
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div>
+                    <label for="descripcion">Descripción:</label>
+                    <textarea id="descripcion" name="descripcion" required></textarea>
+                </div>
+                <div>
+                    <label for="precio">Precio:</label>
+                    <input type="number" id="precio" name="precio" step="0.01" required>
+                </div>
+                <div>
+                    <label for="stock">Stock:</label>
+                    <input type="number" id="stock" name="stock" required>
+                </div>
+                <div>
+                    <label for="categoria">Categoría:</label>
+                    <select id="categoria" name="categoria" required>
+                        
+                    </select>
+                </div>
+                <button type="submit">Guardar Producto</button>
+            </form>
+
+            <!-- Tabla de productos -->
+            <div id="productos" class="productos-container"></div>
+        </div>
+    </main>
 
     <script src="../assets/js/product-management.js"></script>
 </body>

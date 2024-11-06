@@ -1,35 +1,79 @@
 .manage {
-    height: 946px;
-    background-color: #fff;
+    background-color: #f4f4f4;
     display: flex;
 }
 
 .panel_izq {
     width: 283px;
-    height: 100%;
     background-color: #fc6625;
 }
 .panel_izq img {
     width: 250px;
     height: 250px;
-    margin: 0 17px 27px 17px;
+    margin: 0 17px 9px 17px;
 }
 .panel_izq ul {
     margin-left: 48px;
     list-style: none;
 }
 .panel_izq li {
-    font-size: 1.063rem;
-    color: #fff;
-    
     display: flex;
     align-items: center;
     width: 235px;
     height: 36px;
     border-radius: 50px 0 0 50px;
     margin-bottom: 22px;
+    padding-left: 11px;
 }
 .panel_izq li:hover {
-    background-color: #fff;
+    cursor: pointer;
+}
+.panel_izq a {
+    font-size: 1.063rem;
+    color: #fff;
+}
+.panel_izq .selected {
     color: #000;
+    background-color: #f4f4f4;
+}
+
+.panel_der {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.panel_der > div {
+    display: grid;
+    grid-template-columns: repeat(3, 248px);
+    grid-template-rows: repeat(2, 153px);
+    row-gap: 23px;
+    column-gap: 39px;
+    width: 822px;
+    height: 329px;
+}
+.panel_der > div .button {
+    color: #000;
+    background-color: #fff;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.panel_der > div .button:hover i {
+    font-size: 60px;
+    margin-bottom: 3px;
+}
+.panel_der > div .button:hover {
+    cursor: pointer;
+}
+.panel_der > div .button p {
+    font-size: 0.938rem;
+}
+.panel_der > div .button i {
+    font-size: 55px;
+    margin-bottom: 8px;
+    color: #777777;
 }

@@ -1,4 +1,19 @@
 document.addEventListener('DOMContentLoaded', function () {
+    const menuIcon = document.querySelector('.header_sec .bx-menu');
+    const sideMenu = document.getElementById('side-menu');
+
+    // Abre el menú al hacer clic en el icono
+    menuIcon.addEventListener('click', () => {
+        fetchCategoriesResponsiveMenu();
+        sideMenu.classList.toggle('open');
+    });
+
+    // Cierra el menú al hacer clic fuera de él
+    document.addEventListener('click', (event) => {
+        if (!sideMenu.contains(event.target) && !menuIcon.contains(event.target)) {
+            sideMenu.classList.remove('open');
+        }
+    });
 
     // Obtener estado de sesión (usuario)
     fetch('/pcgateway/php/session_status.php')
@@ -49,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Obtener los datos del carrito y actualizarlos en el header
     function updateCartInfo() {
-        fetch('/pcgateway/php/cart_backend.php')
+        fetch('/pcgateway/php/cart_backend.php?action=loadCart')
             .then(response => response.json())
             .then(data => {
                 if (data.empty) {
@@ -73,11 +88,17 @@ document.addEventListener('DOMContentLoaded', function () {
             });
     }
 
-    // Mostrar/Ocultar menú hamburguesa
-    const hamburgerMenu = document.getElementById('hamburger-menu');
-    const menuContent = document.getElementById('hamburger-menu-content');
-    
-    hamburgerMenu.addEventListener('click', function () {
-        menuContent.classList.toggle('active');
+    // Asegúrate de actualizar el carrito después de modificar productos
+    document.addEventListener('click', function (e) {
+        if (e.target.closest('.remove-product')) {
+            const productId = e.target.closest('.remove-product').dataset.productId;
+            removeProductFromCart(productId).then(() => updateCartInfo());
+        }
+
+        if (e.target.closest('.plus') || e.target.closest('.less')) {
+            // Aquí puedes manejar el incremento o decremento y después actualizar el carrito
+            const productId = e.target.closest('.plus') ? e.target.closest('.plus').dataset.productId : e.target.closest('.less').dataset.productId;
+            updateCartInfo(); // Llama para actualizar después de un cambio
+        }
     });
 });

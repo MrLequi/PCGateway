@@ -3,15 +3,10 @@
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
-    font-family: 'Roboto', sans-serif;
 }
 
 body{
-    background-image: url(../../images/back-login-register.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
+    background-color: #f4f4f4;
 }
 
 main{
@@ -35,8 +30,8 @@ main{
     justify-content: center;
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
-    background-color: rgba(252, 102, 37, 0.5);
-
+    background-color: #fc6625;
+    border-radius: 5px;
 }
 
 .caja__trasera div{
@@ -64,6 +59,7 @@ main{
 .caja__trasera button{
     padding: 10px 40px;
     border: 2px solid #fff;
+    border-radius: 5px;
     font-size: 14px;
     background: transparent;
     font-weight: 600;
@@ -96,6 +92,8 @@ main{
     background: white;
     position: absolute;
     border-radius: 20px;
+
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
 .contenedor__login-register form h2{
@@ -110,6 +108,7 @@ main{
     margin-top: 20px;
     padding: 10px;
     border: none;
+    border-radius: 5px;
     background: #F2F2F2;
     font-size: 16px;
     outline: none;
@@ -119,6 +118,7 @@ main{
     padding: 10px 40px;
     margin-top: 40px;
     border: none;
+    border-radius: 5px;
     font-size: 14px;
     background: #fc6625;
     font-weight: 600;

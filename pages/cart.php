@@ -15,7 +15,7 @@
 <body>
     <?php include '../includes/header.php'; ?>
 
-    <main id="cart-main" style="display: none;"> <!-- Añadido id y ocultar con display:none -->
+    <main id="cart-main" style="display: none;">
         <div class="ruta">
             <h2 class="ibm-plex-sans-bold" style="color: #fc6625;">Cart</h2>
             <i class='bx bx-chevron-right'></i>
@@ -37,7 +37,7 @@
                 <h3 class="poppins-bold">CART TOTALS</h3>
                 <div class="total">
                     <p class="ibm-plex-sans-bold">Total</p>
-                    <p class="ibm-plex-sans-bold">US$0.00</p> <!-- Este valor se actualizará con JS -->
+                    <p class="ibm-plex-sans-bold">US$0.00</p>
                 </div>
                 <button><p class="poppins-bold">FINISH PURCHASE</p><i class='bx bx-right-arrow-alt' style="font-size: 1.5rem;"></i></button>
             </div>

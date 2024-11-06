@@ -8,12 +8,9 @@ body {
     padding: 0;
 }
 
-h1 {
-    background-color: #fc6625;
-    color: #fff;
-    padding: 20px;
-    margin: 0;
-    text-align: center;
+.config {
+    width: 100%;
+    height: auto;
 }
 
 form {
