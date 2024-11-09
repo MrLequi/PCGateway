@@ -167,9 +167,8 @@
 
 .ruta h2 {
     padding: 0 16px;
-    font-size: 1.125rem;
-    color: #777;
     transition: color .3s ease;
+    font-size: 1.125rem;
 }
 
 .ruta h2:hover {

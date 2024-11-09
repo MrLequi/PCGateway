@@ -1,3 +1,5 @@
+USE tiendadb;
+
 INSERT INTO `banner` (`id`, `imagen`) VALUES
 (1, 'https://thotcomputacion.com.uy/wp-content/uploads/2024/09/CM_wb_2024_q3_1920x470.jpg'),
 (2, 'https://thotcomputacion.com.uy/wp-content/uploads/2024/08/banner-web-largo-5.png'),

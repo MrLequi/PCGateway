@@ -1,3 +1,7 @@
+DROP DATABASE IF EXISTS tiendadb;
+CREATE DATABASE tiendadb;
+USE tiendadb;
+
 CREATE TABLE `usuario` (
   `id_usuario` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(255) NOT NULL,
@@ -53,12 +57,13 @@ CREATE TABLE `carrito` (
 CREATE TABLE `pedido` (
   `id_pedido` int(11) NOT NULL AUTO_INCREMENT,
   `id_usuario` int(11) NOT NULL,
-  `metodo_pago` varchar(50) NOT NULL,
-  `fecha_pedido` date NOT NULL,
   `total` decimal(10,2) NOT NULL,
+  `fecha` timestamp NOT NULL DEFAULT current_timestamp(),
+  `productos` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`productos`)),
+  `estado` varchar(50) DEFAULT 'pendiente',
   PRIMARY KEY (`id_pedido`),
   KEY `id_usuario` (`id_usuario`),
-  CONSTRAINT `pedido_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE
+  CONSTRAINT `pedido_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE `detalle_carrito` (
@@ -78,16 +83,6 @@ CREATE TABLE `producto_categoria` (
   KEY `id_categoría` (`id_categoría`),
   CONSTRAINT `producto_categoria_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id_producto`) ON DELETE CASCADE,
   CONSTRAINT `producto_categoria_ibfk_2` FOREIGN KEY (`id_categoría`) REFERENCES `categoría` (`id_categoría`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-CREATE TABLE `detalle_pedido` (
-  `id_pedido` int(11) NOT NULL,
-  `id_producto` int(11) NOT NULL,
-  `cantidad` int(11) NOT NULL,
-  PRIMARY KEY (`id_pedido`, `id_producto`),
-  KEY `id_producto` (`id_producto`),
-  CONSTRAINT `detalle_pedido_ibfk_1` FOREIGN KEY (`id_pedido`) REFERENCES `pedido` (`id_pedido`) ON DELETE CASCADE,
-  CONSTRAINT `detalle_pedido_ibfk_2` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id_producto`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE `wishlist` (

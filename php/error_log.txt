@@ -341,3 +341,19 @@ Stack trace:
 [27-Oct-2024 16:44:09 Europe/Berlin] PHP Warning:  Undefined array key "new_quantity" in C:\xampp\htdocs\PCGateway\php\cart_backend.php on line 62
 [27-Oct-2024 16:44:09 Europe/Berlin] PHP Warning:  Undefined array key "cart_id" in C:\xampp\htdocs\PCGateway\php\cart_backend.php on line 63
 [28-Oct-2024 17:28:15 Europe/Berlin] PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in C:\xampp\htdocs\PCGateway\php\register_usuario.php on line 83
+[08-Nov-2024 19:54:09 Europe/Berlin] PHP Warning:  Undefined variable $pdo in C:\xampp\htdocs\PCGateway\php\finalize_order.php on line 15
+[08-Nov-2024 19:54:09 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function beginTransaction() on null in C:\xampp\htdocs\PCGateway\php\finalize_order.php:15
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\PCGateway\php\finalize_order.php on line 15
+[08-Nov-2024 20:01:24 Europe/Berlin] PHP Warning:  Undefined variable $pdo in C:\xampp\htdocs\PCGateway\php\finalize_order.php on line 24
+[08-Nov-2024 20:01:24 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\PCGateway\php\finalize_order.php:24
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\PCGateway\php\finalize_order.php on line 24
+[08-Nov-2024 20:03:57 Europe/Berlin] PHP Warning:  Undefined variable $pdo in C:\xampp\htdocs\PCGateway\php\finalize_order.php on line 26
+[08-Nov-2024 20:03:57 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\PCGateway\php\finalize_order.php:26
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\PCGateway\php\finalize_order.php on line 26
+[08-Nov-2024 20:26:09 Europe/Berlin] PHP Warning:  Undefined array key "id" in C:\xampp\htdocs\PCGateway\php\finalize_order.php on line 38

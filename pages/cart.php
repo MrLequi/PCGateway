@@ -19,7 +19,7 @@
         <div class="ruta">
             <h2 class="ibm-plex-sans-bold" style="color: #fc6625;">Cart</h2>
             <i class='bx bx-chevron-right'></i>
-            <h2 class="ibm-plex-sans-bold">Checkout</h2>
+            <h2 class="ibm-plex-sans-bold"><a style="color: #777" href="/pcgateway/pages/checkout.php">Checkout</a></h2>
             <i class='bx bx-chevron-right'></i>
             <h2 class="ibm-plex-sans-bold" style="color: #777; cursor: default;">Finish purchase</h2>
         </div>
