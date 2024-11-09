@@ -1,3 +1,7 @@
+DROP DATABASE IF EXISTS tiendadb;
+CREATE DATABASE tiendadb;
+USE tiendadb;
+
 CREATE TABLE `usuario` (
   `id_usuario` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(255) NOT NULL,
