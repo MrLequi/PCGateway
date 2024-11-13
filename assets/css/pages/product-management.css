@@ -7,6 +7,34 @@ body {
     padding: 0;
 }
 
+.main-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.pagination button {
+    background-color: #fc6625;
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    margin: 0 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.pagination button:disabled {
+    background-color: #ccc;
+    cursor: default;
+}
+
 .categorias-container {
     text-align: center;
     margin-bottom: 20px;
@@ -58,12 +86,13 @@ body {
 
 form {
     max-width: 600px;
-    margin: 0 auto;
     background: #fff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
+    margin: 0 auto;
+    width: 100%;
 }
 
 form div {

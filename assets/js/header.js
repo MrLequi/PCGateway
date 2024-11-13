@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (data.loggedIn) {
                 document.getElementById('user-info').innerHTML = `
                     <a href="/pcgateway/pages/perfil.php" id="profile-link">
-                        <p class="ibm-plex-sans-regular">${data.userName}</p>
+                        <p class="ibm-plex-sans-regular">${data.userDisplayName}</p>
                     </a>
                     | 
                     <a href="#" id="logout-link">

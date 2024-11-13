@@ -7,18 +7,9 @@ function fetchCategorias() {
     fetch('/pcgateway/php/product-management.php?action=getCategorias')
         .then(response => response.json())
         .then(data => {
-            const categoriasDiv = document.getElementById('categorias');
             const categoriaSelect = document.getElementById('categoria');
-            categoriasDiv.innerHTML = '';
-            categoriaSelect.innerHTML = '';
+            categoriaSelect.innerHTML = ''; // Limpia opciones previas
             data.forEach(categoria => {
-                // Botones de categorías
-                const button = document.createElement('button');
-                button.textContent = categoria.nombre;
-                button.onclick = () => fetchProductos(categoria.id_categoría);
-                categoriasDiv.appendChild(button);
-
-                // Opciones del select de categorías
                 const option = document.createElement('option');
                 option.value = categoria.id_categoría;
                 option.textContent = categoria.nombre;
@@ -30,47 +21,128 @@ function fetchCategorias() {
 
 function fetchProductos(categoriaId) {
     fetch(`/pcgateway/php/product-management.php?action=getProductos&categoriaId=${categoriaId}`)
-        .then(response => response.json())
-        .then(data => {
-            const productosDiv = document.getElementById('productos');
-            productosDiv.innerHTML = '';
-
-            if (data.length > 0) {
-                const table = document.createElement('table');
-                table.innerHTML = `
-                    <tr>
-                        <th>Imagen</th>
-                        <th>Nombre</th>
-                        <th>Descripción</th>
-                        <th>Precio</th>
-                        <th>Stock</th>
-                        <th>Categoría</th>
-                        <th>Acciones</th>
-                    </tr>
-                `;
-                data.forEach(producto => {
-                    const row = document.createElement('tr');
-                    row.innerHTML = `
-                        <td><img src="${producto.imagen}" alt="${producto.nombre}" style="width: 100px; height: auto;"></td>
-                        <td>${producto.nombre}</td>
-                        <td>${producto.descripcion}</td>
-                        <td>${producto.precio}</td>
-                        <td>${producto.stock}</td>
-                        <td>${producto.categoria}</td>
-                        <td>
-                            <button onclick="editProducto(${producto.id_producto})">Editar</button>
-                            <button onclick="deleteProducto(${producto.id_producto})">Eliminar</button>
-                        </td>
-                    `;
-                    table.appendChild(row);
-                });
-                productosDiv.appendChild(table);
-            } else {
-                productosDiv.innerHTML = 'No hay productos en esta categoría.';
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error en la respuesta del servidor');
             }
+            return response.json();
+        })
+        .then(data => {
+            if (!data || !data.productos || !Array.isArray(data.productos)) {
+                console.error('Error: Datos inesperados recibidos', data);
+                return;
+            }
+            displayProducts(data.productos);
         })
         .catch(error => console.error('Error:', error));
 }
+
+function searchProduct() {
+    const form = document.getElementById("productoForm");
+    const params = new URLSearchParams(new FormData(form)).toString();
+    
+    fetch(`/pcgateway/php/product-management.php?action=searchProduct&${params}`)
+        .then(response => response.json())
+        .then(data => {
+            if (!data || !data.productos || !Array.isArray(data.productos)) {
+                console.error('Error: Datos inesperados recibidos', data);
+                return;
+            }
+            displayProducts(data.productos);
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+function displayProducts(productos) {
+    const productosDiv = document.getElementById('productos');
+    productosDiv.innerHTML = '';
+    
+    if (productos.length > 0) {
+        const table = document.createElement('table');
+        table.innerHTML = `
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th>Category</th>
+                <th>Actions</th>
+            </tr>
+        `;
+        productos.forEach(producto => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td><img src="${producto.imagen}" alt="${producto.nombre}" style="width: 100px; height: auto;"></td>
+                <td>${producto.nombre}</td>
+                <td>${producto.descripcion}</td>
+                <td>${producto.precio}</td>
+                <td>${producto.stock}</td>
+                <td>${producto.categoria}</td>
+                <td>
+                    <button onclick="editProducto(${producto.id_producto})">Edit</button>
+                    <button onclick="deleteProducto(${producto.id_producto})">Remove</button>
+                </td>
+            `;
+            table.appendChild(row);
+        });
+        productosDiv.appendChild(table);
+    } else {
+        productosDiv.innerHTML = 'No products found.';
+    }
+}
+
+function renderPagination(totalItems, categoriaId) {
+    const paginationDiv = document.createElement('div');
+    paginationDiv.classList.add('pagination');
+
+    const paginationContainer = document.getElementById('pagination');
+    paginationContainer.innerHTML = ''; // Limpia antes de agregar
+    paginationContainer.appendChild(paginationDiv);
+
+    const totalPages = Math.ceil(totalItems / limit);
+    paginationDiv.innerHTML = '';
+
+    // Botón de página anterior
+    const prevButton = document.createElement('button');
+    prevButton.innerHTML = "<i class='bx bx-chevron-left'></i>";
+    prevButton.disabled = currentPage === 1;
+    prevButton.onclick = () => {
+        if (currentPage > 1) {
+            currentPage--;
+            fetchProductos(categoriaId, currentPage);
+        }
+    };
+    paginationDiv.appendChild(prevButton);
+
+    // Botones de números de página
+    for (let i = 1; i <= totalPages; i++) {
+        const pageButton = document.createElement('button');
+        pageButton.textContent = i;
+        pageButton.disabled = i === currentPage;
+        pageButton.onclick = () => {
+            currentPage = i;
+            fetchProductos(categoriaId, i);
+        };
+        paginationDiv.appendChild(pageButton);
+    }
+
+    // Botón de página siguiente
+    const nextButton = document.createElement('button');
+    nextButton.innerHTML = "<i class='bx bx-chevron-right'></i>";
+    nextButton.disabled = currentPage === totalPages;
+    nextButton.onclick = () => {
+        if (currentPage < totalPages) {
+            currentPage++;
+            fetchProductos(categoriaId, currentPage);
+        }
+    };
+    paginationDiv.appendChild(nextButton);
+
+    const productosDiv = document.getElementById('productos');
+    productosDiv.appendChild(paginationDiv);
+}
+
 
 function editProducto(id) {
     fetch(`/pcgateway/php/product-management.php?action=getProductoById&id_producto=${id}`)
@@ -104,42 +176,68 @@ function setupForm() {
         };
 
         const action = id_producto ? 'updateProduct' : 'addProduct';
-        fetch(`/pcgateway/php/product-management.php?action=${action}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                alert('Producto guardado exitosamente.');
-                fetchProductos(data.categoria);
-            } else {
-                console.error('Error:', data.error);
+
+        Swal.fire({
+            title: "Do you want to save the changes?",
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: "Save",
+            denyButtonText: `Don't save`
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`/pcgateway/php/product-management.php?action=${action}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        Swal.fire("Saved!", "", "success");
+                        fetchProductos(data.categoria);
+                    } else {
+                        console.error('Error:', data.error);
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+            } else if (result.isDenied) {
+                Swal.fire("Changes are not saved", "", "info");
             }
-        })
-        .catch(error => console.error('Error:', error));
+        });
     });
 }
 
 function deleteProducto(id) {
-    fetch('/pcgateway/php/product-management.php?action=deleteProduct', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ id }),
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            alert('Producto eliminado exitosamente.');
-            fetchProductos(document.getElementById('categoria').value);
+    Swal.fire({
+        title: "Are you sure you want to delete this product?",
+        text: "This action cannot be undone!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, keep it'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            fetch('/pcgateway/php/product-management.php?action=deleteProduct', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    Swal.fire("Deleted!", "The product has been deleted.", "success");
+                    fetchProductos(document.getElementById('categoria').value);
+                } else {
+                    console.error('Error deleting product:', data.error);
+                }
+            })
+            .catch(error => console.error('Error:', error));
         } else {
-            console.error('Error deleting product:', data.error);
+            Swal.fire("Product not deleted", "", "info");
         }
-    })
-    .catch(error => console.error('Error:', error));
+    });
 }

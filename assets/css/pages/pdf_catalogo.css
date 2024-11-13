@@ -9,7 +9,7 @@ body {
 /* Contenedor principal */
 .container {
     max-width: 600px;
-    margin: 5% auto;
+    margin: auto;
     background-color: #fff;
     padding: 30px;
     border-radius: 10px;

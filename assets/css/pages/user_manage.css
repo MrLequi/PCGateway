@@ -73,3 +73,99 @@ td select {
 tr:hover td {
     background-color: #f1f1f1;
 }
+
+/* Estilos generales para el popup */
+#addUserPopup {
+    display: flex; /* Usamos flexbox para centrar el contenido */
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+    z-index: 9999;
+}
+
+/* Contenedor del formulario del popup */
+#addUserPopup form {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box; /* Asegura que el padding no afecte el tamaño del form */
+}
+
+/* Título del formulario */
+#addUserPopup form h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+/* Estilos para los campos de entrada */
+#addUserPopup form input[type="text"],
+#addUserPopup form input[type="email"],
+#addUserPopup form input[type="password"],
+#addUserPopup form select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+/* Estilos para el botón de enviar */
+#addUserPopup form button[type="button"] {
+    width: 100%;
+    padding: 12px;
+    margin-top: 12px;
+    background-color: #fc6625;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#addUserPopup form button[type="button"]:hover {
+    background-color: #e24c1a;
+}
+
+/* Estilos para el botón de cancelar */
+#addUserPopup form button[type="button"]:nth-child(2) {
+    background-color: #ccc;
+    color: #333;
+}
+
+#addUserPopup form button[type="button"]:nth-child(2):hover {
+    background-color: #999;
+}
+
+/* Estilos para los botones de cerrar (fuera del formulario) */
+#addUserPopup button {
+    background: none;
+    color: #fc6625;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+#addUserPopup button:hover {
+    color: #e24c1a;
+}
+
+/* Responsividad: ajustamos el tamaño del popup en pantallas pequeñas */
+@media (max-width: 768px) {
+    #addUserPopup form {
+        width: 90%;
+        padding: 20px;
+    }
+}

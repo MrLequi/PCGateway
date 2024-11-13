@@ -357,3 +357,15 @@ Stack trace:
 #0 {main}
   thrown in C:\xampp\htdocs\PCGateway\php\finalize_order.php on line 26
 [08-Nov-2024 20:26:09 Europe/Berlin] PHP Warning:  Undefined array key "id" in C:\xampp\htdocs\PCGateway\php\finalize_order.php on line 38
+[12-Nov-2024 01:05:41 Europe/Berlin] PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in C:\xampp\htdocs\PCGateway\php\register_usuario.php on line 79
+[12-Nov-2024 01:17:37 Europe/Berlin] PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in C:\xampp\htdocs\PCGateway\php\register_usuario.php on line 79
+[12-Nov-2024 01:19:22 Europe/Berlin] PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in C:\xampp\htdocs\PCGateway\php\register_usuario.php on line 79
+[12-Nov-2024 01:22:07 Europe/Berlin] PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in C:\xampp\htdocs\PCGateway\php\register_usuario.php on line 79
+[12-Nov-2024 01:24:24 Europe/Berlin] PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in C:\xampp\htdocs\PCGateway\php\register_usuario.php on line 79
+[12-Nov-2024 01:32:55 Europe/Berlin] PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in C:\xampp\htdocs\PCGateway\php\register_usuario.php on line 79
+[12-Nov-2024 01:38:00 Europe/Berlin] PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in C:\xampp\htdocs\PCGateway\php\register_usuario.php on line 79
+[12-Nov-2024 23:23:06 Europe/Berlin] PHP Warning:  Undefined variable $totalProductos in C:\xampp\htdocs\PCGateway\php\product-management.php on line 52
+[12-Nov-2024 23:24:05 Europe/Berlin] PHP Warning:  Undefined variable $totalProductos in C:\xampp\htdocs\PCGateway\php\product-management.php on line 52
+[12-Nov-2024 23:24:08 Europe/Berlin] PHP Warning:  Undefined variable $totalProductos in C:\xampp\htdocs\PCGateway\php\product-management.php on line 52
+[12-Nov-2024 23:26:17 Europe/Berlin] PHP Warning:  Undefined variable $totalProductos in C:\xampp\htdocs\PCGateway\php\product-management.php on line 52
+[13-Nov-2024 15:55:46 Europe/Berlin] PHP Warning:  Undefined array key "rol" in C:\xampp\htdocs\PCGateway\php\user_manage.php on line 7

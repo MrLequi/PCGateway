@@ -1,13 +1,16 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión de Productos</title>
+    <title>Product Management</title>
     <link rel="stylesheet" href="/pcgateway/assets/css/pages/product-management.css">
     <link rel="stylesheet" href="/pcgateway/assets/css/pages/admin-page.css">
     <link rel="stylesheet" href="/pcgateway/assets/css/layout.css">
     <link rel="stylesheet" href="/pcgateway/assets/css/typography.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.14.5/dist/sweetalert2.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.14.5/dist/sweetalert2.min.css" rel="stylesheet">
+    <script src="../assets/js/admin-page.js" defer></script>
 </head>
 <body>
     <main class="manage">
@@ -26,39 +29,41 @@
         </section>
 
         <div class="main-content">
-            <!-- Botones de categorías -->
-            <div id="categorias" class="categorias-container"></div>
-
             <!-- Formulario para agregar o actualizar productos -->
             <form id="productoForm">
-                <input type="hidden" id="id_producto" name="id_producto"> <!-- Campo oculto para el ID del producto -->
+                <input type="hidden" id="id_producto" name="id_producto">
+                
+                <!-- Campos de entrada -->
                 <div>
-                    <label for="imagen_url">URL de Imagen:</label>
-                    <input type="text" id="imagen_url" name="imagen_url" required>
+                    <label for="imagen_url">Image URL:</label>
+                    <input type="text" id="imagen_url" name="imagen_url">
                 </div>        
                 <div>
-                    <label for="nombre">Nombre:</label>
-                    <input type="text" id="nombre" name="nombre" required>
+                    <label for="nombre">Name:</label>
+                    <input type="text" id="nombre" name="nombre">
                 </div>
                 <div>
-                    <label for="descripcion">Descripción:</label>
-                    <textarea id="descripcion" name="descripcion" required></textarea>
+                    <label for="descripcion">Description:</label>
+                    <textarea id="descripcion" name="descripcion"></textarea>
                 </div>
                 <div>
-                    <label for="precio">Precio:</label>
-                    <input type="number" id="precio" name="precio" step="0.01" required>
+                    <label for="precio">Price:</label>
+                    <input type="number" id="precio" name="precio" step="0.01">
                 </div>
                 <div>
                     <label for="stock">Stock:</label>
-                    <input type="number" id="stock" name="stock" required>
+                    <input type="number" id="stock" name="stock">
                 </div>
                 <div>
-                    <label for="categoria">Categoría:</label>
-                    <select id="categoria" name="categoria" required>
-                        
+                    <label for="categoria">Category:</label>
+                    <select id="categoria" name="categoria">
+                        <!-- Opciones de categoría -->
                     </select>
                 </div>
-                <button type="submit">Guardar Producto</button>
+                
+                <!-- Botones de guardar y buscar -->
+                <button type="button" onclick="saveProduct()">Save Product</button>
+                <button type="button" onclick="searchProduct()">Search Product</button>
             </form>
 
             <!-- Tabla de productos -->

@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const quantityElement = document.getElementById('productQuantity');
 
-    // Función para mostrar mensajes usando SweetAlert
     function showMessage(message, isSuccess) {
         const Toast = Swal.mixin({
             toast: true,

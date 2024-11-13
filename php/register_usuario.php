@@ -1,38 +1,13 @@
 <?php
 header('Content-Type: application/json');
 
-if (isset($_POST['nombre']) && isset($_POST['email']) && isset($_POST['pass'])) {
+if (isset($_POST['nombre']) && isset($_POST['apellidos']) && isset($_POST['email']) && isset($_POST['pass']) && isset($_POST['rol'])) {
     $nombre = $_POST['nombre'];
+    $apellidos = $_POST['apellidos'];
     $email = $_POST['email'];
-    $pass = $_POST['pass'];
-
-    // Validación de la contraseña
-    if (strlen($pass) < 8) {
-        echo json_encode(['success' => false, 'error' => 'La contraseña debe tener al menos 8 caracteres.']);
-        exit;
-    }
-
-    if (!preg_match('/[A-Z]/', $pass)) {
-        echo json_encode(['success' => false, 'error' => 'La contraseña debe contener al menos una letra mayúscula.']);
-        exit;
-    }
-
-    if (!preg_match('/[a-z]/', $pass)) {
-        echo json_encode(['success' => false, 'error' => 'La contraseña debe contener al menos una letra minúscula.']);
-        exit;
-    }
-
-    if (!preg_match('/[0-9]/', $pass)) {
-        echo json_encode(['success' => false, 'error' => 'La contraseña debe contener al menos un número.']);
-        exit;
-    }
-
-    if (!preg_match('/[\W_]/', $pass)) {
-        echo json_encode(['success' => false, 'error' => 'La contraseña debe contener al menos un carácter especial.']);
-        exit;
-    }
-
-    $pass = password_hash($pass, PASSWORD_ARGON2I);
+    $pass = password_hash($_POST['pass'], PASSWORD_ARGON2I);
+    $rol = $_POST['rol'];
+    $activo = $_POST['activo'] ?? 1;
 
     try {
         include 'connection.php';
@@ -48,10 +23,13 @@ if (isset($_POST['nombre']) && isset($_POST['email']) && isset($_POST['pass'])) 
         }
 
         // Insertar nuevo usuario
-        $stmt = $conn->prepare('INSERT INTO usuario (nombre, email, password) VALUES (:nombre, :email, :password)');
+        $stmt = $conn->prepare('INSERT INTO usuario (nombre, apellidos, email, rol, password, activo) VALUES (:nombre, :apellidos, :email, :rol, :password, :activo)');
         $stmt->bindParam(':nombre', $nombre);
+        $stmt->bindParam(':apellidos', $apellidos);
         $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':rol', $rol);
         $stmt->bindParam(':password', $pass);
+        $stmt->bindParam(':activo', $activo, PDO::PARAM_INT);
 
         if ($stmt->execute()) {
             echo json_encode(['success' => true]);
@@ -59,9 +37,9 @@ if (isset($_POST['nombre']) && isset($_POST['email']) && isset($_POST['pass'])) 
             echo json_encode(['success' => false, 'error' => 'Error al ejecutar la consulta']);
         }
     } catch (PDOException $e) {
-        echo json_encode(['error' => $e->getMessage()]);
+        echo json_encode(['success' => false, 'error' => $e->getMessage()]);
     }
 } else {
-    echo json_encode(['error' => 'Faltan parámetros']);
+    echo json_encode(['success' => false, 'error' => 'Faltan parámetros']);
 }
 ?>

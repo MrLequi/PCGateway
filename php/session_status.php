@@ -8,7 +8,8 @@ $response = [
     'userId' => $_SESSION['user_id'] ?? '',
     'userEmail' => $_SESSION['user_email'] ?? '',
     'userApellidos' => $_SESSION['user_apellidos'] ?? '',
-    'userDisplayName' => $_SESSION['user_display_name'] ?? ''
+    'userDisplayName' => $_SESSION['user_display_name'] ?? '',
+    'userRole' => $_SESSION['user_role'] ?? ''
 ];
 
 echo json_encode($response);

@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generar Catálogo PDF</title>
+    <title>Generate PDF Catalog</title>
     <link rel="stylesheet" href="/pcgateway/assets/css/pages/pdf_catalogo.css">
     <link rel="stylesheet" href="/pcgateway/assets/css/pages/admin-page.css">
     <link rel="stylesheet" href="/pcgateway/assets/css/layout.css">
     <link rel="stylesheet" href="/pcgateway/assets/css/typography.css">
+    <script src="../assets/js/admin-page.js" defer></script>
 </head>
 <body>
     <main class="manage">
@@ -25,11 +26,11 @@
             </ul>
         </section>
         <div class="container">
-            <h1>Generar Catálogo de Productos</h1>
+            <h1>Generate Product Catalog</h1>
             <form id="catalogForm">
-                <label for="categories">Selecciona las categorías:</label>
+                <label for="categories">Select the categories:</label>
                 <div id="categoryList"></div>
-                <button type="submit" id="generatePdfBtn">Generar PDF</button>
+                <button type="submit" id="generatePdfBtn">Generate PDF</button>
             </form>
             <div id="message"></div>
         </div>

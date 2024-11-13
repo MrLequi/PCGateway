@@ -57,6 +57,24 @@ function register() {
     }
 }
 
+function showMessage(message, isSuccess) {
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        }
+      });
+      Toast.fire({
+        icon: isSuccess ? "success" : "error",
+        title: message
+      });
+}
+
 function validateName(name) {
     const namePattern = /^[a-zA-Z\s]+$/;
     return namePattern.test(name);
@@ -68,7 +86,8 @@ function validateEmail(email) {
 }
 
 function validatePassword(password) {
-    return password.length >= 8;
+    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    return passwordPattern.test(password);
 }
 
 function loginVerify() {
@@ -87,7 +106,11 @@ function loginVerify() {
             if (data.success) {
                 window.location.href = '/pcgateway/index.php';
             } else {
-                alert('Usuario o contraseña incorrectos');
+                Swal.fire({
+                    title: 'Error',
+                    text: 'Usuario o contraseña incorrectos',
+                    icon: 'error'
+                });
             }
         })
         .catch(error => {
@@ -99,20 +122,26 @@ function registerUser() {
     const nombre = document.getElementById('register-nombre').value;
     const email = document.getElementById('register-email').value;
     const pass = document.getElementById('register-pass').value;
+    const passRepeat = document.getElementById('register-pass-repeat').value;
 
     // Validaciones de campo
     if (!validateName(nombre)) {
-        alert('Nombre inválido. Solo se permiten letras y espacios.');
+        showMessage('Invalid name. Only letters and spaces are allowed.', false);
         return;
     }
 
     if (!validateEmail(email)) {
-        alert('Correo electrónico inválido.');
+        showMessage('Invalid email.', false);
         return;
     }
 
     if (!validatePassword(pass)) {
-        alert('La contraseña debe tener al menos 8 caracteres.');
+        showMessage('The password must be at least 8 characters and contain uppercase and lowercase letters, numbers and some special characters.', false);
+        return;
+    }
+
+    if (pass !== passRepeat) {
+        showMessage('Passwords do not match.', false);
         return;
     }
 
@@ -121,23 +150,30 @@ function registerUser() {
     datos.append('email', email);
     datos.append('pass', pass);
 
-    // Mostrar mensaje de procesamiento
-    alert('Procesando registro. Esto puede tardar unos momentos...');
-
-    // Enviar la solicitud de registro
     fetch('/pcgateway/php/register_usuario.php', { method: 'POST', body: datos })
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                alert('Registro exitoso. Se ha enviado un correo de confirmación.');
+                Swal.fire({
+                    title: 'Registro exitoso',
+                    text: 'Tu cuenta ha sido creada con éxito.',
+                    icon: 'success'
+                });
                 iniciarSesion();  // Cambia la vista para el login
             } else {
-                // Mostrar mensaje de error si el correo ya está registrado o hay otro problema
-                alert(data.error || 'Error en el registro');
+                Swal.fire({
+                    title: 'Error',
+                    text: data.error || 'Error en el registro',
+                    icon: 'error'
+                });
             }
         })
         .catch(error => {
             console.error('Error:', error);
-            alert('Hubo un error en el registro. Por favor, inténtalo nuevamente.');
+            Swal.fire({
+                title: 'Error',
+                text: 'Hubo un error en el registro. Por favor, inténtalo nuevamente.',
+                icon: 'error'
+            });
         });
 }

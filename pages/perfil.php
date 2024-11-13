@@ -27,15 +27,6 @@
                     <li class="ibm-plex-sans-medium"><a href="">Wishlist</a></li>
                 </ul>
             </div>
-            <div class="manage">
-                <h5 class="poppins-bold">PCGATEWAY MANAGE</h5>
-                <ul>
-                    <li class="settings ibm-plex-sans-medium"><a href="configuracion.html">Settings</a></li>
-                    <li class="products ibm-plex-sans-medium"><a href="product-management.html">Products</a></li>
-                    <li class="catalog ibm-plex-sans-medium"><a href="pdf_catalogo.html">Catalog</a></li>
-                    <li class="user_manage ibm-plex-sans-medium"><a href="user_manage.html">User manage</a></li>
-                </ul>
-            </div>
         </section>
         <section class="details">
             <div class="icon_text">
@@ -77,10 +68,6 @@
 
                     <!-- Botón de Guardar cambios -->
                     <button class="poppins-bold" type="submit">SAVE CHANGES</button>
-
-                    <!-- Div para mostrar mensajes de éxito o error -->
-                    <div id="message" class="message" style="display: none;"></div>
-
                 </form>
             </div>
         </section>

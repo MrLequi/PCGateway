@@ -1,3 +1,4 @@
+// Función para manejar el inicio de sesión de administrador
 function adminLogin() {
     const email = document.getElementById('admin-email').value;
     const pass = document.getElementById('admin-pass').value;

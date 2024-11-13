@@ -16,7 +16,7 @@
     <?php include 'includes/header.php';?>
 
     <main>
-        <div class="add_banner">
+        <div class="add_banner loading">
             <div class="banner-slide"></div>
         </div>
 

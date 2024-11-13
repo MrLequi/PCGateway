@@ -25,7 +25,7 @@ function fetchBanners() {
                 const bannerDiv = document.createElement('div');
                 bannerDiv.innerHTML = `
                     <img src="${banner.imagen}" alt="Banner" style="width: 200px;">
-                    <button onclick="deleteBanner(${banner.id})">Eliminar</button>
+                    <button onclick="confirmDeleteBanner(${banner.id})">Remove</button>
                 `;
                 bannersDiv.appendChild(bannerDiv);
             });
@@ -33,28 +33,20 @@ function fetchBanners() {
         .catch(error => console.error('Error:', error));
 }
 
-function addBanner() {
-    const bannerUrl = document.getElementById('banner_url').value;
-    if (bannerUrl) {
-        fetch('/pcgateway/php/configuracion.php?action=addBanner', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ imagen: bannerUrl }),
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                fetchBanners();
-            } else {
-                console.error('Error al agregar el banner:', data.error);
-            }
-        })
-        .catch(error => console.error('Error:', error));
-    } else {
-        alert('Por favor, ingresa una URL de imagen.');
-    }
+function confirmDeleteBanner(id) {
+    Swal.fire({
+        title: "Do you want to remove this banner?",
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: "Yes, remove",
+        denyButtonText: `No, keep it`
+    }).then((result) => {
+        if (result.isConfirmed) {
+            deleteBanner(id);
+        } else if (result.isDenied) {
+            Swal.fire("The banner was not removed", "", "info");
+        }
+    });
 }
 
 function deleteBanner(id) {
@@ -63,12 +55,13 @@ function deleteBanner(id) {
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ id }),
+        body: JSON.stringify({ id })
     })
     .then(response => response.json())
     .then(data => {
         if (data.success) {
             fetchBanners();
+            Swal.fire('Removed!', 'The banner has been removed.', 'success');
         } else {
             console.error('Error deleting banner:', data.error);
         }
@@ -76,29 +69,79 @@ function deleteBanner(id) {
     .catch(error => console.error('Error:', error));
 }
 
+function addBanner() {
+    const bannerUrl = document.getElementById('banner_url').value;
+    if (bannerUrl) {
+        Swal.fire({
+            title: "Do you want to add this banner?",
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: "Add",
+            denyButtonText: `Don't add`
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch('/pcgateway/php/configuracion.php?action=addBanner', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ imagen: bannerUrl })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        fetchBanners();
+                        Swal.fire('Added!', 'The banner has been added.', 'success');
+                    } else {
+                        console.error('Error al agregar el banner:', data.error);
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+            } else if (result.isDenied) {
+                Swal.fire("The banner was not added", "", "info");
+            }
+        });
+    } else {
+        alert('Por favor, ingresa una URL de imagen.');
+    }
+}
+
 document.getElementById('configForm').addEventListener('submit', function (event) {
     event.preventDefault();
-    const formData = new FormData(this);
-    const data = {
-        nombre_empresa: formData.get('nombre_empresa'),
-        telefono: formData.get('telefono'),
-        email: formData.get('email'),
-        direccion: formData.get('direccion'),
-    };
-    fetch('/pcgateway/php/configuracion.php?action=updateConfig', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            alert('Configuración guardada exitosamente.');
-        } else {
-            console.error('Error saving configuration:', data.error);
+    Swal.fire({
+        title: "Do you want to save the changes?",
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: "Save",
+        denyButtonText: `Don't save`
+    }).then((result) => {
+        if (result.isConfirmed) {
+            const formData = new FormData(this);
+            const data = {
+                nombre_empresa: formData.get('nombre_empresa'),
+                telefono: formData.get('telefono'),
+                email: formData.get('email'),
+                direccion: formData.get('direccion'),
+            };
+
+            fetch('/pcgateway/php/configuracion.php?action=updateConfig', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    Swal.fire('Saved!', 'The configuration has been saved.', 'success');
+                } else {
+                    console.error('Error saving configuration:', data.error);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        } else if (result.isDenied) {
+            Swal.fire("Changes are not saved", "", "info");
         }
-    })
-    .catch(error => console.error('Error:', error));
+    });
 });

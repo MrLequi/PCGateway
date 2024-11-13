@@ -24,7 +24,7 @@ if (isset($_POST['email']) && isset($_POST['pass'])) {
             $_SESSION['user_email'] = $result['email'];
             $_SESSION['user_role'] = $result['rol'];
             $_SESSION['user_apellidos'] = $result['apellidos'];
-            $_SESSION['user_display_name'] = $result['display_name'];
+            $_SESSION['user_display_name'] = $result['nombre'];
             
             // Respuesta de éxito
             echo json_encode(['success' => true]);

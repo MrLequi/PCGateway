@@ -39,7 +39,10 @@
                     <p class="ibm-plex-sans-bold">Total</p>
                     <p class="ibm-plex-sans-bold">US$0.00</p>
                 </div>
-                <button><p class="poppins-bold">FINISH PURCHASE</p><i class='bx bx-right-arrow-alt' style="font-size: 1.5rem;"></i></button>
+                <button onclick="window.location.href='/pcgateway/pages/checkout.php'">
+                    <p class="poppins-bold">FINISH PURCHASE</p>
+                    <i class='bx bx-right-arrow-alt' style="font-size: 1.5rem;"></i>
+                </button>
             </div>
         </section>
     </main>
