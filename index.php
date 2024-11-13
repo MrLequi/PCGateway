@@ -72,7 +72,7 @@
         </section>
 
         <section class="prominent">
-            <h2 class="ibm-plex-sans-bold">Destacados</h2>
+            <h2 class="ibm-plex-sans-bold">Featured</h2>
             <div class="product_gallery">
                 <div class="left_row">
                     <i class='bx bx-chevron-left'></i>
@@ -80,28 +80,28 @@
                 <div class="product">
                     <a href="#">
                         <img src="/pcgateway/assets/images/items/item1.jpg" alt="">
-                        <p class="name ibm-plex-sans-semibold">Equipo AMD Athlon 3000g - 8gb - SSD - Radeon Graphics</p>
+                        <p class="name ibm-plex-sans-semibold">AMD Athlon 3000g - 8gb - SSD - Radeon Graphics</p>
                     </a>
                     <p class="price ibm-plex-sans-medium">US$299.00</p>
                 </div>
                 <div class="product">
                     <a href="#">
                         <img src="/pcgateway/assets/images/items/item2.jpg" alt="">
-                        <p class="name ibm-plex-sans-semibold">Equipo AMD Athlon 3000g - 8gb - SSD - Radeon Graphics</p>
+                        <p class="name ibm-plex-sans-semibold">AMD Athlon 3000g - 8gb - SSD - Radeon Graphics</p>
                     </a>
                     <p class="price ibm-plex-sans-medium">US$299.00</p>
                 </div>
                 <div class="product">
                     <a href="#">
                         <img src="/pcgateway/assets/images/items/item3.jpg" alt="">
-                        <p class="name ibm-plex-sans-semibold">Equipo AMD Athlon 3000g - 8gb - SSD - Radeon Graphics</p>
+                        <p class="name ibm-plex-sans-semibold">AMD Athlon 3000g - 8gb - SSD - Radeon Graphics</p>
                     </a>
                     <p class="price ibm-plex-sans-medium">US$299.00</p>
                 </div>
                 <div class="product">
                     <a href="#">
                         <img src="/pcgateway/assets/images/items/item4.jpg" alt="">
-                        <p class="name ibm-plex-sans-semibold">Equipo AMD Athlon 3000g - 8gb - SSD - Radeon Graphics</p>
+                        <p class="name ibm-plex-sans-semibold">AMD Athlon 3000g - 8gb - SSD - Radeon Graphics</p>
                     </a>
                     <p class="price ibm-plex-sans-medium">US$299.00</p>
                 </div>
@@ -124,28 +124,28 @@
                 <div class="product">
                     <a href="#">
                         <img src="/pcgateway/assets/images/items/item1.jpg" alt="">
-                        <p class="name ibm-plex-sans-semibold">Equipo AMD Athlon 3000g - 8gb - SSD - Radeon Graphics</p>
+                        <p class="name ibm-plex-sans-semibold">AMD Athlon 3000g - 8gb - SSD - Radeon Graphics</p>
                     </a>
                     <p class="price ibm-plex-sans-medium">US$299.00</p>
                 </div>
                 <div class="product">
                     <a href="#">
                         <img src="/pcgateway/assets/images/items/item2.jpg" alt="">
-                        <p class="name ibm-plex-sans-semibold">Equipo AMD Athlon 3000g - 8gb - SSD - Radeon Graphics</p>
+                        <p class="name ibm-plex-sans-semibold">AMD Athlon 3000g - 8gb - SSD - Radeon Graphics</p>
                     </a>
                     <p class="price ibm-plex-sans-medium">US$299.00</p>
                 </div>
                 <div class="product">
                     <a href="#">
                         <img src="/pcgateway/assets/images/items/item3.jpg" alt="">
-                        <p class="name ibm-plex-sans-semibold">Equipo AMD Athlon 3000g - 8gb - SSD - Radeon Graphics</p>
+                        <p class="name ibm-plex-sans-semibold">AMD Athlon 3000g - 8gb - SSD - Radeon Graphics</p>
                     </a>
                     <p class="price ibm-plex-sans-medium">US$299.00</p>
                 </div>
                 <div class="product">
                     <a href="#">
                         <img src="/pcgateway/assets/images/items/item4.jpg" alt="">
-                        <p class="name ibm-plex-sans-semibold">Equipo AMD Athlon 3000g - 8gb - SSD - Radeon Graphics</p>
+                        <p class="name ibm-plex-sans-semibold">AMD Athlon 3000g - 8gb - SSD - Radeon Graphics</p>
                     </a>
                     <p class="price ibm-plex-sans-medium">US$299.00</p>
                 </div>
@@ -157,10 +157,10 @@
 
         <section class="offers_and_news">
             <i class='bx bx-envelope'></i>
-            <p class="ibm-plex-sans-bold">Recive our offers and news</p>
+            <p class="ibm-plex-sans-bold">Receive our offers and news</p>
             <form action="">
                 <input class="poppins-light" type="text" placeholder="you@example.com">
-                <button><p class="poppins-light">SUSCRIBE</p></button>
+                <button><p class="poppins-light">SUBSCRIBE</p></button>
             </form>
         </section>
     </main>

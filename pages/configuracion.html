@@ -18,7 +18,7 @@
                 <li class="poppins-medium"><a href="/pcgateway/pages/admin-page.html">DESKTOP</a></li>
                 <li class="poppins-medium"><a href="/pcgateway/pages/product-management.html">PRODUCTS</a></li>
                 <li class="poppins-medium"><a href="/pcgateway/pages/pdf_catalogo.html">CATALOG TO PDF</a></li>
-                <li class="poppins-medium"><a href="/pcgateway/pages/user_manage.html">USER MANAGE</a></li>
+                <li class="poppins-medium"><a href="/pcgateway/pages/user_manage.html">MANAGE USERS</a></li>
                 <li class="poppins-medium selected">SETTINGS</li>
                 <li class="poppins-medium"><a href="/pcgateway/pages/dashboard.html">DASHBOARD</a></li>
                 <li class="poppins-medium"><a href="/pcgateway/pages/promociones.html">PROMO</a></li>
@@ -32,11 +32,11 @@
             <!-- Formulario para actualizar configuración -->
             <form id="configForm">
                 <div>
-                    <label for="nombre_empresa">Nombre de la Empresa:</label>
+                    <label for="nombre_empresa">Company Name:</label>
                     <input type="text" id="nombre_empresa" name="nombre_empresa">
                 </div>
                 <div>
-                    <label for="telefono">Teléfono:</label>
+                    <label for="telefono">Phone:</label>
                     <input type="text" id="telefono" name="telefono">
                 </div>
                 <div>
@@ -44,18 +44,18 @@
                     <input type="email" id="email" name="email">
                 </div>
                 <div>
-                    <label for="direccion">Dirección:</label>
+                    <label for="direccion">Address:</label>
                     <input type="text" id="direccion" name="direccion">
                 </div>
-                <button type="submit">Guardar Configuración</button>
+                <button type="submit">Save Configuration</button>
             </form>
 
             <section class="banner-management">
-                <h2>Imágenes Banner</h2>
-                <label for="banner_url">Agregar URL del Banner:</label>
+                <h2>Banner Images</h2>
+                <label for="banner_url">Add Banner URL:</label>
                 <div class="form">
                     <input type="text" id="banner_url" name="banner_url" placeholder="https://example.com/banner.jpg">
-                    <button type="button" onclick="addBanner()">Agregar</button>
+                    <button type="button" onclick="addBanner()">Add</button>
                 </div>
                 <div id="banners"></div>
             </section>

@@ -33,7 +33,7 @@
                     <li class="settings ibm-plex-sans-medium"><a href="configuracion.html">Settings</a></li>
                     <li class="products ibm-plex-sans-medium"><a href="product-management.html">Products</a></li>
                     <li class="catalog ibm-plex-sans-medium"><a href="pdf_catalogo.html">Catalog</a></li>
-                    <li class="user_manage ibm-plex-sans-medium"><a href="user_manage.html">User manage</a></li>
+                    <li class="user_manage ibm-plex-sans-medium"><a href="user_manage.html">Manage user</a></li>
                 </ul>
             </div>
         </section>

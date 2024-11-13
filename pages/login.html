@@ -13,14 +13,14 @@
         <div class="contenedor__todo">
             <div class="caja__trasera">
                 <div class="caja__trasera-login">
-                    <h3 class="ibm-plex-sans-regular">¿Ya tienes una cuenta?</h3>
-                    <p class="ibm-plex-sans-light">Inicia sesión para entrar en la página</p>
-                    <button class="ibm-plex-sans-semibold" id="btn__iniciar-sesion">Iniciar Sesión</button>
+                    <h3 class="ibm-plex-sans-regular">Already have an account?</h3>
+                    <p class="ibm-plex-sans-light">Log in to access the store</p>
+                    <button class="ibm-plex-sans-semibold" id="btn__iniciar-sesion">Log In</button>
                 </div>
                 <div class="caja__trasera-register">
-                    <h3 class="ibm-plex-sans-regular">¿Aún no tienes una cuenta?</h3>
-                    <p class="ibm-plex-sans-light">Regístrate para que puedas iniciar sesión</p>
-                    <button class="ibm-plex-sans-semibold" id="btn__registrarse">Registrarse</button>
+                    <h3 class="ibm-plex-sans-regular">Don't have an account?</h3>
+                    <p class="ibm-plex-sans-light">Register in order to log in</p>
+                    <button class="ibm-plex-sans-semibold" id="btn__registrarse">Register</button>
                 </div>
             </div>
 
@@ -28,19 +28,19 @@
             <div id="login-form" class="contenedor__login-register">
                 <!--Login-->
                 <form class="formulario__login" method="post" onsubmit="event.preventDefault(); loginVerify();">
-                    <h2 class="ibm-plex-sans-regular">Iniciar Sesión</h2>
+                    <h2 class="ibm-plex-sans-regular">Log In</h2>
                     <input class="ibm-plex-sans-light" type="email" id="login-email" placeholder="Correo Electrónico" name="email" required>
                     <input class="ibm-plex-sans-light" type="password" id="login-pass" placeholder="Contraseña" name="pass" required>
-                    <button class="ibm-plex-sans-semibold" type="submit">Entrar</button>
+                    <button class="ibm-plex-sans-semibold" type="submit">Enter</button>
                 </form>                    
 
                 <!--Register-->
                 <form class="formulario__register" method="post" onsubmit="event.preventDefault(); registerUser();">
-                    <h2 class="ibm-plex-sans-regular">Registrarse</h2>
+                    <h2 class="ibm-plex-sans-regular">Register</h2>
                     <input class="ibm-plex-sans-light" type="text" placeholder="Nombre" id="register-nombre" required>
                     <input class="ibm-plex-sans-light" type="email" placeholder="Correo Electrónico" id="register-email" required>
                     <input class="ibm-plex-sans-light" type="password" placeholder="Contraseña" id="register-pass" required>
-                    <button class="ibm-plex-sans-semibold" type="submit">Registrarse</button>
+                    <button class="ibm-plex-sans-semibold" type="submit">Register</button>
                 </form>                    
             </div>
         </div>
