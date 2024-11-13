@@ -18,8 +18,8 @@
     <main>
         <section class="about_us">
             <h1 class="poppins-bold">About Us</h1>
-            <p class="ibm-plex-sans-regular">Welcome to PCGateway, your trusted destination for all computer products. 
-                Founded in [year of founding], our mission is to offer our customers 
+            <p class="ibm-plex-sans-regular">Welcome to PCGateway, your trustworthy destination for all computer products. 
+                Founded in 2024, our mission is to offer our customers 
                 the widest range of high-quality technology, from hardware components 
                 to accessories and electronic devices. At PCGateway, we understand that 
                 technology is an essential part of modern life. Therefore, we strive 
@@ -42,7 +42,7 @@
                 <i class='bx bxs-truck'></i>
                 <h3 class="poppins-semibold">Shipments</h3>
                 <p class="ibm-plex-sans-regular">We partner with the largest agency in the country to deliver your 
-                    order in record time.</p>
+                    order in time.</p>
             </div>
             <div>
                 <i class='bx bx-dollar'></i>
@@ -54,7 +54,7 @@
                 <i class='bx bx-support'></i>
                 <h3 class="poppins-semibold">Warranty</h3>
                 <p class="ibm-plex-sans-regular">We put ourselves in our clients' shoes, so we will always do 
-                    everything possible to assist you.</p>
+                    everything possible to understand and assist you.</p>
             </div>
         </section>
     </main>

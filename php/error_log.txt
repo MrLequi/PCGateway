@@ -369,3 +369,13 @@ Stack trace:
 [12-Nov-2024 23:24:08 Europe/Berlin] PHP Warning:  Undefined variable $totalProductos in C:\xampp\htdocs\PCGateway\php\product-management.php on line 52
 [12-Nov-2024 23:26:17 Europe/Berlin] PHP Warning:  Undefined variable $totalProductos in C:\xampp\htdocs\PCGateway\php\product-management.php on line 52
 [13-Nov-2024 15:55:46 Europe/Berlin] PHP Warning:  Undefined array key "rol" in C:\xampp\htdocs\PCGateway\php\user_manage.php on line 7
+[13-Nov-2024 19:50:15 Europe/Berlin] PHP Warning:  require(../libs/fpdf.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\PCGateway\php\generate_order_pdf.php on line 4
+[13-Nov-2024 19:50:15 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required '../libs/fpdf.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\PCGateway\php\generate_order_pdf.php:4
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\PCGateway\php\generate_order_pdf.php on line 4
+[13-Nov-2024 19:50:28 Europe/Berlin] PHP Warning:  require(../libs/fpdf.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\PCGateway\php\generate_order_pdf.php on line 4
+[13-Nov-2024 19:50:28 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required '../libs/fpdf.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\PCGateway\php\generate_order_pdf.php:4
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\PCGateway\php\generate_order_pdf.php on line 4

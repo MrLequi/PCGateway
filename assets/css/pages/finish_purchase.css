@@ -1,0 +1,45 @@
+/* Sección de resumen de pedido */
+.order-summary {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.order-summary h2 {
+    font-size: 2rem;
+    color: #fc6625;
+    margin-bottom: 1rem;
+}
+
+.order-summary p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    color: #555;
+}
+
+/* Contenedor del ticket de compra */
+#orderTicket {
+    text-align: left;
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: #444;
+}
+
+#orderTicket p {
+    margin: 0.5rem 0;
+}
+
+#orderTicket ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+#orderTicket li {
+    padding: 0.5rem;
+    border-bottom: 1px solid #ddd;
+}

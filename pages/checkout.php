@@ -64,19 +64,19 @@
                 <h2 class="ibm-plex-sans-semibold">Enter Card Details</h2>
                 <form id="paymentForm">
                     <label class="ibm-plex-sans-regular" for="cardNumber">Card Number</label>
-                    <input type="text" id="cardNumber" name="cardNumber" required>
+                    <input type="text" id="cardNumber" name="cardNumber">
 
                     <label class="ibm-plex-sans-regular" for="firstName">First Name</label>
-                    <input type="text" id="firstName" name="firstName" required>
+                    <input type="text" id="firstName" name="firstName">
 
                     <label class="ibm-plex-sans-regular" for="lastName">Last Name</label>
-                    <input type="text" id="lastName" name="lastName" required>
+                    <input type="text" id="lastName" name="lastName">
 
                     <label class="ibm-plex-sans-regular" for="expiryDate">Expiry Date</label>
-                    <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY" required>
+                    <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY">
 
                     <label class="ibm-plex-sans-regular" for="securityCode">Security Code</label>
-                    <input type="password" id="securityCode" name="securityCode" required>
+                    <input type="password" id="securityCode" name="securityCode">
 
                     <button class="ibm-plex-sans-medium" type="submit">Submit Payment</button>
                     <button class="ibm-plex-sans-medium" type="button" id="closePopup">Cancel</button>

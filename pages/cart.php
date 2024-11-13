@@ -34,7 +34,7 @@
                 <!-- Aquí se agregarán dinámicamente los productos con JavaScript -->
             </table>
             <div>
-                <h3 class="poppins-bold">CART TOTALS</h3>
+                <h3 class="poppins-bold">CART TOTAL</h3>
                 <div class="total">
                     <p class="ibm-plex-sans-bold">Total</p>
                     <p class="ibm-plex-sans-bold">US$0.00</p>

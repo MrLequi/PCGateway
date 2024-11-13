@@ -5,7 +5,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const purchaseButton = document.querySelector('.purchase_button');
     if (purchaseButton) {
-        purchaseButton.addEventListener('click', finalizeOrder);
+        purchaseButton.addEventListener('click', () => {
+            if (verifyRequiredFields()) {
+                finalizeOrder();
+            } else {
+                alert("Please fill in all required fields marked with *.");
+            }
+        });
     }
 
     // Obtener elementos para los botones
@@ -32,6 +38,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+function verifyRequiredFields() {
+    const requiredFields = document.querySelectorAll('input[required], select[required]');
+    return Array.from(requiredFields).every(field => field.value.trim() !== "");
+}
 
 function finalizeOrder() {
     fetch('/pcgateway/php/cart_backend.php?action=loadCart')
@@ -219,6 +230,36 @@ function cargarDatosDeSesion() {
         })
         .catch(error => console.error('Error al cargar datos de sesión:', error));
 }
+
+// Función para guardar la tarjeta en LocalStorage
+function guardarTarjetaEnLocalStorage() {
+    const numeroTarjeta = document.getElementById('cardNumber').value;
+    const fechaExpiracion = document.getElementById('expirationDate').value;
+    const codigoSeguridad = document.getElementById('securityCode').value;
+
+    // Validar que los campos no estén vacíos
+    if (numeroTarjeta && fechaExpiracion && codigoSeguridad) {
+        const tarjeta = {
+            numero: numeroTarjeta,
+            expiracion: fechaExpiracion,
+            codigo: codigoSeguridad
+        };
+
+        // Guardar en LocalStorage
+        localStorage.setItem('tarjeta', JSON.stringify(tarjeta));
+        alert('Tarjeta guardada correctamente');
+    } else {
+        alert('Por favor, completa todos los campos de la tarjeta.');
+    }
+}
+
+// Agregar el evento al botón de "Submit Payment" (ejemplo)
+document.addEventListener('DOMContentLoaded', function() {
+    const submitPaymentButton = document.getElementById('submitPayment');
+    if (submitPaymentButton) {
+        submitPaymentButton.addEventListener('click', guardarTarjetaEnLocalStorage);
+    }
+});
 
 // Llama a la función al cargar la página
 document.addEventListener('DOMContentLoaded', cargarDatosDeSesion);
