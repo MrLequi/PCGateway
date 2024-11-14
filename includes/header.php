@@ -4,7 +4,7 @@
             <i class='bx bx-map icon'></i><p class="ibm-plex-sans-regular">El Pinar, Canelones, Uruguay</p>
         </div>
         <div class="cont_sec">
-            <i class='bx bx-map-alt icon'></i><a href="https://maps.app.goo.gl/hDpk1NXLmYH9Bu23A"><p class="ibm-plex-sans-regular">Adresses shops</p></a>
+            <i class='bx bx-map-alt icon'></i><a href="https://maps.app.goo.gl/hDpk1NXLmYH9Bu23A"><p class="ibm-plex-sans-regular">Shop adresses</p></a>
             <i id="user-icon" class='bx bx-user-circle icon'></i>
             <span id="user-info"></span>
         </div>
