@@ -157,7 +157,7 @@
 
         <section class="offers_and_news">
             <i class='bx bx-envelope'></i>
-            <p class="ibm-plex-sans-bold">Recive our offers and news</p>
+            <p class="ibm-plex-sans-bold">Receive our offers and news</p>
             <form action="">
                 <input class="poppins-light" type="text" placeholder="you@example.com">
                 <button><p class="poppins-light">SUBSCRIBE</p></button>
