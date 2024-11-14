@@ -94,8 +94,6 @@ function loginVerify() {
     const email = document.getElementById('login-email').value;
     const pass = document.getElementById('login-pass').value;
 
-    console.log("Datos del usuario: ", email, pass);
-
     let datos = new FormData();
     datos.append('email', email);
     datos.append('pass', pass);

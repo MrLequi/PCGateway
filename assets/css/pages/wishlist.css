@@ -1,0 +1,60 @@
+/* Estilo base para el contenedor de la wishlist */
+.wishlist {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.wishlist_items {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.wishlist_item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.wishlist_image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.wishlist_info {
+    margin-left: 20px;
+}
+
+/* Estilos para los enlaces de productos */
+.wishlist_info a {
+    color: #333; /* Color de texto que combine con el diseño */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.wishlist_info a:hover {
+    color: #fc6625; /* Cambia el color al pasar el cursor */
+}
+
+.wishlist_price {
+    color: #777; /* Color de precio */
+}
+
+.remove_wishlist_button {
+    background-color: #fc6625;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.remove_wishlist_button:hover {
+    background-color: #e55b21;
+}

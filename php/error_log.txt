@@ -379,3 +379,31 @@ Stack trace:
 Stack trace:
 #0 {main}
   thrown in C:\xampp\htdocs\PCGateway\php\generate_order_pdf.php on line 4
+[14-Nov-2024 00:12:09 Europe/Berlin] PHP Warning:  Undefined variable $pdo in C:\xampp\htdocs\PCGateway\php\get_wishlist.php on line 7
+[14-Nov-2024 00:12:09 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\PCGateway\php\get_wishlist.php:7
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\PCGateway\php\get_wishlist.php on line 7
+[14-Nov-2024 00:12:12 Europe/Berlin] PHP Warning:  Undefined variable $pdo in C:\xampp\htdocs\PCGateway\php\get_wishlist.php on line 7
+[14-Nov-2024 00:12:12 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\PCGateway\php\get_wishlist.php:7
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\PCGateway\php\get_wishlist.php on line 7
+[14-Nov-2024 03:06:30 Europe/Berlin] Error de conexión: SQLSTATE[HY000] [1049] Unknown database 'pcgateway'
+[14-Nov-2024 03:06:30 Europe/Berlin] Error de conexión: SQLSTATE[HY000] [1049] Unknown database 'pcgateway'
+[14-Nov-2024 03:06:32 Europe/Berlin] Error de conexión: SQLSTATE[HY000] [1049] Unknown database 'pcgateway'
+[14-Nov-2024 03:06:36 Europe/Berlin] Error de conexión: SQLSTATE[HY000] [1049] Unknown database 'pcgateway'
+[14-Nov-2024 03:06:37 Europe/Berlin] Error de conexión: SQLSTATE[HY000] [1049] Unknown database 'pcgateway'
+[14-Nov-2024 03:06:37 Europe/Berlin] Error de conexión: SQLSTATE[HY000] [1049] Unknown database 'pcgateway'
+[14-Nov-2024 03:07:23 Europe/Berlin] Error de conexión: SQLSTATE[HY000] [1049] Unknown database 'pcgateway'
+[14-Nov-2024 03:07:23 Europe/Berlin] Error de conexión: SQLSTATE[HY000] [1049] Unknown database 'pcgateway'
+[14-Nov-2024 03:07:23 Europe/Berlin] Error de conexión: SQLSTATE[HY000] [1049] Unknown database 'pcgateway'
+[14-Nov-2024 03:07:24 Europe/Berlin] Error de conexión: SQLSTATE[HY000] [1049] Unknown database 'pcgateway'
+[14-Nov-2024 14:22:26 Europe/Berlin] PHP Fatal error:  Uncaught Error: PDOStatement::bindParam(): Argument #2 ($var) cannot be passed by reference in C:\xampp\htdocs\PCGateway\php\register_usuario.php:29
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\PCGateway\php\register_usuario.php on line 29
+[14-Nov-2024 14:23:32 Europe/Berlin] PHP Fatal error:  Uncaught Error: PDOStatement::bindParam(): Argument #2 ($var) cannot be passed by reference in C:\xampp\htdocs\PCGateway\php\register_usuario.php:27
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\PCGateway\php\register_usuario.php on line 27

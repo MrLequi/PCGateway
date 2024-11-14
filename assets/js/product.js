@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const quantityElement = document.getElementById('productQuantity');
 
+    // Función para mostrar el mensaje de éxito o error
     function showMessage(message, isSuccess) {
         const Toast = Swal.mixin({
             toast: true,
@@ -31,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 if (data.success && data.product) {
                     document.getElementById('productName').textContent = data.product.nombre;
                     document.getElementById('productPrice').textContent = `US$${data.product.precio}`;
-                    document.getElementById('productStock').textContent = `${data.product.stock} disponible(s)`;
+                    document.getElementById('productStock').textContent = `${data.product.stock} available`;
                     document.getElementById('productCategory').textContent = data.product.categoria;
                     document.getElementById('productImage').src = data.product.imagen;
                     document.getElementById('productDescription').textContent = data.product.descripcion;
@@ -57,6 +58,33 @@ document.addEventListener("DOMContentLoaded", function() {
             quantity--;
             quantityElement.textContent = quantity;
         }
+    });
+
+    // Evento para agregar el producto a la wishlist
+    document.querySelector('.wish_list').addEventListener('click', function() {
+        fetch('/pcgateway/php/add_to_wishlist.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                product: productName
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                showMessage('Producto añadido a la wishlist', true);
+            } else if (data.message === 'Usuario no autenticado') {
+                window.location.href = "/pcgateway/pages/login.html";
+            } else {
+                showMessage(`Error al añadir el producto a la wishlist: ${data.message}`, false);
+            }
+        })
+        .catch(error => {
+            console.error('Error adding product to wishlist:', error);
+            showMessage('Ocurrió un error al añadir el producto a la wishlist', false);
+        });
     });
 
     // Añadir producto al carrito

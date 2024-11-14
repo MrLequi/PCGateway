@@ -26,10 +26,10 @@
                 <section class="product_info">
                     <p id="productName" class="product_name ibm-plex-sans-bold"></p>
                     <p id="productPrice" class="product_price ibm-plex-sans-semibold"></p>
-                    <p class="details ibm-plex-sans-semibold">Disponibilidad: 
+                    <p class="details ibm-plex-sans-semibold">Availability: 
                         <span id="productStock" class="ibm-plex-sans-regular"></span>
                     </p>
-                    <p class="details ibm-plex-sans-semibold">Categoría: 
+                    <p class="details ibm-plex-sans-semibold">Category: 
                         <span id="productCategory" class="ibm-plex-sans-regular"></span>
                     </p>
                 </section>
@@ -37,17 +37,17 @@
                     <button class="less"><i class='bx bx-minus'></i></button>
                     <div class="amount"><p id="productQuantity" class="poppins-bold">1</p></div>
                     <button class="plus"><i class='bx bx-plus'></i></button>
-                    <button class="add_to_cart_button"><i class='bx bx-cart'></i><p class="poppins-bold">AÑADIR AL CARRITO</p></button>
+                    <button class="add_to_cart_button"><i class='bx bx-cart'></i><p class="poppins-bold">ADD TO CART</p></button>
                 </section>
                 <div id="messageBox" class="message"></div>
                 <section class="wish_list">
-                    <i class='bx bx-heart'></i><p class="poppins-bold">AÑADIR A LA LISTA DE DESEADOS</p>
+                    <i id="wishlistIcon" class='bx bx-heart'></i><p id="wishlistText" class="poppins-bold">ADD TO WISH LIST</p>
                 </section>
             </div>
         </div>
         <section class="description">
             <div class="title poppins-bold">
-                <p>DESCRIPCIÓN</p>
+                <p>DESCRIPTION</p>
             </div>
             <div id="productDescription" class="text ibm-plex-sans-regular"></div>
         </section>

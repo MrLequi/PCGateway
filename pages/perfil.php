@@ -22,9 +22,8 @@
             <div class="my_account">
                 <h5 class="poppins-bold">MY ACCOUNT</h5>
                 <ul>
-                    <li class="ibm-plex-sans-medium"><a href="">Orders</a></li>
-                    <li class="ibm-plex-sans-bold"><a href=""><span class="bold">Account details</span></a></li>
-                    <li class="ibm-plex-sans-medium"><a href="">Wishlist</a></li>
+                    <li class="ibm-plex-sans-bold"><a href="#"><span class="bold">Account details</span></a></li>
+                    <li class="ibm-plex-sans-medium"><a href="/pcgateway/pages/wishlist.php">Wishlist</a></li>
                 </ul>
             </div>
         </section>

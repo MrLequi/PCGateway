@@ -38,7 +38,7 @@
     </section>
     <!-- Menú lateral deslizable -->
     <div class="side-menu" id="side-menu">
-        <div class="search_bar_res">
+        <div class="search_bar">
             <form method="GET" action="/pcgateway/pages/catalog.php">
                 <input class="poppins-light" type="text" name="search" placeholder="Your searched...">
                 <button type="submit"><i class='bx bx-search'></i></button>

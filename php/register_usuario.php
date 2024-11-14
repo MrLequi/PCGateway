@@ -1,12 +1,10 @@
 <?php
 header('Content-Type: application/json');
 
-if (isset($_POST['nombre']) && isset($_POST['apellidos']) && isset($_POST['email']) && isset($_POST['pass']) && isset($_POST['rol'])) {
+if (isset($_POST['nombre']) && isset($_POST['email']) && isset($_POST['pass'])) {
     $nombre = $_POST['nombre'];
-    $apellidos = $_POST['apellidos'];
     $email = $_POST['email'];
     $pass = password_hash($_POST['pass'], PASSWORD_ARGON2I);
-    $rol = $_POST['rol'];
     $activo = $_POST['activo'] ?? 1;
 
     try {
@@ -23,11 +21,9 @@ if (isset($_POST['nombre']) && isset($_POST['apellidos']) && isset($_POST['email
         }
 
         // Insertar nuevo usuario
-        $stmt = $conn->prepare('INSERT INTO usuario (nombre, apellidos, email, rol, password, activo) VALUES (:nombre, :apellidos, :email, :rol, :password, :activo)');
+        $stmt = $conn->prepare('INSERT INTO usuario (nombre, email, rol, password, activo) VALUES (:nombre, :email, "User", :password, :activo)');
         $stmt->bindParam(':nombre', $nombre);
-        $stmt->bindParam(':apellidos', $apellidos);
         $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':rol', $rol);
         $stmt->bindParam(':password', $pass);
         $stmt->bindParam(':activo', $activo, PDO::PARAM_INT);
 
