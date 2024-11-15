@@ -1,3 +1,4 @@
+DROP DATABASE IF EXISTS tiendadb;
 DROP DATABASE IF EXISTS pcgateway;
 CREATE DATABASE pcgateway;
 USE pcgateway;
