@@ -6,26 +6,10 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
---
--- Base de datos: `PCGateway`
---
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `banner`
---
-
 CREATE TABLE `banner` (
   `id` int(11) NOT NULL,
   `imagen` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Volcado de datos para la tabla `banner`
---
 
 INSERT INTO `banner` (`id`, `imagen`) VALUES
 (1, 'https://thotcomputacion.com.uy/wp-content/uploads/2024/09/CM_wb_2024_q3_1920x470.jpg'),
@@ -35,30 +19,16 @@ INSERT INTO `banner` (`id`, `imagen`) VALUES
 (6, 'https://thotcomputacion.com.uy/wp-content/uploads/2024/10/BANNER-WEB-2.png'),
 (7, 'https://thotcomputacion.com.uy/wp-content/uploads/2023/04/22KDI041_BeastDDR5_2000x520_REV3.jpg');
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `carrito`
---
-
 CREATE TABLE `carrito` (
   `id_carrito` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL,
   `fecha_creacion` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;-- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `categoría`
---
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE `categoría` (
   `id_categoría` int(11) NOT NULL,
   `nombre` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `categoría`
---
 
 INSERT INTO `categoría` (`id_categoría`, `nombre`) VALUES
 (1, 'Pre-built PCs'),
@@ -74,12 +44,6 @@ INSERT INTO `categoría` (`id_categoría`, `nombre`) VALUES
 (11, 'Peripherals'),
 (12, 'Simulators and Accessories');
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `configuracion`
---
-
 CREATE TABLE `configuracion` (
   `nombre_empresa` varchar(255) NOT NULL DEFAULT 'PCGateway',
   `telefono` varchar(50) NOT NULL,
@@ -87,30 +51,14 @@ CREATE TABLE `configuracion` (
   `direccion` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `configuracion`
---
-
 INSERT INTO `configuracion` (`nombre_empresa`, `telefono`, `email`, `direccion`) VALUES
 ('PCGateway', '098 921 935', 'info.pcgateway@mail.com', 'Paralela Sur, 15800 Ciudad de la Costa, Departamento de Canelones');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `detalle_carrito`
---
 
 CREATE TABLE `detalle_carrito` (
   `id_carrito` int(11) NOT NULL,
   `id_producto` int(11) NOT NULL,
   `cantidad` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `pedido`
---
 
 CREATE TABLE `pedido` (
   `id_pedido` int(11) NOT NULL,
@@ -120,12 +68,6 @@ CREATE TABLE `pedido` (
   `productos` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`productos`)),
   `estado` varchar(50) DEFAULT 'pendiente'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `producto`
---
 
 CREATE TABLE `producto` (
   `id_producto` int(11) NOT NULL,
@@ -137,10 +79,6 @@ CREATE TABLE `producto` (
   `imagen` varchar(255) DEFAULT NULL,
   `descuento` decimal(5,2) DEFAULT 0.00
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `producto`
---
 
 INSERT INTO `producto` (`id_producto`, `nombre`, `descripcion`, `precio`, `stock`, `categoria`, `imagen`, `descuento`) VALUES
 (13, 'Equipo AMD Athlon 3000G – 8Gb – SSD – Radeon Graphics', 'Gabinete Shot 8011 RGB con lateral en cristal templado\n\nFuente Aerocool VX Plus 450w\n\nMother Asrock B450M HDV  – Sata III – USB 3.0\n\nProcesador AMD Athlon 3000G 2 núcleos – 4 hilos 3,5Ghz\n\nMemoria Kingston 8Gb DDR4 2666Mhz\n\nDisco SSD 240Gb\n\nGráficos Radeon™ Vega 3', 290.00, 8, '1', 'https://thotcomputacion.com.uy/wp-content/uploads/2023/05/Equipo-Athlon-300x297.jpg', 0.00),
@@ -166,20 +104,10 @@ INSERT INTO `producto` (`id_producto`, `nombre`, `descripcion`, `precio`, `stock
 (35, 'Notebook Acer A315-44P-R7GS Ryzen 7 5700U/16Gb/512Gb/15,6 IPS FHD/W11', 'Color plateado (Pure Silver).\nMicrosoft Windows 11 Home 64bit pre-instalado.\nProcesador AMD Ryzen 7 5700U 1.8Ghz (12M Caché, hasta 4.3Ghz).\n16GB DDR4 SDRAM. \n512GB NVMe SSD.\nPantalla LED IPS 15.6\" Full HD 1920 x 1080.\nVideo AMD Radeon Graphics.\nSonido HD c/altavoces estéreo integrados.\nWif 6 802.11ax + Bluetooth 5.1.\nRed Gigabit 10/100/1000.\nTeclado en inglés con teclado numérico.\nWebcam HD 720p con micrófono integrado.\nBatería de litio-ion de 3 celdas 50wh.\nDimensiones: 363 x 241 x 19.9mm\nPeso aprox.: 1.78kg', 624.99, 9, '2', 'https://thotcomputacion.com.uy/wp-content/uploads/2024/06/6384_1_190207503b55489da8cc595bed5dbd6f-300x300.jpg', 0.00),
 (36, 'a', 'a', 123.00, 123, '4', 'https://thotcomputacion.com.uy/wp-content/uploads/2023/12/8-L-AMD-rx-300x300.jpg', 0.00);
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `producto_categoria`
---
-
 CREATE TABLE `producto_categoria` (
   `id_producto` int(11) NOT NULL,
   `id_categoría` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `producto_categoria`
---
 
 INSERT INTO `producto_categoria` (`id_producto`, `id_categoría`) VALUES
 (13, 1),
@@ -204,12 +132,6 @@ INSERT INTO `producto_categoria` (`id_producto`, `id_categoría`) VALUES
 (34, 2),
 (35, 2);
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `usuario`
---
-
 CREATE TABLE `usuario` (
   `id_usuario` int(11) NOT NULL,
   `email` varchar(255) NOT NULL,
@@ -222,18 +144,8 @@ CREATE TABLE `usuario` (
   `activo` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `usuario`
---
-
 INSERT INTO `usuario` (`id_usuario`, `email`, `nombre`, `password`, `rol`, `apellidos`, `display_name`, `fecha_creacion`, `activo`) VALUES
-(23, 'lequinidylan@gmail.com', 'Dylan', '$argon2i$v=19$m=65536,t=4,p=1$YW9WTndLdTJ1UlZISHdmZQ$x1ZcSwEivy4GIvdhieufaryYUYnXudKwC3cQgvZ1F8s', 'Admin', 'Lequini', 'Dylan', '2024-11-12 09:01:02', 1),
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `wishlist`
---
+(23, 'lequinidylan@gmail.com', 'Dylan', '$argon2i$v=19$m=65536,t=4,p=1$YW9WTndLdTJ1UlZISHdmZQ$x1ZcSwEivy4GIvdhieufaryYUYnXudKwC3cQgvZ1F8s', 'Admin', 'Lequini', 'Dylan', '2024-11-12 09:01:02', 1);
 
 CREATE TABLE `wishlist` (
   `id_wishlist` int(11) NOT NULL,
@@ -241,157 +153,78 @@ CREATE TABLE `wishlist` (
   `id_producto` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `wishlist`
---
-
 INSERT INTO `wishlist` (`id_wishlist`, `id_usuario`, `id_producto`) VALUES
 (1, 23, 13),
 (2, 23, 35);
 
---
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `banner`
---
 ALTER TABLE `banner`
   ADD PRIMARY KEY (`id`);
 
---
--- Indices de la tabla `carrito`
---
 ALTER TABLE `carrito`
   ADD PRIMARY KEY (`id_carrito`),
   ADD KEY `id_usuario` (`id_usuario`);
 
---
--- Indices de la tabla `categoría`
---
 ALTER TABLE `categoría`
   ADD PRIMARY KEY (`id_categoría`);
 
---
--- Indices de la tabla `detalle_carrito`
---
 ALTER TABLE `detalle_carrito`
   ADD PRIMARY KEY (`id_carrito`,`id_producto`),
   ADD KEY `id_producto` (`id_producto`);
 
---
--- Indices de la tabla `pedido`
---
 ALTER TABLE `pedido`
   ADD PRIMARY KEY (`id_pedido`),
   ADD KEY `id_usuario` (`id_usuario`);
 
---
--- Indices de la tabla `producto`
---
 ALTER TABLE `producto`
   ADD PRIMARY KEY (`id_producto`);
 
---
--- Indices de la tabla `producto_categoria`
---
 ALTER TABLE `producto_categoria`
   ADD PRIMARY KEY (`id_producto`,`id_categoría`),
   ADD KEY `id_categoría` (`id_categoría`);
 
---
--- Indices de la tabla `usuario`
---
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id_usuario`);
 
---
--- Indices de la tabla `wishlist`
---
 ALTER TABLE `wishlist`
   ADD PRIMARY KEY (`id_wishlist`),
   ADD KEY `id_usuario` (`id_usuario`),
   ADD KEY `id_producto` (`id_producto`);
 
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `banner`
---
 ALTER TABLE `banner`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
---
--- AUTO_INCREMENT de la tabla `carrito`
---
 ALTER TABLE `carrito`
   MODIFY `id_carrito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
---
--- AUTO_INCREMENT de la tabla `categoría`
---
 ALTER TABLE `categoría`
   MODIFY `id_categoría` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
---
--- AUTO_INCREMENT de la tabla `pedido`
---
 ALTER TABLE `pedido`
   MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
---
--- AUTO_INCREMENT de la tabla `producto`
---
 ALTER TABLE `producto`
   MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
---
--- AUTO_INCREMENT de la tabla `usuario`
---
 ALTER TABLE `usuario`
   MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
---
--- AUTO_INCREMENT de la tabla `wishlist`
---
 ALTER TABLE `wishlist`
   MODIFY `id_wishlist` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `carrito`
---
 ALTER TABLE `carrito`
   ADD CONSTRAINT `carrito_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE;
 
---
--- Filtros para la tabla `detalle_carrito`
---
 ALTER TABLE `detalle_carrito`
   ADD CONSTRAINT `detalle_carrito_ibfk_1` FOREIGN KEY (`id_carrito`) REFERENCES `carrito` (`id_carrito`) ON DELETE CASCADE,
   ADD CONSTRAINT `detalle_carrito_ibfk_2` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id_producto`) ON DELETE CASCADE;
 
---
--- Filtros para la tabla `pedido`
---
 ALTER TABLE `pedido`
   ADD CONSTRAINT `pedido_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`);
 
---
--- Filtros para la tabla `producto_categoria`
---
 ALTER TABLE `producto_categoria`
   ADD CONSTRAINT `producto_categoria_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id_producto`),
   ADD CONSTRAINT `producto_categoria_ibfk_2` FOREIGN KEY (`id_categoría`) REFERENCES `categoría` (`id_categoría`);
 
---
--- Filtros para la tabla `wishlist`
---
 ALTER TABLE `wishlist`
   ADD CONSTRAINT `wishlist_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE,
   ADD CONSTRAINT `wishlist_ibfk_2` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id_producto`) ON DELETE CASCADE;

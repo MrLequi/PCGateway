@@ -4,20 +4,22 @@ document.addEventListener("DOMContentLoaded", function () {
     let currentIndex = 0;
 
     async function loadBanners() {
-        const storedBanners = localStorage.getItem("banners");
+        // Limpiar caché de banners para cargar siempre desde el servidor
+        localStorage.removeItem("banners");
 
-        if (storedBanners) {
-            banners = JSON.parse(storedBanners);
-            displayBanner(currentIndex);
-        } else {
-            try {
-                const response = await fetch('/pcgateway/php/get_banners.php');
-                banners = await response.json();
+        try {
+            const response = await fetch('/pcgateway/php/get_banners.php');
+            if (!response.ok) throw new Error("Error en la respuesta del servidor");
+
+            banners = await response.json();
+            if (Array.isArray(banners) && banners.length > 0) {
                 localStorage.setItem("banners", JSON.stringify(banners));
                 displayBanner(currentIndex);
-            } catch (error) {
-                console.error("Error al cargar los banners:", error);
+            } else {
+                console.warn("No se encontraron banners.");
             }
+        } catch (error) {
+            console.error("Error al cargar los banners:", error);
         }
     }
 
@@ -30,7 +32,6 @@ document.addEventListener("DOMContentLoaded", function () {
         img.alt = "Banner";
         img.classList.add('fade');
 
-        // Mostrar fondo gris mientras la imagen se carga
         bannerContainer.classList.add('loading');
         bannerContainer.innerHTML = ''; // Limpiar el contenedor
         bannerContainer.appendChild(img);
@@ -38,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         img.onload = () => {
             img.classList.add('visible');
-            bannerContainer.classList.remove('loading'); // Quitar fondo gris
+            bannerContainer.classList.remove('loading');
         };
     }
 
